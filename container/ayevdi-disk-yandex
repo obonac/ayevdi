@@ -147,7 +147,7 @@ ayedisk_activate_profile() {
   howto_url=${8}
 
   ayeai_tool_init_3rd_party_custom ${eula_url} ${site_url} ${howto_url} ${tool_prog}
-  ayedisk_confirm_activate  ${service} ${tool_prog} ${tool_options}
+  ayedisk_confirm_activate  ${service} ${tool_prog} ${tool_options} ${install_prog} ${auth_prog}
 }
 
 ## End library section ##

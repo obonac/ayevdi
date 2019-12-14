@@ -23,6 +23,8 @@
 
 prog="/usr/bin/yandex-disk"
 
+echo "Copyright (C) 2019 Abhishek Choudhary"
+echo ""
 echo "AyeAI has created this script only as a support utility"
 echo "to improve the user experience for users using the AyeVDI"
 echo "platform in accordance with AyeAI SPL version 1 or later."
@@ -57,6 +59,7 @@ read -p "Do you wish to proceed at your own risk? (y/N) " choice
 if [ "${choice}" = "y" ] || [ "${choice}" = "Y" ]
 then
   echo ""
+  export AYEDISK_HOME=${HOME}/ayework/Yandex.Disk
   if [ ! -f ${prog} ]
   then
     # Based on instructions available at https://yandex.com/support/disk/cli-clients.html
@@ -86,20 +89,28 @@ then
       expect "Enter password:"
         send "${upwd}\r"
       expect "/Yandex.Disk'):"
-        send "${HOME}/ayework/Yandex.Disk\r"
+        send "${AYEDISK_HOME}\r"
       expect "Would you like Yandex.Disk to launch on startup?"
         send "y\r"
       expect eof
       exit
 EOF
   fi
-  $prog "start"
+  $prog "start" &&\
+  echo "Your persistent disk is available at" &&\
+  echo ${AYEDISK_HOME} ||\
+  echo "AyeVDI: Error starting " ${prog} &&\
+  export AYEDISK_HOME=${HOME} &&\
+  echo "Your persistent disk is unset."
+  echo ""
   
 else
 
   echo "You have opted to not accept the terms and conditions."
-  echo "We respect that! Please note that this not invalidate"
-  echo "your other existing agreements with AyeAI."
+  echo "We respect that! Please note that this does not"
+  echo "invalidate your other existing agreements with AyeAI."
+  export AYEDISK_HOME=${HOME}
+  echo "Your persistent disk is unset"
   echo ""
 
 fi

@@ -51,11 +51,12 @@ echo "with the defaults selected, please DO NOT use this utility."
 echo "You may also execute the program yourself directly from"
 echo ${prog} "or as specified at"
 echo "https://yandex.com/support/disk/cli-clients.html"
-  
+echo ""
+
 read -p "Do you wish to proceed at your own risk? (y/N) " choice
 if [ "${choice}" = "y" ] || [ "${choice}" = "Y" ]
 then
-
+  echo ""
   if [ ! -f ${prog} ]
   then
     # Based on instructions available at https://yandex.com/support/disk/cli-clients.html

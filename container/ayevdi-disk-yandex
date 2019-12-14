@@ -107,11 +107,11 @@ ayedisk_confirm_activate() {
     else
       auth_prog
     fi
-    $2 "start" &&\
+    $2 $3 &&\
     echo "Your persistent disk is available at" &&\
     echo ${AYEDISK_HOME} ||\
-    echo "AyeVDI: Error starting " ${prog} &&\
-    ayedisk_unset_home
+    ( echo "AyeVDI: Error starting " ${prog} &&\
+    ayedisk_unset_home )
   else
     ayeai_spl_respectful_denial
     ayedisk_unset_home
@@ -158,4 +158,4 @@ ayeai_tool_init_3rd_party_custom \
   "https://yandex.com/support/disk/cli-clients.html"\
   ${prog}
 
-ayedisk_confirm_activate "Yandex.Disk" ${prog}
+ayedisk_confirm_activate "Yandex.Disk" ${prog} "start"

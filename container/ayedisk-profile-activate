@@ -154,7 +154,7 @@ ayedisk_activate_profile() {
 
 # Read the public profile of the service requested
 export tempprofile=$(tempfile)
-curl -sN > ${tempprofile}
+curl -sN ${ayedisk_profile} | grep -v '\#' > ${tempprofile}
 source ${tempprofile}
 rm -f ${tempprofile}
 export tempprofile=$(date +%s)

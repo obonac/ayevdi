@@ -38,11 +38,14 @@ ayeai_spl_notice() {
 }
 
 ayeai_spl_3rd_party_eula() {
+  eula_url=${1}
+  site_url=${2}
+
   echo "The software referenced in this utility may be governed by"
   echo "the legal agreement available at"
-  echo $1
+  echo ${eula_url}
   echo "or at other locations as specified by"
-  echo $2
+  echo ${site_rl}
   echo ""
 }
 
@@ -59,13 +62,16 @@ ayeai_spl_choice() {
 }
 
 ayeai_spl_custom_config_notice () {
+  howto_url=${1}
+  tool_prog=${2}
+
   echo "This utility will autofill or select certain options so"
   echo "that you have a seamless experience. If you do not agree"
   echo "with the defaults selected, please DO NOT use this utility."
   echo "You may also execute the program yourself directly from"
-  echo $2
+  echo ${tool_prog}
   echo "or as specified at"
-  echo $1
+  echo ${howto_url}
   echo ""
 }
 
@@ -77,11 +83,16 @@ ayeai_spl_respectful_denial() {
 }
 
 ayeai_tool_init_3rd_party_custom() {
+  eula_url=${1}
+  site_url=${2}
+  howto_url=${3}
+  tool_prog=${4}
+  
   ayeai_spl_show_copyright
   ayeai_spl_notice
-  ayeai_spl_3rd_party_eula $1 $2
+  ayeai_spl_3rd_party_eula ${eula_url} ${site_url}
   ayeai_spl_choice
-  ayeai_spl_custom_config_notice $3 $4
+  ayeai_spl_custom_config_notice ${howto_url} ${tool_prog}
 }
 
 ayedisk_unset_home () {
@@ -91,26 +102,33 @@ ayedisk_unset_home () {
 }
 
 ayedisk_confirm_activate() {
+  service=${1}
+  tool_prog=${2}
+  tool_options=${3}
+  install_prog=${4}
+  auth_prog=${5}
+
   read -p "Do you wish to proceed at your own risk? (y/N) " choice
   echo ""
   if [ "${choice}" = "y" ] || [ "${choice}" = "Y" ]
   then
-    export AYEDISK_HOME=${HOME}/ayework/${1}
-    if [ ! -f $2 ]
+    export AYEDISK_HOME=${HOME}/ayework/${service}
+    if [ ! -f ${tool_prog} ]
     then
-      install_prog
+      ${install_prog}
     fi
 
-    if [ -e ${HOME}/ayework/${1} ]
+    if [ -e ${HOME}/ayework/${service} ]
     then
-      echo "${1} already running?"
+      echo "${service} / ${tool_prog} already running?"
     else
-      auth_prog
+      mkdir -p ${HOME}/ayework/
+      ${auth_prog} ${AYEDISK_HOME}
     fi
-    $2 $3 &&\
+    ${tool_prog} ${tool_options} &&\
     echo "Your persistent disk is available at" &&\
     echo ${AYEDISK_HOME} ||\
-    ( echo "AyeVDI: Error starting " ${prog} &&\
+    ( echo "AyeVDI: Error starting " ${tool_prog} &&\
     ayedisk_unset_home )
   else
     ayeai_spl_respectful_denial
@@ -118,10 +136,31 @@ ayedisk_confirm_activate() {
   fi
 }
 
+ayedisk_activate_profile() {
+  service=${1}
+  tool_prog=${2}
+  tool_options=${3}
+  install_prog=${4}
+  auth_prog=${5}
+  eula_url=${6}
+  site_url=${7}
+  howto_url=${8}
+
+  ayeai_tool_init_3rd_party_custom ${eula_url} ${site_url} ${howto_url} ${tool_prog}
+  ayedisk_confirm_activate  ${service} ${tool_prog} ${tool_options}
+}
+
 ## End library section ##
 
-prog="/usr/bin/yandex-disk"
+# Define the service profile 
+service="Yandex.Disk"
+tool_prog="/usr/bin/yandex-disk"
+tool_options="start"
+site_url="https://yandex.com"
+eula_url="https://yandex.com/legal/desktop_software_agreement/"
+howto_url="https://yandex.com/support/disk/cli-clients.html"
 
+# Installation helper function
 install_prog() {
   # Based on instructions available at https://yandex.com/support/disk/cli-clients.html
   echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null &&\
@@ -130,11 +169,13 @@ install_prog() {
   sudo apt-get install -y yandex-disk
 }
 
+# Authentication helper function
 auth_prog() {
+  targetdir=${1}
+
   read -p "Username: " uuid
   read -s -p "Password: " upwd
 
-  mkdir -p ${HOME}/ayework/
   /usr/bin/expect <<EOF
     spawn "${prog}" "setup"
     expect "Would you like to use a proxy server?"
@@ -144,7 +185,7 @@ auth_prog() {
     expect "Enter password:"
       send "${upwd}\r"
     expect "/Yandex.Disk'):"
-      send "${AYEDISK_HOME}\r"
+      send "${targetdir}\r"
     expect "Would you like Yandex.Disk to launch on startup?"
       send "y\r"
     expect eof
@@ -152,10 +193,12 @@ auth_prog() {
 EOF
 }
 
-ayeai_tool_init_3rd_party_custom \
-  "https://yandex.com/legal/desktop_software_agreement/"\
-  "https://yandex.com"\
-  "https://yandex.com/support/disk/cli-clients.html"\
-  ${prog}
-
-ayedisk_confirm_activate "Yandex.Disk" ${prog} "start"
+ayedisk_activate_profile ${service}\
+                         ${tool_prog}\
+                         ${tool_options}\
+                         ${install_prog}\
+                         ${auth_prog}
+                         ${eula_url}\
+                         ${site_url}\
+                         ${howto_url}
+                        

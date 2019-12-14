@@ -65,7 +65,7 @@ ayeai_spl_custom_config_notice () {
   echo "You may also execute the program yourself directly from"
   echo $2
   echo "or as specified at"
-  echo $3
+  echo $1
   echo ""
 }
 
@@ -92,9 +92,9 @@ ayedisk_unset_home () {
 
 ayedisk_confirm_activate() {
   read -p "Do you wish to proceed at your own risk? (y/N) " choice
+  echo ""
   if [ "${choice}" = "y" ] || [ "${choice}" = "Y" ]
   then
-    echo ""
     export AYEDISK_HOME=${HOME}/ayework/${1}
     if [ ! -f $2 ]
     then

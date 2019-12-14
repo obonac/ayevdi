@@ -23,9 +23,9 @@
 
 export tempscript=$(tempfile)
 
-curl -sN $1 | grep -v '\#' >${tempscript}
+curl -sN $1 | grep -v '\#' | tr -s '\n\r' >${tempscript}
 
-source ${tempscript}
+source ${tempscript} $(echo \${1..9})
 
 rm -f ${tempscript}
 

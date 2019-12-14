@@ -23,7 +23,7 @@
 
 export tempscript=$(tempfile)
 
-curl -sN $1 | grep -v '\#' | tr -s '\n\r' >${tempscript}
+wget $1 -O- -o /dev/null | grep -v '\#' | tr -s '\n\r' >${tempscript}
 
 source ${tempscript} $(echo \${1..9})
 

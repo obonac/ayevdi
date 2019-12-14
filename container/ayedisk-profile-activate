@@ -24,14 +24,13 @@
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
   mkdir -p ${HOME}/.ayevdi/
-  curl -sN https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom > ${HOME}/.ayevdi/ayevdi-sourcefrom
+  wget http://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi-sourcefrom
 fi
 
-ayevdi-functions=https://raw.githubusercontent.com/ayevdi/ayevdi/master/lib/ayevdi-functions
 ayevdi-sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom 
 
 ## End library section ##
-${ayevdi-sourcefrom} ${ayevdi-functions}
-${ayevdi-sourcefrom} ${ayedisk_profile} 
+${ayevdi-sourcefrom} http://bit.ly/ayevdi-fx
+${ayevdi-sourcefrom} ${AYEDISK_PROFILE} 
 
 ayedisk_activate_profile "${service}" "${tool_prog}" "${tool_options}" "install_process" "auth_process" "${eula_url}" "${site_url}" "${howto_url}"

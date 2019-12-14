@@ -159,5 +159,4 @@ source ${tempprofile}
 rm -f ${tempprofile}
 export tempprofile=$(date +%s)
 
-ayedisk_activate_profile "${service}" "${tool_prog}" "${tool_options}" "${install_process}" "${auth_process}" "${eula_url}" "${site_url}" "${howto_url}"
-                        
+ayedisk_activate_profile "${service}" "${tool_prog}" "${tool_options}" "install_process" "auth_process" "${eula_url}" "${site_url}" "${howto_url}"

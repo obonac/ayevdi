@@ -1,9 +1,9 @@
 # ayevdi
 Virtualized Deployment IaaS (VDI) by AyeAI
 
-NOTICE
 Copyright (C) 2019 Abhishek Choudhary
 
+NOTICE:
 To all WHO IT MAY CONCERN,
 Greetings,
 All artifacts and methods in this project are offered with 

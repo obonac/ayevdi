@@ -26,6 +26,7 @@ prog="/usr/bin/yandex-disk"
 echo "AyeAI has created this script only as a support utility"
 echo "to improve the user experience for users using the AyeVDI"
 echo "platform in accordance with AyeAI SPL version 1 or later."
+echo "https://raw.githubusercontent.com/ayeai/spl/master/LICENSE"
 echo "AyeAI may not in any way be associated with the third party"
 echo "providers and NO WARRANTY on any SLAs or privacy levels are"
 echo "asserted with regards to such services."
@@ -52,7 +53,7 @@ echo ${prog}
 echo ""
   
 read -p "Do you wish to proceed at your own risk? (y/N) " choice
-if [ "${choice}"=="y" || "${choice}"=="Y" ]
+if [ "${choice}"=="y" ] || [ "${choice}"=="Y" ]
 then
 
   if [ ! -f ${prog} ]

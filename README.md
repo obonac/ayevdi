@@ -10,8 +10,8 @@ All artifacts and methods in this project are offered with
 NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only),
 subject to the jurisdictions of courts in Hyderabad, India,
 and solely in accordance with AyeAI SPL version 1, or later,
-as expressed at the follow URL and at the most current update
-https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
+as expressed at the following URL and at the most current version
+of https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
 incuding its clauses of automatic implicit update of license,
 and unless in conflict the terms and conditions of GNU GPL v2
 shall apply with no retort to other GPL licenses, AND, These

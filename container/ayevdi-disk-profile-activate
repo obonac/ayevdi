@@ -45,7 +45,7 @@ ayeai_spl_3rd_party_eula() {
   echo "the legal agreement available at"
   echo ${eula_url}
   echo "or at other locations as specified by"
-  echo ${site_rl}
+  echo ${site_url}
   echo ""
 }
 
@@ -120,7 +120,7 @@ ayedisk_confirm_activate() {
 
     if [ -e ${HOME}/ayework/${service} ]
     then
-      echo "${service} / ${tool_prog} already running?"
+      echo "${service} or ${tool_prog} already running?"
     else
       mkdir -p ${HOME}/ayework/
       ${auth_prog} ${AYEDISK_HOME}
@@ -159,5 +159,5 @@ source ${tempprofile}
 rm -f ${tempprofile}
 export tempprofile=$(date +%s)
 
-ayedisk_activate_profile ${service} ${tool_prog} ${tool_options} ${install_process} ${auth_process} ${eula_url} ${site_url} ${howto_url}
+ayedisk_activate_profile "${service}" "${tool_prog}" "${tool_options}" "${install_process}" "${auth_process}" "${eula_url}" "${site_url}" "${howto_url}"
                         

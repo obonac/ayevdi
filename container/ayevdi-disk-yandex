@@ -152,52 +152,18 @@ ayedisk_activate_profile() {
 
 ## End library section ##
 
-# Define the service profile 
-service="Yandex.Disk"
-tool_prog="/usr/bin/yandex-disk"
-tool_options="start"
-site_url="https://yandex.com"
-eula_url="https://yandex.com/legal/desktop_software_agreement/"
-howto_url="https://yandex.com/support/disk/cli-clients.html"
-
-# Installation helper function
-install_prog() {
-  # Based on instructions available at https://yandex.com/support/disk/cli-clients.html
-  echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null &&\
-  wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - &&\
-  sudo apt-get update &&\
-  sudo apt-get install -y yandex-disk
-}
-
-# Authentication helper function
-auth_prog() {
-  targetdir=${1}
-
-  read -p "Username: " uuid
-  read -s -p "Password: " upwd
-
-  /usr/bin/expect <<EOF
-    spawn "${prog}" "setup"
-    expect "Would you like to use a proxy server?"
-      send "n\r"
-    expect "Enter username:"
-      send "${uuid}\r"
-    expect "Enter password:"
-      send "${upwd}\r"
-    expect "/Yandex.Disk'):"
-      send "${targetdir}\r"
-    expect "Would you like Yandex.Disk to launch on startup?"
-      send "y\r"
-    expect eof
-    exit
-EOF
-}
+# Read the public profile of the service requested
+export tempprofile=$(tempfile)
+wget -o ${tempprofile} $1 -O /dev/null
+source ${tempprofile}
+rm -f ${tempprofile}
+export tempprofile=$(date +%s)
 
 ayedisk_activate_profile ${service}\
                          ${tool_prog}\
                          ${tool_options}\
-                         ${install_prog}\
-                         ${auth_prog}
+                         ${install_process}\
+                         ${auth_process}
                          ${eula_url}\
                          ${site_url}\
                          ${howto_url}

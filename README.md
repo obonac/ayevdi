@@ -1,7 +1,8 @@
-# ayevdi
-Virtualized Deployment IaaS (VDI) by AyeAI
+# AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
 
 Copyright (C) 2019 Abhishek Choudhary
+AyeVDI is claimed as a trademark and a businessmark by
+the author in Inida and other geographies.
 
 NOTICE:
 To all WHO IT MAY CONCERN,
@@ -20,3 +21,10 @@ by the access, or usage of these artifacts and methods which
 must STRICTLY be IN ACCORDANCE, and this notice must be 
 reproduced in derivatives along with the original assertions
 of copyrights.
+
+## Getting started
+
+### Enabling web OSTs
+```
+wget http://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin
+```

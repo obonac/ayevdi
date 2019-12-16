@@ -28,3 +28,10 @@ of copyrights.
 ```
 wget http://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin
 ```
+
+## Utils
+
+### Get lines and md5sum
+```
+(cat | tee >(echo LINES=$(wc -l)) >(echo CSUM=$(md5sum)) >/dev/null) && echo ""
+```

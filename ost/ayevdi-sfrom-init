@@ -1,3 +1,4 @@
+#!/bin/bash -c
 # ayevdi
 # Virtualized Deployment IaaS (VDI) by AyeAI
 # 
@@ -21,11 +22,75 @@
 # reproduced in derivatives along with the original assertions
 # of copyrights.
 
+# AYESEC:ONE_FILE_EXCEPTION("ayevdi-sfrom-init")
+# This is an exception header for ayevdi-sfrom-init as AyeVDI
+# is not expected to have been initialized till this file is
+# called. Hereafter, refer to follwing three sample in each
+# bash script header. For other types of artifacts, please see
+# (TBD: Link to sample for other artifacts)
+# Sample bash statutory header:
+# if [ "${ayevdi_sourcefrom}" != ${HOME}/.ayevdi/ayevdi-sourcefrom ]
+# then
+#   echo "AyeVDI not activated. Please use the following command to"
+#   echo "activate AyeVDI"
+#   echo '  wget https://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin'
+#   echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
+#   echo ""
+#   exit
+# fi
 
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
   mkdir -p ${HOME}/.ayevdi/
-  wget http://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi_sourcefrom
+  wget https://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi_sourcefrom
 fi
 
-export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi_sourcefrom 
+export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi_sourcefrom
+
+#
+# AYESEC:ONE_FILE_EXCEPTION_COMPLETED
+#
+
+# AYESEC:STATUTORY_HEADER
+if [ "${ayevdi_sourcefrom}" != ${HOME}/.ayevdi/ayevdi-sourcefrom ]
+then
+  echo "AyeVDI not activated. Please use the following command to"
+  echo "activate AyeVDI"
+  echo '  wget https://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin'
+  echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
+  echo ""
+  exit
+fi
+# AYESEC:STATUTORY_HEADER_COMPLETED
+
+# AYESEC:POST_MD5('28 lines')=19104dda80c9f9102b7512175d5c79b7
+# AYESEC_NOTICE:'The following 27 lines must not be modified or removed'
+# AYESEC:POST_MD5('25 lines')=1e041d54b2d668b136fb067030778c19
+# AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM
+# Line 2
+echo Welocome to AyeVDI by https://ayeai.xyz
+echo Copyright (C) 2019 Abhishek Choudhary
+echo ""
+# Line 6
+echo AyeVDI sourcefrom activated!
+echo ""
+echo NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)
+echo Further usage of these software, artifacts or methods
+echo are subject to the "latest" license agreement avaialble at
+echo https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
+echo ""
+# Line 14
+echo If you do not accept the above terms and conditions, you
+echo may not use this software, and are at liberty to use the
+echo following commands in a bash terminal to remove traces,
+echo under the supervision of someone familiar with 'bash shell'
+echo "         " rm -r ${HOME}/.ayevdi
+echo "         " export ayevdi_sourcefrom=THANK YOU
+echo ""
+echo Towards greater glories with peace on Earth and beyond...
+echo ""
+# Line 24
+# AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM_COMPLETED
+# AYESEC:PREV_MD5('25 lines')=1e041d54b2d668b136fb067030778c19
+# AYESEC:PREV_MD5('28 lines')=19104dda80c9f9102b7512175d5c79b7
+

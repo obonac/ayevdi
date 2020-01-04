@@ -26,7 +26,7 @@ of copyrights.
 
 ### Enabling web OSTs
 ```
-wget http://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin
+wget https://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin
 ```
 
 ## Utils
@@ -35,3 +35,6 @@ wget http://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin
 ```
 (cat | tee >(echo LINES=$(wc -l)) >(echo CSUM=$(md5sum)) >/dev/null) && echo ""
 ```
+
+bit.ly mappings
+https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init

@@ -1,4 +1,4 @@
-#!/bin/bash -c
+#!/bin/bash
 # AYESEC:POST_MD5('22 lines')=2fa02d61fb7ebddbe6688ce2450855fa
 # AyeVDI
 # Virtualized Deployment IaaS (VDI) by AyeAI

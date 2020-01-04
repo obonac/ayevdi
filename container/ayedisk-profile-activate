@@ -27,7 +27,7 @@ then
   wget http://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi-sourcefrom
 fi
 
-ayevdi-sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom 
+export ayevdi-sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom 
 
 ## End library section ##
 ${ayevdi-sourcefrom} http://bit.ly/ayevdi-fx

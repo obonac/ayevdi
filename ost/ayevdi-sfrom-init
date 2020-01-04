@@ -100,28 +100,28 @@ fi
 # AYESEC:POST_MD5('25 lines')=1e041d54b2d668b136fb067030778c19
 # AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM
 # Line 2
-echo Welocome to AyeVDI by https://ayeai.xyz
-echo Copyright (C) 2019 Abhishek Choudhary
+echo "Welocome to AyeVDI by https://ayeai.xyz"
+echo "Copyright (C) 2019 Abhishek Choudhary"
 echo ""
 # Line 6
-echo AyeVDI sourcefrom activated!
+echo "AyeVDI sourcefrom activated!"
 echo ""
-echo NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)
-echo Further usage of these software, artifacts or methods
-echo are subject to the "latest" license agreement avaialble at
-echo https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
+echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
+echo "Further usage of these software, artifacts or methods"
+echo "are subject to the 'latest' license agreement avaialble at"
+echo "https://raw.githubusercontent.com/ayeai/spl/master/LICENSE"
 echo ""
 # Line 14
-echo If you do not accept the above terms and conditions, you
-echo may not use this software, and are at liberty to use the
-echo following commands in a bash terminal to remove traces,
-echo under the supervision of someone familiar with 'bash shell'
-echo WARNING: If you do not understand the following commands,
-echo please consult the link TBD
-echo "         " rm -rf ${HOME}/.ayevdi
-echo "         " export ayevdi_sourcefrom=THANK YOU
+echo "If you do not accept the above terms and conditions, you"
+echo "may not use this software, and are at liberty to use the"
+echo "following commands in a bash terminal to remove traces,"
+echo "under the supervision of someone familiar with 'bash shell'"
+echo "WARNING: If you do not understand the following commands,"
+echo "please consult the link TBD"
+echo "         rm -rf ${HOME}/.ayevdi"
+echo "         export ayevdi_sourcefrom=THANK YOU"
 echo ""
-echo Towards greater glories with peace on Earth and beyond...
+echo "Towards greater glories with peace on Earth and beyond..."
 echo ""
 # Line 24
 # AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM_COMPLETED

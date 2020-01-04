@@ -58,7 +58,7 @@
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
   mkdir -p ${HOME}/.ayevdi/
-  wget https://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi-sourcefrom
+  wget https://bit.ly/ayevdi-sfrom -O- -q > ${HOME}/.ayevdi/ayevdi-sourcefrom
 fi
 
 export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom

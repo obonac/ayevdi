@@ -28,7 +28,7 @@
 # AYESEC:ONE_FILE_EXCEPTION("ayevdi-sfrom-init")
 # This is an exception header for ayevdi-sfrom-init as AyeVDI
 # is not expected to have been initialized till this file is
-# called. Hereafter, refer to follwing three sample in each
+# called. Hereafter, refer to follwing three samples in each
 # bash script header. For other types of artifacts, please see
 # (TBD: Link to sample for other artifacts)
 # Sample bash statutory header:
@@ -58,10 +58,10 @@
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
   mkdir -p ${HOME}/.ayevdi/
-  wget https://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi_sourcefrom
+  wget https://bit.ly/ayevdi-sfrom -O- > ${HOME}/.ayevdi/ayevdi-sourcefrom
 fi
 
-export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi_sourcefrom
+export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom
 
 # AYESEC:ONE_FILE_EXCEPTION_COMPLETED
 # AYESEC:PREV_MD5('40 lines')=916ffafc4be70f5eb7de8c38ff5eee2d
@@ -116,7 +116,9 @@ echo If you do not accept the above terms and conditions, you
 echo may not use this software, and are at liberty to use the
 echo following commands in a bash terminal to remove traces,
 echo under the supervision of someone familiar with 'bash shell'
-echo "         " rm -r ${HOME}/.ayevdi
+echo WARNING: If you do not understand the following commands,
+echo please consult the link TBD
+echo "         " rm -rf ${HOME}/.ayevdi
 echo "         " export ayevdi_sourcefrom=THANK YOU
 echo ""
 echo Towards greater glories with peace on Earth and beyond...

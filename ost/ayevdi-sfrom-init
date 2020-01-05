@@ -145,7 +145,7 @@ alias logger='ayevdi-logger'
 
 logger "AyeVDI sourcefrom activated... using ${ayesh}"
 
-validator ${ayesh} | tee >(xargs -n1 logger) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+validator ${ayesh} | tee >(${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh})) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
     logger "AYESEC:ERROR:Abort! Abort! Abort!"
     echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"
@@ -153,9 +153,14 @@ validator ${ayesh} | tee >(xargs -n1 logger) >(if [ 0 -lt $(grep AYESEC:ERROR | 
     sleep 10
     logger "Aborting on AYESEC:ERROR"
     echo "Aborting on AYESEC:ERROR"
-    exit
+    cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) ${HOME}/.ayevdi/ayevdi-error.fatal
   else
     logger "The Lion roared!"
     sourcefrom https://bit.ly/ayevdi-mascot
   fi) && echo ""
+  
+if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
+then
+  exit
+fi
 # AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9

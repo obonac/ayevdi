@@ -133,4 +133,7 @@ echo ""
 
 alias sourcefrom='. ${ayevdi_sourcefrom}'
 alias ayevdi-sourcefrom='. ${ayevdi_sourcefrom}'
+
+sourcefrom https://bit.ly/ayevdi-log "AyeVDI sourcefrom activated... using ${ayesh}"
+sourcefrom https://bit.ly/ayevdi-log "The Lion roared!"
 # AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9

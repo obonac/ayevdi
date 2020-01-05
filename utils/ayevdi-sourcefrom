@@ -19,12 +19,21 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# NOTE: sourcefrom and validator cannot depend on each other,
+########### IMPORTANT #################
+
+# NOTE: sourcefrom, logger and validator cannot depend on each other,
 # hence, access the validator locally from URL
+# TBD: Improve the design and security of the validator and logger
 
 export validator_script=$(tempfile)
 wget https://bit.ly/ayevdi-validator -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
 #TBD: Validate the validator here
+
+export logger_script=$(tempfile)
+wget https://bit.ly/ayevdi-log -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
+#TBD: Validate the logger here
+
+#########################################
 
 export ayescript=$(tempfile)
 wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}

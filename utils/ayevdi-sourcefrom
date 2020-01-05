@@ -1,32 +1,26 @@
-# ayevdi
-# Virtualized Deployment IaaS (VDI) by AyeAI
-# 
-# NOTICE
-# Copyright (C) 2019 Abhishek Choudhary
-# 
-# To all WHO IT MAY CONCERN,
-# Greetings,
-# All artifacts and methods in this project are offered with 
-# NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only),
-# subject to the jurisdictions of courts in Hyderabad, India,
-# and solely in accordance with AyeAI SPL version 1, or later,
-# as expressed at the follow URL and at the most current update
-# https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
-# incuding its clauses of automatic implicit update of license,
-# and unless in conflict the terms and conditions of GNU GPL v2
-# shall apply with no retort to other GPL licenses, AND, These
-# terms and conditions are implied read, understood and accepted
-# by the access, or usage of these artifacts and methods which
-# must STRICTLY be IN ACCORDANCE, and this notice must be 
-# reproduced in derivatives along with the original assertions
-# of copyrights.
+# AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
+# AYESEC:STATUTORY_HEADER
+if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
+then
+  echo "AyeVDI by https://ayeai.xyz"
+  echo "Copyright (C) 2019-2020 Abhishek Choudhary"
+  echo ""
+  echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
+  echo "Further usage of these software, artifacts or methods"
+  echo "are subject to the 'latest' license agreement avaialble at"
+  echo "https://raw.githubusercontent.com/ayeai/spl/master/LICENSE"
+  echo ""
+  echo "AyeVDI not activated. Please use the following command to"
+  echo "activate AyeVDI"
+  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo ""
+  exit
+fi
+# AYESEC:STATUTORY_HEADER_COMPLETED
+# AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-export tempscript=$(tempfile)
+export ayescript=$(tempfile)
 
-wget $1 -O- -o /dev/null | grep -v '\#' | tr -s '\n\r' >${tempscript}
+wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
 
-source ${tempscript} $(echo \${1..9})
-
-rm -f ${tempscript}
-
-export tempscript=$(date +%s)
+echo source ${ayescript} "$@"

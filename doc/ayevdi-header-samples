@@ -1,9 +1,9 @@
-## AYESEC:POST_MD5('18 lines')=5137347b574889494d09cd1400360fac
+## AYESEC:POST_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138
 ## AYESEC:STATUTORY_HEADER
 #if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 #then
 #  echo "AyeVDI by https://ayeai.xyz"
-#  echo "Copyright (C) 2019-2020 Abhishek Choudhary"
+#  echo "Copyright (C) 2019 Abhishek Choudhary"
 #  echo ""
 #  echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
 #  echo "Further usage of these software, artifacts or methods"
@@ -12,9 +12,9 @@
 #  echo ""
 #  echo "AyeVDI not activated. Please use the following command to"
 #  echo "activate AyeVDI"
-#  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+#  echo '  wget https://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin'
 #  echo ""
 #  exit
 #fi
 ## AYESEC:STATUTORY_HEADER_COMPLETED
-## AYESEC:PREV_MD5('18 lines')=5137347b574889494d09cd1400360fac
+## AYESEC:PREV_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138

@@ -30,6 +30,14 @@ TBD: Improve security at this stage with AyeQu
 ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
 ```
 
+### Activating persistent disk services
+Note: AyeAI does not guarantee success of these integrations
+
+Example: Yandex Disk
+```
+export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedisk-proact
+```
+
 ## Utils
 
 ### Get lines and md5sum

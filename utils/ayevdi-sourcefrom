@@ -23,11 +23,11 @@ export ayescript=$(tempfile)
 
 if [ "$1" != "bsf" ]
 then
-  wget $2 -O- -q | tr -s '\n\r' >${ayescript}
+  wget $1 -O- -q | tr -s '\n\r' >${ayescript}
   validator ${ayescript}
   logger sourcefrom ${ayescript} "$@"
 else
-  wget $1 -O- -q | tr -s '\n\r' >${ayescript}
+  wget $2 -O- -q | tr -s '\n\r' >${ayescript}
 fi
 
 source ${ayescript} "$@"

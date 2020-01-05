@@ -155,7 +155,7 @@ validator ${ayesh} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) 
     echo "Aborting on AYESEC:ERROR"
     cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) ${HOME}/.ayevdi/ayevdi-error.fatal
   else
-    logger "The Lion roared!"
+    logger "The Lion has roared!"
     echo ""
     sourcefrom https://bit.ly/ayevdi-mascot
   fi) && echo ""

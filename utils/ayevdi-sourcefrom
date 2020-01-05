@@ -24,8 +24,8 @@ export ayescript=$(tempfile)
 if [ "$1" != "bsf" ]
 then
   wget $1 -O- -q | tr -s '\n\r' >${ayescript}
-  validator ${ayescript}
-  logger sourcefrom ${ayescript} "$@"
+  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
+  logger "Sourcing ${1} as ${ayescript} with options $@"
 else
   wget $2 -O- -q | tr -s '\n\r' >${ayescript}
 fi

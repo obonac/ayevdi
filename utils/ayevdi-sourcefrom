@@ -19,36 +19,8 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-########### IMPORTANT #################
-
-# NOTE: sourcefrom, logger and validator cannot depend on each other,
-# hence, access the validator locally from URL
-# TBD: Improve the design and security of the validator and logger
-
-export validator_script=$(tempfile)
-wget https://bit.ly/ayevdi-validator -O- -q | grep -v '^\#' | tr -s '\n\r' >${validator_script}
-#TBD: Validate the validator here
-
-export logger_script=$(tempfile)
-wget https://bit.ly/ayevdi-log -O- -q | grep -v '^\#' | tr -s '\n\r' >${logger_script}
-#TBD: Validate the logger here
-
-#########################################
+#TBD: Add validation and logging to standard path for sourcefrom
 
 export ayescript=$(tempfile)
 wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
-
-. ${validator_script} ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
-  then
-    ${logger_script} "AYESEC:ERROR:Abort! Abort! Abort!"
-    echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"
-    echo "Abort! Abort! Abort! Exiting shell in 10 secs... Press ctrl-c to stop abort..."
-    sleep 10
-    ${logger_script} "Aborting on AYESEC:ERROR"
-    echo "Aborting on AYESEC:ERROR"
-    cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.sourcevalidity
-  else
-    ${logger_script} "Executing ${ayescript}"
-    echo ""
-    source ${ayescript} "$@"
-  fi) && echo ""
+source ${ayescript} "$@"

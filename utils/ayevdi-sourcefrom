@@ -24,8 +24,11 @@ export ayescript=$(tempfile)
 if [ "$1" != "bsf" ]
 then
   wget $1 -O- -q | tr -s '\n\r' >${ayescript}
-  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
-  logger "Sourcing ${1} as ${ayescript} with options $@"
+  # Sourcing the validator and logger in sourcefrom directly leads to
+  # namespace collision - bash does not support detection of such conflicts
+  # hence, it is best to execute helper scripts in their own child bash context
+  (bash -c 'validator ${ayescript}' > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}))
+  (bash -c 'logger "Sourcing ${1} as ${ayescript} with options $@"')
 else
   wget $2 -O- -q | tr -s '\n\r' >${ayescript}
 fi

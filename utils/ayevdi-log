@@ -21,4 +21,4 @@ fi
 
 timestamp=$(date +%s)
 timedelta=$(date +"%z")
-echo AYEVDI:LOG:${timestamp}:${timedelta}:$@ >> ${HOME}/.ayevdi/ayevdi-log
+echo AYEVDI:LOG:${timestamp}:${timedelta}:$(ps ax | grep $$ | grep bash | cut -d' ' -f3):$@ >> ${HOME}/.ayevdi/ayevdi-log

@@ -33,8 +33,8 @@
 # (TBD: Link to sample for other artifacts)
 # Sample bash statutory header:
 #   To use see output of the command below (without #)
-#   wget http://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -56 | tail -20
-## AYESEC:POST_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
+#   wget http://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -55 | tail -18
+## AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 ## AYESEC:STATUTORY_HEADER
 #if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 #then
@@ -53,7 +53,7 @@
 #  exit
 #fi
 ## AYESEC:STATUTORY_HEADER_COMPLETED
-## AYESEC:PREV_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
+## AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
@@ -66,7 +66,7 @@ export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom
 # AYESEC:ONE_FILE_EXCEPTION_COMPLETED
 # AYESEC:PREV_MD5('40 lines')=916ffafc4be70f5eb7de8c38ff5eee2d
 
-# AYESEC:POST_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
+# AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 then
@@ -84,8 +84,8 @@ then
   echo ""
   exit
 fi
-# AYESEC:STATUTORY_HEADER_COMPLETED
-# AYESEC:PREV_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
+## AYESEC:STATUTORY_HEADER_COMPLETED
+## AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
 # AYEINTERNS:TASK:Automate generation of file level and section MD5 sum
 # Suggestions: Use tags to autofill the lines covered and the md5 sum

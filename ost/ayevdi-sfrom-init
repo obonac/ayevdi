@@ -1,5 +1,5 @@
 #!/bin/bash
-# AYESEC:POST_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9
+# AYESEC:POST_MD5('164 lines')=0634770a0ff614fee2ea9daa9280b57b
 # AYESEC:POST_MD5('26 lines')=33523a2078cc40ea4f73a7b2f128df26
 # AYESEC:MASTPOST_NOTICE
 # AYESEC:POST_MD5('22 lines')=401df8541f58e70fd7f1fd004268c689
@@ -90,7 +90,7 @@ then
   exit
 fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
-## AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
+# AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
 # AYEINTERNS:TASK:Automate generation of file level and section MD5 sum
 # Suggestions: Use tags to autofill the lines covered and the md5 sum
@@ -164,4 +164,4 @@ if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
 then
   exit
 fi
-# AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9
+# AYESEC:PREV_MD5('164 lines')=0634770a0ff614fee2ea9daa9280b57b

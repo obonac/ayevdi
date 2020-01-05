@@ -1,4 +1,4 @@
-## AYESEC:POST_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138
+## AYESEC:POST_MD5('18 lines')=cabcb36c969ce6570830bbe33a33d6ef
 ## AYESEC:STATUTORY_HEADER
 #if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 #then
@@ -12,9 +12,9 @@
 #  echo ""
 #  echo "AyeVDI not activated. Please use the following command to"
 #  echo "activate AyeVDI"
-#  echo '  wget https://bit.ly/ayevdi-sfrom-init -O- -q | . /dev/stdin'
+#  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
 #  echo ""
 #  exit
 #fi
 ## AYESEC:STATUTORY_HEADER_COMPLETED
-## AYESEC:PREV_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138
+## AYESEC:PREV_MD5('18 lines')=cabcb36c969ce6570830bbe33a33d6ef

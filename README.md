@@ -25,7 +25,7 @@ of copyrights.
 ## Getting started
 
 ### Enabling web OSTs
-TBD: Improve security at this stage
+TBD: Improve security at this stage with AyeQu
 ```
 ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
 ```

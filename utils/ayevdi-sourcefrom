@@ -22,5 +22,5 @@ fi
 #TBD: Add validation and logging to standard path for sourcefrom
 
 export ayescript=$(tempfile)
-wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
+wget $1 -O- -q | tr -s '\n\r' >${ayescript}
 source ${ayescript} "$@"

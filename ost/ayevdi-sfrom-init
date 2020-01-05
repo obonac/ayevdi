@@ -137,10 +137,12 @@ echo ""
 alias ayevdi-sourcefrom='. ${ayevdi_sourcefrom}'
 alias sourcefrom='ayevdi-sourcefrom'
 
-alias ayevdi-validator='sourcefrom https://bit.ly/ayevdi-validator'
+alias ayevdi-bsf='ayevdi-sourcefrom bsf'
+
+alias ayevdi-validator='ayevdi-bsf https://bit.ly/ayevdi-validator'
 alias validator='ayevdi-validator'
 
-alias ayevdi-logger='sourcefrom https://bit.ly/ayevdi-log'
+alias ayevdi-logger='ayevdi-bsf https://bit.ly/ayevdi-log'
 alias logger='ayevdi-logger'
 
 logger "AyeVDI sourcefrom activated... using ${ayesh}"

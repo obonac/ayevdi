@@ -40,15 +40,15 @@ wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
 
 . ${validator_script} ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
-    logger "AYESEC:ERROR:Abort! Abort! Abort!"
+    ${logger_script} "AYESEC:ERROR:Abort! Abort! Abort!"
     echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"
     echo "Abort! Abort! Abort! Exiting shell in 10 secs... Press ctrl-c to stop abort..."
     sleep 10
-    logger "Aborting on AYESEC:ERROR"
+    ${logger_script} "Aborting on AYESEC:ERROR"
     echo "Aborting on AYESEC:ERROR"
     cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.sourcevalidity
   else
-    logger "Executing ${ayescript}"
+    ${logger_script} "Executing ${ayescript}"
     echo ""
     source ${ayescript} "$@"
   fi) && echo ""

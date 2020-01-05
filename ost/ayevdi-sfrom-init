@@ -29,8 +29,8 @@
 # This is an exception header for ayevdi-sfrom-init as AyeVDI
 # is not expected to have been initialized till this file is
 # called. Hereafter, use the follwing sample in each script
-# header. For other types of artifacts, please see
-# (TBD: Link to sample for other artifacts)
+# header. For other types of artifacts, please see URL below
+# http://bit.ly/ayevdi-header-samples
 # Sample bash statutory header:
 #   To use see output of the command below (without #)
 #   wget http://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -55 | tail -18

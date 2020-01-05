@@ -19,11 +19,17 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-export ayescript=$(tempfile)
+# NOTE: sourcefrom and validator cannot depend on each other,
+# hence, access the validator locally from URL
 
+export validator_script=$(tempfile)
+wget https://bit.ly/ayevdi-validator -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
+#TBD: Validate the validator here
+
+export ayescript=$(tempfile)
 wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
 
-validator ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+. ${validator_script} ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
     logger "AYESEC:ERROR:Abort! Abort! Abort!"
     echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"

@@ -23,6 +23,4 @@ export ayescript=$(tempfile)
 
 wget $1 -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
 
-shift 1
-
 source ${ayescript} "$@"

@@ -19,10 +19,13 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-#TBD: Add validation and logging to standard path for sourcefrom
-
 export ayescript=$(tempfile)
 wget $1 -O- -q | tr -s '\n\r' >${ayescript}
-validator ${ayescript}
-logger sourcefrom ${ayescript} "$@"
+
+if [ "$1" != "bsf" ]
+then
+  validator ${ayescript}
+  logger sourcefrom ${ayescript} "$@"
+fi
+
 source ${ayescript} "$@"

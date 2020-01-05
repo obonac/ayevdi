@@ -26,11 +26,11 @@ fi
 # TBD: Improve the design and security of the validator and logger
 
 export validator_script=$(tempfile)
-wget https://bit.ly/ayevdi-validator -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
+wget https://bit.ly/ayevdi-validator -O- -q | grep -v '^\#' | tr -s '\n\r' >${validator_script}
 #TBD: Validate the validator here
 
 export logger_script=$(tempfile)
-wget https://bit.ly/ayevdi-log -O- -q | grep -v '^\#' | tr -s '\n\r' >${ayescript}
+wget https://bit.ly/ayevdi-log -O- -q | grep -v '^\#' | tr -s '\n\r' >${logger_script}
 #TBD: Validate the logger here
 
 #########################################

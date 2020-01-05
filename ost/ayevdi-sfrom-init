@@ -95,13 +95,13 @@ fi
 # Suggestions: Ensure correctness and validity of the vaidator itself!
 # AYEINTERNS:TASK_END
 
-# AYESEC:POST_MD5('28 lines')=19104dda80c9f9102b7512175d5c79b7
+# AYESEC:POST_MD5('28 lines')=85f2c42b60793849126c554fb37de0a7
 # AYESEC_NOTICE:'The following 27 lines must not be modified or removed'
-# AYESEC:POST_MD5('25 lines')=1e041d54b2d668b136fb067030778c19
+# AYESEC:POST_MD5('25 lines')=1d63f7a217c7d7b1090f8460594bfcee
 # AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM
 # Line 2
 echo "Welocome to AyeVDI by https://ayeai.xyz"
-echo "Copyright (C) 2019 Abhishek Choudhary"
+echo "Copyright (C) 2019-2020 Abhishek Choudhary"
 echo ""
 # Line 6
 echo "AyeVDI sourcefrom activated!"
@@ -123,6 +123,5 @@ echo "Towards greater glories with peace on Earth and beyond..."
 echo ""
 # Line 24
 # AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM_COMPLETED
-# AYESEC:PREV_MD5('25 lines')=1e041d54b2d668b136fb067030778c19
-# AYESEC:PREV_MD5('28 lines')=19104dda80c9f9102b7512175d5c79b7
-
+# AYESEC:PREV_MD5('25 lines')=1d63f7a217c7d7b1090f8460594bfcee
+# AYESEC:PREV_MD5('28 lines')=85f2c42b60793849126c554fb37de0a7

@@ -131,9 +131,30 @@ echo ""
 # AYESEC:PREV_MD5('25 lines')=1d63f7a217c7d7b1090f8460594bfcee
 # AYESEC:PREV_MD5('28 lines')=85f2c42b60793849126c554fb37de0a7
 
-alias sourcefrom='. ${ayevdi_sourcefrom}'
-alias ayevdi-sourcefrom='. ${ayevdi_sourcefrom}'
+# NOTICE: The use of aliases is convenient but exposes a potential
+# man-in-the-middle threat
 
-sourcefrom https://bit.ly/ayevdi-log "AyeVDI sourcefrom activated... using ${ayesh}"
-sourcefrom https://bit.ly/ayevdi-log "The Lion roared!"
+alias ayevdi-sourcefrom='. ${ayevdi_sourcefrom}'
+alias sourcefrom='ayevdi-sourcefrom'
+
+alias ayevdi-validator='sourcefrom https://bit.ly/ayevdi-validator'
+alias validator='ayevdi-validator'
+
+alias ayevdi-logger='sourcefrom https://bit.ly/ayevdi-log'
+alias logger='ayevdi-logger'
+
+logger "AyeVDI sourcefrom activated... using ${ayesh}"
+
+validator ${ayesh} | tee >(xargs -n1 logger) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+  then
+    logger "AYESEC:ERROR:Abort! Abort! Abort!"
+    echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"
+    echo "Abort! Abort! Abort! Exiting shell in 10 secs... Press ctrl-c to stop abort..."
+    sleep 10
+    logger "Aborting on AYESEC:ERROR"
+    echo "Aborting on AYESEC:ERROR"
+    exit
+  else
+    sourcefrom https://bit.ly/ayevdi-log "The Lion roared!"
+  fi)
 # AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9

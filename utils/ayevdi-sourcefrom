@@ -26,9 +26,12 @@ then
   wget $1 -O- -q | tr -s '\n\r' >${ayescript}
   # Sourcing the validator and logger in sourcefrom directly leads to
   # namespace collision - bash does not support detection of such conflicts
-  # hence, it is best to execute helper scripts in their own child bash context
-  (bash -c 'validator ${ayescript}' > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}))
-  (bash -c 'logger "Sourcing ${1} as ${ayescript} with options $@"')
+  # hence, it is best to execute helper scripts and restore original $ayescript
+  export ayetemp=${ayescript}
+  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
+  export ayescript=${ayetemp}
+  logger "Sourcing ${1} as ${ayescript} with options $@"
+  export ayescript=${ayetemp}
 else
   wget $2 -O- -q | tr -s '\n\r' >${ayescript}
 fi

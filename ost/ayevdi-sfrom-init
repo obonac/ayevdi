@@ -66,12 +66,12 @@ export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom
 # AYESEC:ONE_FILE_EXCEPTION_COMPLETED
 # AYESEC:PREV_MD5('40 lines')=916ffafc4be70f5eb7de8c38ff5eee2d
 
-# AYESEC:POST_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138
+# AYESEC:POST_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 then
   echo "AyeVDI by https://ayeai.xyz"
-  echo "Copyright (C) 2019 Abhishek Choudhary"
+  echo "Copyright (C) 2019-2020 Abhishek Choudhary"
   echo ""
   echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
   echo "Further usage of these software, artifacts or methods"
@@ -85,7 +85,7 @@ then
   exit
 fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
-# AYESEC:PREV_MD5('18 lines')=4a5674e053b113f8b5f93604c1844138
+# AYESEC:PREV_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
 
 # AYEINTERNS:TASK:Automate generation of file level and section MD5 sum
 # Suggestions: Use tags to autofill the lines covered and the md5 sum
@@ -116,8 +116,6 @@ echo "If you do not accept the above terms and conditions, you"
 echo "may not use this software, and are at liberty to use the"
 echo "following commands in a bash terminal to remove traces,"
 echo "under the supervision of someone familiar with 'bash shell'"
-echo "WARNING: If you do not understand the following commands,"
-echo "please consult the link TBD"
 echo "         rm -rf ${HOME}/.ayevdi"
 echo "         export ayevdi_sourcefrom=THANK YOU"
 echo ""

@@ -19,6 +19,13 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 ## AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
+if [ "$1" == "bsf" ]
+then
+  shift 2
+else
+  shift 1
+fi
+
 timestamp=$(date +%s)
 timedelta=$(date +"%z")
 echo AYEVDI:LOG:${timestamp}:${timedelta}:$(ps ax | grep $$ | grep bash | cut -d' ' -f3):$@ >> ${HOME}/.ayevdi/ayevdi-log

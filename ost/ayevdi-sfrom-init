@@ -130,4 +130,7 @@ echo ""
 # AYESEC:SIGNATURE_PLAINTEXT_SOURCEFROM_COMPLETED
 # AYESEC:PREV_MD5('25 lines')=1d63f7a217c7d7b1090f8460594bfcee
 # AYESEC:PREV_MD5('28 lines')=85f2c42b60793849126c554fb37de0a7
+
+alias sourcefrom='. ${ayevdi_sourcefrom}'
+alias ayevdi-sourcefrom='. ${ayevdi_sourcefrom}'
 # AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9

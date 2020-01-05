@@ -19,10 +19,12 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-#      AyeVDI   ###
+#      AyeVDI    ###
 #     by AyeAI /#####
-#  /^^^^^^^"""####  o#
-# /   MAKE IN INDIA   ##
+#  /^^^^^^^"""####  o##
+# /   MAKE IN INDIA  ###
 # ( \  B H A R A T  ##<''
 #   / /\ \****/ /\ \###''
 #  /_/  \_\  /_|  \_\
+
+wget https://bit.ly/ayevdi-mascot -O- -q | tail -10 | head -7 | cut -c 3-

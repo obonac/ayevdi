@@ -34,12 +34,12 @@
 # Sample bash statutory header:
 #   To use see output of the command below (without #)
 #   wget http://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -56 | tail -20
-## AYESEC:POST_MD5('18 lines')=cabcb36c969ce6570830bbe33a33d6ef
+## AYESEC:POST_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
 ## AYESEC:STATUTORY_HEADER
 #if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
 #then
 #  echo "AyeVDI by https://ayeai.xyz"
-#  echo "Copyright (C) 2019 Abhishek Choudhary"
+#  echo "Copyright (C) 2019-2020 Abhishek Choudhary"
 #  echo ""
 #  echo "NO WARRANTY, and ZERO LIABILITY (Limited to INR 1/- only)"
 #  echo "Further usage of these software, artifacts or methods"
@@ -53,7 +53,7 @@
 #  exit
 #fi
 ## AYESEC:STATUTORY_HEADER_COMPLETED
-## AYESEC:PREV_MD5('18 lines')=cabcb36c969ce6570830bbe33a33d6ef
+## AYESEC:PREV_MD5('18 lines')=599c5c20fa409fb0b88c7352e1f4b9ba
 
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then

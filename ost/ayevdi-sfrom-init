@@ -1,5 +1,5 @@
 #!/bin/bash
-# AYESEC:POST_MD5('164 lines')=0634770a0ff614fee2ea9daa9280b57b
+# AYESEC:POST_MD5('166 lines')=9cb3b41bb3af9a33662091bb7c2cbf0a
 # AYESEC:POST_MD5('26 lines')=33523a2078cc40ea4f73a7b2f128df26
 # AYESEC:MASTPOST_NOTICE
 # AYESEC:POST_MD5('22 lines')=401df8541f58e70fd7f1fd004268c689
@@ -166,4 +166,4 @@ if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
 then
   exit
 fi
-# AYESEC:PREV_MD5('164 lines')=0634770a0ff614fee2ea9daa9280b57b
+# AYESEC:PREV_MD5('166 lines')=9cb3b41bb3af9a33662091bb7c2cbf0a

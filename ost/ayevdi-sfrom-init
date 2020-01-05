@@ -1,4 +1,6 @@
 #!/bin/bash
+# AYESEC:POST_MD5('26 lines')=33523a2078cc40ea4f73a7b2f128df26
+# AYESEC:MASTPOST_NOTICE
 # AYESEC:POST_MD5('22 lines')=401df8541f58e70fd7f1fd004268c689
 # AyeVDI
 # Virtualized Deployment IaaS (VDI) by AyeAI
@@ -23,6 +25,8 @@
 # reproduced in derivatives along with the original assertions
 # of copyrights and other rights reserved.
 # AYESEC:PREV_MD5('22 lines')=401df8541f58e70fd7f1fd004268c689
+# AYESEC:MASTPOST_NOTICE_COMPLETED
+# AYESEC:PREV_MD5('26 lines')=33523a2078cc40ea4f73a7b2f128df26
 
 # AYESEC:POST_MD5('39 lines')=62a59848c30b5e38013ee5b75693bf2d
 # AYESEC:ONE_FILE_EXCEPTION("ayevdi-sfrom-init")
@@ -30,7 +34,7 @@
 # is not expected to have been initialized till this file is
 # called. Hereafter, use the follwing sample in each script
 # header. For other types of artifacts, please see URL below
-# http://bit.ly/ayevdi-header-samples
+# https://bit.ly/ayevdi-header-samples
 # Sample bash statutory header:
 #   To use see output of the command below (without #)
 #   wget http://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -55 | tail -18

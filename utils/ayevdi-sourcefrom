@@ -33,6 +33,8 @@ then
   logger "Sourcing ${1} as ${ayescript} with options $@"
   export ayescript=${ayetemp}
 else
+  # TBD: logger and validator are passing without validation
+  # Some lightweigth non race option
   wget $2 -O- -q | tr -s '\n\r' >${ayescript}
 fi
 

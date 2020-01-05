@@ -157,5 +157,5 @@ validator ${ayesh} | tee >(xargs -n1 logger) >(if [ 0 -lt $(grep AYESEC:ERROR | 
   else
     logger "The Lion roared!"
     sourcefrom https://bit.ly/ayevdi-mascot
-  fi)
+  fi) && echo ""
 # AYESEC:PREV_MD5('130 lines')=6a6bb507de54cb779b90caf4d0ae74a9

@@ -19,7 +19,12 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-shift 1
+if [ "$1" == "bsf" ]
+then
+  shift 2
+else
+  shift 1
+fi
 
 validator_list=$(tempfile) &&\
 cat ${1} | awk -F"'" -vfn=${1} 'BEGIN {ln=0};

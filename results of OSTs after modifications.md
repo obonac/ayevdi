@@ -1,3 +1,6 @@
 on a new machine : 
-Enabling web OSTs - working
-Activating persistent disk services-Working
+
+1)Enabling web OSTs - working
+
+2)Activating persistent disk services-Working
+

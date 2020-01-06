@@ -43,3 +43,12 @@ GnuPG needs to construct a user ID to identify your key.
 Real name :
 ```
 
+### Generate passphrase - Working 
+
+```
+Enter passphrase:Mon_Jan__6_15$24$28_UTC_2020
+```
+
+
+
+

@@ -17,7 +17,7 @@ on a new machine :
  
 ### Release fatal error lockdown - Doubt
   (Doubt - couldnt understand the use of command)
-  Result of the command are as below :
+  Result of the command is as below :
   ```
   Result - rm: cannot remove '/home/a_choudhary/.ayevdi/ayevdi-error.fatal': No such file or directory
   ```
@@ -26,3 +26,5 @@ Doubt
   ```
   Result : -bash: https://bit.ly/ayevdi-sfrom-init: No such file or directory)
   ```
+### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
+![Screenshot from 2020-01-06 18-46-32](https://user-images.githubusercontent.com/46671016/71821577-7ef01380-30b8-11ea-8ec7-e5de1f5ef4bc.png)

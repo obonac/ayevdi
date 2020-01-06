@@ -44,7 +44,7 @@ then
   else
     logger "Sourcing ${1} as ${ayetemp} with options $@"
     export ayescript=${ayetemp}
-  fi) && echo ""
+  fi)
   
 else
   # TBD: logger and validator are passing without validation
@@ -54,13 +54,13 @@ fi
 
 if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
 then
-  echo "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
   if [ "$1" != "bsf" ]
   then
+    echo "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
     logger "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
     export ayescript=${ayetemp}
+    export
   fi
-  # TBD: Decide whether to exit here
 else
   # TBD: For sake of performance we execute the script prior to completion
   # of validation. This pathway needs to be optimized. Architectural work need.

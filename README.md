@@ -45,5 +45,11 @@ export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedis
 (cat | tee >(echo LINES=$(wc -l)) >(echo CSUM=$(md5sum)) >/dev/null) && echo ""
 ```
 
+### Release fatal error lockdown
+TBD: This should be replaced with field data gathering utility (including confidentialilty review)
+```
+rm ${HOME}/.ayevdi/ayevdi-error.fatal
+```
+
 bit.ly mappings
 https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init

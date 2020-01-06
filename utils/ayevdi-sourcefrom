@@ -59,11 +59,10 @@ fi
 
 if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
 then
-  echo "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayescript}"
-  logger "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayescript}"
+  echo "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
+  logger "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
+  export ayescript=${ayetemp}
   exit
 else
   source ${ayescript} "$@"
-  #TBD: Add more intelligence here
-  logger "AYESEC:Sourced ${1} as ${ayescript} - see script logs for execution details"
 fi

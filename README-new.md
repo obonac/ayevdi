@@ -2,10 +2,10 @@
 
 
 
-# AyeVDI - Virtualized Deployment IaaS (Old Readme)
+# AyeVDI - Virtualized Deployment IaaS 
 (Infrastructure as a Service for Scientific and Cognitive Computing - IaaS2C2 -> IaaS2aC2 -> IaSaC)
 
-# AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
+### AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
 
 Copyright (C) 2019-2020 Abhishek Choudhary
 AyeVDI is claimed as a trademark and a businessmark by

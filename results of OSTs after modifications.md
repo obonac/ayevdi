@@ -26,5 +26,20 @@ Doubt
   ```
   Result : -bash: https://bit.ly/ayevdi-sfrom-init: No such file or directory)
   ```
-### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
+### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)- Not working
 ![Screenshot from 2020-01-06 18-46-32](https://user-images.githubusercontent.com/46671016/71821577-7ef01380-30b8-11ea-8ec7-e5de1f5ef4bc.png)
+
+### Setup front-end
+#### Install Pacakages
+http request sent - 404 error
+Link generated is showwing 404 error
+
+### Generate keys - working 
+
+Working but I did not generate key by giving identify info name and email id (not sure the duration of key and its applications 
+```
+GnuPG needs to construct a user ID to identify your key.
+
+Real name :
+```
+

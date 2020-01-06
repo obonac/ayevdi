@@ -1,0 +1,11 @@
+sudo apt update -y
+sudo apt install docker.io -y
+sudo systemctl enable docker
+sudo groupadd docker
+sudo usermod  -aG docker ${USER}
+newgrp docker
+mkdir -p /home/"$USER}"/.docker
+sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R
+sudo chmod g+rwx "/home/"$USER}"/.docker" -R
+
+curl -N https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-stub | tac | tac | sudo -u ${USER} bash -

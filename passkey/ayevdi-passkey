@@ -1,0 +1,4 @@
+cat ~/.ayevdi/ayepasskey |\
+uudecode |\
+gpg --batch --passphrase \$\(${USER}\$${GROUPS}\)\$$(hostid)\
+--generate-key -d 2>/dev/null

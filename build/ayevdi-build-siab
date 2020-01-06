@@ -1,0 +1,14 @@
+mv ayebuild ayebuild_$(date +%s)
+mkdir ayebuild
+pushd ayebuild
+sudo apt update
+sudo apt-get install git libssl-dev libpam0g-dev zlib1g-dev dh-autoreconf -y
+sudo apt build-dep shellinabox -y
+git clone https://github.com/ayeai/shellinabox && cd shellinabox
+#apt-get source shellinabox && cd shellinabox-2.20build1
+sudo apt install libssl1.0-dev -y
+autoreconf -i
+./configure && make
+sudo apt install fakeroot libssl-dev -y
+dpkg-buildpackage -b --no-sign
+popd

@@ -1,0 +1,32 @@
+# (C) Copyright 2019 Abhishek Choudhary
+# Released under GNU GPL v2 license
+
+ayevdi_img_common=$(curl -N https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common | tac | tac | bash -)
+docker pull ayeai/ayevdi:${ayevdi_img_common}
+
+export ayeuid=$(expr $(id -u ${USER}) + 12345)
+export ayesid=$(expr $(id -u ${USER}) + 15432)
+
+export ayecntr=ayevdi_${ayeuid}
+export extip=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+docker container stop ${ayecntr}
+docker container rm ${ayecntr}
+export ayetime_label="ayetime="$(date +%s)
+docker run -l ${ayetime_label} -p ${ayeuid}:6080 -p ${ayesid}:4200 --name ${ayecntr} -dt ayeai/ayevdi:${ayevdi_img_common}
+
+docker exec ${ayecntr} wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell -O /home/ayeuser/ayevdi-ayeuser-shell
+docker exec ${ayecntr} chmod 777 /home/ayeuser/ayevdi-ayeuser-shell
+docker exec ${ayecntr} screen -d -m /home/ayeuser/ayevdi-ayeuser-shell
+
+#TODO: Tune the wait needed for VDI to start. Ideally, fix it to wait on VDI state instead of blind wait
+for i in {1..3};do echo Waiting for VDI...;sleep 1; done
+
+#The last two lines must carry the urls for shell and gui terminals respectively
+clear
+echo AyeVDI by AyeAI
+echo http://${extip}:${ayesid}/ is the Shell console
+echo http://${extip}:${ayesid}/ only Shell console is live
+
+echo Connecting VDI... 
+for n in {1..30}; do printf "."; sleep 1; done)

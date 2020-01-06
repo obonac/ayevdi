@@ -1,0 +1,15 @@
+AYEVDIKEY=~/.ayevdi/
+if [ ! -f "$AYEVDIKEY" ]; then
+    echo "$AYEVDIKEY does not exist; running basic setup"
+    curl -N https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral-setup | tac | tac | bash -
+fi
+
+export uuid=ayeuser_$(date +%s)_$RANDOM
+sudo adduser --disabled-password --gecos "" ${uuid} && (echo ${uuid}:ayeaye | sudo chpasswd)
+sudo usermod -aG sudo ${uuid}
+sudo usermod  -aG docker ${uuid}
+sudo mkdir -p /home/"${uuid}"/.docker
+sudo chown "${uuid}":"${uuid}" /home/"${uuid}"/.docker -R
+sudo chmod g+rwx /home/"${uuid}"/.docker -R
+
+curl -N https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-shell | tac | tac | sudo -u ${uuid} bash - 

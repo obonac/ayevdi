@@ -1,0 +1,10 @@
+# (C) Copyright 2019 Abhishek Choudhary
+# Released under GNU GPL v2 license only
+
+for n in $(docker ps -q)
+do
+  if [ 0 -lt $(docker exec -it ${n} bash -c 'export DISPLAY=:1 && mate-screensaver-command -q' | tee >(grep 'is active') >(grep 'is being inhibited') >/dev/null | wc -l) ]
+  then
+    docker stop $n
+  fi
+done

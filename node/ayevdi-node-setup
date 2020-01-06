@@ -1,0 +1,63 @@
+#install basic tools
+sudo apt install -y htop curl wget expect screen gawk parallel
+
+#install apache and enable necessary modules
+sudo apt install -y apache2
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod ssl
+sudo ln -sf /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/
+
+#TODO: Enable apache ssl with self signed certificate
+#
+
+#setup proxypass entries with port masking for security
+export tmpscript=$(tempfile) &&\
+export tmpconf=$(tempfile) &&\
+curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk >${tmpscript} 2>//dev/null &&\
+cat /etc/apache2/sites-enabled/default-ssl.conf |\
+awk -f ${tmpscript} > ${tmpconf} &&\
+sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.$(date +%s) &&\
+sudo cp -f ${tmpconf} /etc/apache2/sites-available/default-ssl.conf &&\
+export tmpscript=$(date +%s) &&\
+export tmpconf=$(date +%s)
+
+#restart apache and enable apache for automatic startup
+sudo systemctl restart apache2
+sudo systemctl enable apache2
+
+#prepare current user for aministering ayevdi
+#TODO: No sudo access should be needed beyond this point unless upgrading
+curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup | bash -
+
+#build and install node server
+curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab | bash - && sudo dpkg -r shellinabox && sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
+
+#TODO: The following should start as per node profile
+#TODO: Another option is to request a specific image when calling the VDI access API,
+#      in that case only shell and gui servers suffice. All will carry explorer and theia, which should 
+#      be part of base image
+#TODO: Instead of serving JIT containers preload containers (and pause them!) based on demand prediction
+#      - paused (frozen) containers can be run (thawed and warmed) JIT at request
+
+#Daemonize garbage collector (abandoned container stopper)
+screen -S "ayevdi-service-garbageCollector" -d -m bash -c 'while [ 1 ]; do sleep 10; export tmpscript=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned -O ${tmpscript} && sudo bash -c "source ${tmpscript}" && export tmpscript=$(date +%s); done'
+
+#Daemonize timer policy
+screen -S "ayevdi-service-timePolicy" -d -m bash -c 'while [ 1 ]; do sleep 10; export tmpscript=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout -O ${tmpscript} && sudo bash -c "export timelimit=1899 && source ${tmpscript}" && export tmpscript=$(date +%s); done'
+
+#Daemonize idle policy
+
+#Daemonize shell service
+screen -S "ayevdi-service-shell" -d -m shellinaboxd --css /etc/shellinabox/options-enabled/00_White\ On\ Black.css -p 4203 -s "/:$(id -u):$(id -g):${PWD}:/bin/bash -c 'echo AyeVDI by https://ayeai.xyz && (curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral-shell | bash - ) 2>&1 | tee >(tail -2) >/dev/null >(awk -f /usr/share/ayevdi/ayerun.awk ) && (while [ 1 ]; do printf "."; sleep 1; done) || echo Server busy'" --disable-ssl
+
+#Daemonize gui service
+screen -S "ayevdi-service-gui" -d -m shellinaboxd --css /etc/shellinabox/options-enabled/00_White\ On\ Black.css -p 4202 -s "/:$(id -u):$(id -g):${PWD}:/bin/bash -c 'echo AyeVDI by https://ayeai.xyz && (curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral | bash - ) 2>&1 | tee >(tail -2) >/dev/null >(awk -f /usr/share/ayevdi/ayerun.awk ) && (while [ 1 ]; do printf "."; sleep 1; done) || echo Server busy'" --disable-ssl
+
+#TBD
+#Add policy enforcer - compute, memory, io
+#Harden access loggers
+#Add preload support
+#Add configuration load from repository (curl) support for policies
+#Add management interfaces
+#Add support for auto-start daemon - needed for node life cycle management

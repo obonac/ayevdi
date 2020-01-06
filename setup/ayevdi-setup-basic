@@ -1,0 +1,34 @@
+#!/bin/bash
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt autoremove -y
+#sudo apt install edubuntu-desktop -y -q
+sudo apt install ubuntu-mate-desktop -y -q
+sudo apt install shellinabox novnc apache2 -y -q
+sudo apt install tigervnc-common tigervnc-xorg-extension tigervnc-standalone-server -y -q
+sudo apt install curl git wget expect -y -q
+mkdir -p ~/.vnc
+curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/xstartup.sample > ~/.vnc/xstartup
+
+sudo adduser --disabled-password --gecos "" ayeuser && (echo ayeuser:ayeaye | sudo chpasswd)
+
+prog=/usr/bin/vncpasswd
+export mypass="q1w2e3"
+export vpass="123456"
+
+/usr/bin/expect <<EOF
+spawn "$prog"
+expect "Password:"
+send "$mypass\r"
+expect "Verify:"
+send "$mypass\r"
+expect "Would you like to enter a view-only password (y/n)?"
+send "y\r"
+expect "Password:"
+send "$vpass\r"
+expect "Verify:"
+send "$vpass\r"
+expect eof
+exit
+EOF
+

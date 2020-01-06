@@ -1,0 +1,30 @@
+if [ "${2}" == "" ]
+then
+    echo Usage: ayevdi-pool-edit from to
+
+elif [ -e ayevdi-pool-${2} ]
+then
+    echo Warning: Pool exists - to remove pool use git rm
+
+else
+
+export pooltemp=$(tempfile) &&\
+touch ayevdi-pool-${1} &&\
+touch ayevdi-pool-${2} &&\
+cat ayevdi-pool-${1} |\
+uudecode |\
+uudecode |\
+gpg --batch --passphrase \
+$(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null |\
+bash - ) 2>/dev/null > ${pooltemp} &&\
+vi $pooltemp && cat ${pooltemp} |\
+gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null |\
+bash - ) -c - |\
+uuencode - |\
+uuencode - > ayevdi-pool-${2} &&\
+git add ayevdi-pool-${2} &&\
+git commit -m "Updated pool $ayepool" &&\
+git push &&\
+export pooltemp=$RANDOM
+
+fi

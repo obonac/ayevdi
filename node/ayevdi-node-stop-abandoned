@@ -1,0 +1,49 @@
+# Copyright (C) 2019 Abhishek Choudhary
+# Released un GNU GPL v3 only
+
+for n in $(docker ps -q)
+do
+  # Prevent infant mortality (allow containers to connect)
+  # TODO: This should be tuned to a fair interval
+  # TODO: Tunig here and elsewhere should be AI driven
+  export docktime=$(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats |\
+                    bash - |\
+                    grep $n |\
+                    cut -d',' -f2)
+  export ayetime=$(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats |\
+                    bash - |\
+                    grep $n |\
+                    cut -d',' -f3)
+  # Under high usage it 'can' take a few minutes to provide VDI
+  # We are setting a nominal value of 3 mins = 180 secs
+  # TODO: Tune this parameter
+  if [ ${ayetime} -lt 120 ]
+  then
+    if [ ${docktime} -lt 60 ]
+    then
+      continue
+    fi
+  fi
+
+  docker exec -it ${n} apt install lsof -y > /dev/null
+  export est=$(docker exec -it ${n} lsof -ai tcp | grep vnc | grep ESTABLISHED | wc -l)
+  export vnc=$(docker exec -it ${n} lsof -ai tcp | grep vnc | wc -l)
+  export usr=$(docker exec -it ${n} users | wc -l)
+  echo ${n} vnc=${vnc} est=${est} usr=${usr}
+  if [ ${vnc} -gt 0 ]
+  then
+    if [ ${est} -lt 1 ]
+    then
+      docker stop ${n}
+      echo Stopping abandoned container ${n}
+      #TODO:else log IP
+    fi
+  else
+    if [ ${usr} -lt 1 ]
+    then
+      docker stop ${n}
+      echo Stopping abandoned container ${n}
+      #TODO:else log IP
+    fi
+  fi
+done

@@ -31,7 +31,7 @@ then
   
   validator ${ayescript} >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) 
   export ayescript=${ayetemp}
-  cat ${ayescript} | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+  cat ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
     logger "AYESEC:ERROR:Abort! Abort! Abort!"
     export ayescript=${ayetemp}

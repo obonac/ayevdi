@@ -147,7 +147,9 @@ alias logger='ayevdi-logger'
 
 logger "AyeVDI sourcefrom activated... using ${ayesh}"
 
-validator ${ayesh} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+validator ${ayesh} >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh})
+
+cat ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
     logger "AYESEC:ERROR:Abort! Abort! Abort!"
     echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"

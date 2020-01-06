@@ -39,6 +39,8 @@ The nodes stand behind load balancers which keep the service levels optimal.
 
 The highest level abstraction is of the zoners - AI based optimizers for AyeVDI, which are also in the pipeline for near future releases.
 
+(TBD) write necessary information about Ayesh,checksum and fatal error markdown,bitly mappings OSTs
+
 ## Getting started
 
 ### Enabling web OSTs

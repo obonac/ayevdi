@@ -1,9 +1,17 @@
 on a new machine : 
 
-1)Enabling web OSTs - working
+### Enabling web OSTs 
+  working
 
-2)Activating persistent disk services-Working
+### Activating persistent disk services- 
+   Working
 
-3)Get lines and md5sum - Not working ( Doubt in way of execution)
+### Get lines and md5sum - Not working 
+   Doubt my way of execution
 
-4)
+### Release fatal error lockdown - Doubt
+  (Doubt - couldnt understand the use of command)
+  Result of the command are as below :
+  
+  rm: cannot remove '/home/a_choudhary/.ayevdi/ayevdi-error.fatal': No such file or directory
+

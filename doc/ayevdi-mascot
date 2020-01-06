@@ -1,3 +1,6 @@
+# AYESEC:POST_MD5('49 lines')=ddae56a9c93ea146ce68494d3a7e7fc9
+# AYESEC:FILE_TOP('ayevdi/doc/ayevdi-mascot')
+
 # AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
@@ -19,7 +22,7 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
+# AYESEC:POST_MD5('22 lines')=dde2ef1c88cd68accc7b8aabe7c0b8d8
 #      AyeVDI   ##@###&
 #  /^^^^^^^"""####  o ##:
 # /     Driksh       ##''
@@ -27,7 +30,7 @@ fi
 # { \   /++++++++/  #### 
 #   /  /  \     /  /  \  
 #  /__/ \__\   /__/ \__\ 
-# (C) Copyright 2020 Abhishek Choudhary
+# (C) Copyright 2020 Abhishek Choudhary. All rights reserved.
 # MADE IN INDIA | BHARAT MEIN NIRMIT
 # The above artwork, the business marks AyeVDI, Driksh, and 
 # the tagline 'Driksh - The Immutable' are intellectual property
@@ -41,5 +44,8 @@ fi
 #
 # Driksh in Sanskrit is close in meaning to manifestation
 
-wget https://bit.ly/ayevdi-mascot -O- -q | tail -10 | head -7 | cut -c 3- | lolcat -F 0.7 -S 2020 -p 20
-# AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
+wget https://bit.ly/ayevdi-mascot -O- -q | head -31 | tail -9 | cut -c 3- | lolcat -F 0.7 -S 2020 -p 20
+# AYESEC:PREV_MD5('22 lines')=dde2ef1c88cd68accc7b8aabe7c0b8d8
+
+# AYESEC:FILE_END('ayevdi/doc/ayevdi-mascot')
+# AYESEC:PREV_MD5('49 lines')=ddae56a9c93ea146ce68494d3a7e7fc9

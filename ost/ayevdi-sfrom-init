@@ -1,5 +1,7 @@
 #!/bin/bash
 # AYESEC:POST_MD5('168 lines')=7deefb10ff15b635adad2ebf5e2a7bf3
+# AYESEC:FILE_TOP('ayevdi/ost/ayevdi-sfrom-init')
+
 # AYESEC:POST_MD5('26 lines')=33523a2078cc40ea4f73a7b2f128df26
 # AYESEC:MASTPOST_NOTICE
 # AYESEC:POST_MD5('22 lines')=401df8541f58e70fd7f1fd004268c689
@@ -169,4 +171,6 @@ then
   #TBD: Decide whether to close shell here
   echo "WARNING: The shell may exit at this point in future versions"
 fi
+
+# AYESEC:FILE_END('ayevdi/ost/ayevdi-sfrom-init')
 # AYESEC:PREV_MD5('168 lines')=7deefb10ff15b635adad2ebf5e2a7bf3

@@ -29,7 +29,9 @@ then
   # hence, it is best to execute helper scripts and restore original $ayescript
   export ayetemp=${ayescript}
   
-  validator ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+  validator ${ayescript} >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) 
+  export ayescript=${ayetemp}
+  cat ${ayescript} | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
     logger "AYESEC:ERROR:Abort! Abort! Abort!"
     export ayescript=${ayetemp}
@@ -38,8 +40,8 @@ then
     echo "Abort! Abort! Abort! Exiting shell in 10 secs... Press ctrl-c to stop abort..."
     sleep 10
     logger "Aborting on AYESEC:ERROR"
-    echo "Aborting on AYESEC:ERROR"
     export ayescript=${ayetemp}
+    echo "Aborting on AYESEC:ERROR"
     cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.fatal
   else
     logger "Sourcing ${1} as ${ayetemp} with options $@"
@@ -47,8 +49,8 @@ then
   fi)
   
 else
-  # TBD: logger and validator are passing without validation
-  # Some lightweigth non race option
+  # TBD: logger and validator (or other stuff sourced bsf) are passed without validation
+  # Some lightweigth non race option needed for validating those
   wget $2 -O- -q >${ayescript}
 fi
 
@@ -61,7 +63,5 @@ then
     export ayescript=${ayetemp}
   fi
 else
-  # TBD: For sake of performance we execute the script prior to completion
-  # of validation. This pathway needs to be optimized. Architectural work need.
   source ${ayescript} "$@"
 fi

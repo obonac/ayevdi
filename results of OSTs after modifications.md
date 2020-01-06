@@ -48,6 +48,9 @@ Real name :
 ```
 Enter passphrase:Mon_Jan__6_15$24$28_UTC_2020
 ```
+### Configure pool nodes - Working
+
+
 
 
 

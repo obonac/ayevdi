@@ -23,19 +23,47 @@ export ayescript=$(tempfile)
 
 if [ "$1" != "bsf" ]
 then
-  wget $1 -O- -q | tr -s '\n\r' >${ayescript}
+  wget $1 -O- -q >${ayescript}
   # Sourcing the validator and logger in sourcefrom directly leads to
   # namespace collision - bash does not support detection of such conflicts
   # hence, it is best to execute helper scripts and restore original $ayescript
   export ayetemp=${ayescript}
-  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
-  export ayescript=${ayetemp}
-  logger "Sourcing ${1} as ${ayescript} with options $@"
-  export ayescript=${ayetemp}
+  
+  validator ${ayescript} | tee >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) >(if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
+  then
+    logger "AYESEC:ERROR:Abort! Abort! Abort!"
+    export ayescript=${ayetemp}
+    echo ""
+    echo "WARNING: AyeVDI has detected an error, that may be a potential threat!"
+    echo "Abort! Abort! Abort! Exiting shell in 10 secs... Press ctrl-c to stop abort..."
+    sleep 10
+    logger "Aborting on AYESEC:ERROR"
+    echo "Aborting on AYESEC:ERROR"
+    export ayescript=${ayetemp}
+    cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.fatal
+  else
+    logger "Sourcing ${1} as ${ayetemp} with options $@"
+    export ayescript=${ayetemp}
+  fi) && echo ""
+  
+#  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
+#  export ayescript=${ayetemp}
+#  logger "Sourcing ${1} as ${ayescript} with options $@"
+#  export ayescript=${ayetemp}
+
 else
   # TBD: logger and validator are passing without validation
   # Some lightweigth non race option
-  wget $2 -O- -q | tr -s '\n\r' >${ayescript}
+  wget $2 -O- -q >${ayescript}
 fi
 
-source ${ayescript} "$@"
+if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
+then
+  echo "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayescript}"
+  logger "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayescript}"
+  exit
+else
+  source ${ayescript} "$@"
+  #TBD: Add more intelligence here
+  logger "AYESEC:Sourced ${1} as ${ayescript} - see script logs for execution details"
+fi

@@ -8,7 +8,7 @@ sudo apt install shellinabox novnc apache2 -y -q
 sudo apt install tigervnc-common tigervnc-xorg-extension tigervnc-standalone-server -y -q
 sudo apt install curl git wget expect -y -q
 mkdir -p ~/.vnc
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/xstartup.sample > ~/.vnc/xstartup
+curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample > ~/.vnc/xstartup
 
 sudo adduser --disabled-password --gecos "" ayeuser && (echo ayeuser:ayeaye | sudo chpasswd)
 

@@ -46,11 +46,6 @@ then
     export ayescript=${ayetemp}
   fi) && echo ""
   
-#  validator ${ayescript} > ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript})
-#  export ayescript=${ayetemp}
-#  logger "Sourcing ${1} as ${ayescript} with options $@"
-#  export ayescript=${ayetemp}
-
 else
   # TBD: logger and validator are passing without validation
   # Some lightweigth non race option
@@ -63,9 +58,11 @@ then
   if [ "$1" != "bsf" ]
   then
     logger "AYESEC:Unresolved fatal validation error detected. Not sourcing ${1} as ${ayetemp}"
+    export ayescript=${ayetemp}
   fi
-  export ayescript=${ayetemp}
-  exit
+  # TBD: Decide whether to exit here
 else
+  # TBD: For sake of performance we execute the script prior to completion
+  # of validation. This pathway needs to be optimized. Architectural work need.
   source ${ayescript} "$@"
 fi

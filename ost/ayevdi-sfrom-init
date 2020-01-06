@@ -166,6 +166,7 @@ cat ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) | (if [ 0 -lt $(grep A
   
 if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]
 then
-  exit
+  #TBD: Decide whether to close shell here
+  echo "WARNING: The shell may exit at this point in future versions"
 fi
 # AYESEC:PREV_MD5('168 lines')=7deefb10ff15b635adad2ebf5e2a7bf3

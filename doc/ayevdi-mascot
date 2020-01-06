@@ -19,13 +19,27 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-#      AyeVDI   ##@###&  
+# AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
+#      AyeVDI   ##@###&
 #  /^^^^^^^"""####  o ##:
-# /                  ##''
-# (   MADE IN INDIA ##{,,
+# /     Driksh       ##''
+# (  The Immutable  ##{,,
 # { \   /++++++++/  #### 
 #   /  /  \     /  /  \  
-#  /__/ \__\   /__| \__\ 
-
+#  /__/ \__\   /__/ \__\ 
+# (C) Copyright 2020 Abhishek Choudhary
+# MADE IN INDIA | BHARAT MEIN NIRMIT
+# The above artwork, the business marks AyeVDI, Driksh, and 
+# the tagline 'Driksh - The Immutable' are intellectual property
+# of Abhishek Choudhary (the original author) and may not be
+# reproduced without permission. All rights including media
+# and cinematic rights reserved. Derivatives must replace the
+# artwork, logo, representatio, trademarks appropriately,
+# without violating the terms and conditions of the license
+# agreement. Unmodified distributions must carry the above lines
+# as is.
+#
+# Driksh in Sanskrit is close in meaning to manifestation
 
 wget https://bit.ly/ayevdi-mascot -O- -q | tail -10 | head -7 | cut -c 3- | lolcat -F 0.7 -S 2020 -p 20
+# AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2

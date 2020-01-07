@@ -18,7 +18,7 @@ and solely in accordance with AyeAI SPL version 1, or later,
 as expressed at the following URL and at the most current version
 of https://raw.githubusercontent.com/ayeai/spl/master/LICENSE
 incuding its clauses of automatic implicit update of license,
-and unless in conflict the terms and conditions of GNU GPL v2
+and unless in conflict with the terms and conditions of GNU GPL v2
 shall apply with no retort to other GPL licenses, AND, These
 terms and conditions are implied read, understood and accepted
 by the access, or usage of these artifacts and methods which

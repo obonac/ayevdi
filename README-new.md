@@ -73,7 +73,7 @@ Users
 
 Caution: Please backup your data including server / system configuartion prior to executing any of the software / tools given on this page. There are no warranties  and no libility whatsoever and you are using these software / tools at your own risk, subject to latest AyeAI SPL license and applicable copyright notices.
 
-### 2 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
+### 2 step setup - should take less than 5 mins (unless you are accessing internet from a Mars settlement! Are you?)
 So get going - just copy the one liner commands from the steps below onto any internet connected system.
 At present we support only Ubuntu 18.04 LTS, but check back soon for other distributions!
 

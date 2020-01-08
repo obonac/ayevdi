@@ -38,7 +38,7 @@ docker exec ${ayecntr} ls /home/ayeuser &&\
 logger "SUCCESS:AYECNTR:${ayecntr} for ${USER}" 
 # Done creating docker container for ${USER}
 
-docker exec ${ayecntr} wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell -O /home/ayeuser/ayevdi-ayeuser-shell
+docker exec ${ayecntr} wget http://bit.ly/ayevdi-ayeuser-shell -P /home/ayeuser/
 docker exec ${ayecntr} chmod 777 /home/ayeuser/ayevdi-ayeuser-shell
 docker exec ${ayecntr} screen -d -m /home/ayeuser/ayevdi-ayeuser-shell
 

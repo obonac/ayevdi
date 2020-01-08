@@ -1,10 +1,8 @@
 on a new machine : 
 
-### Enabling web OSTs 
-  working
+### Enabling web OSTs - working
 
-### Activating persistent disk services- 
-   Working
+### Activating persistent disk services- Working
 
 ### Get lines and md5sum - Not working 
   No results after pasting and enter, Enter taking to next line but no execution (Doubt the way I interpret and executed)
@@ -21,16 +19,16 @@ on a new machine :
   ```
   Result - rm: cannot remove '/home/a_choudhary/.ayevdi/ayevdi-error.fatal': No such file or directory
   ```
-### bit.ly mappings
-Doubt 
+### bit.ly mappings- Doubt
   ```
   Result : -bash: https://bit.ly/ayevdi-sfrom-init: No such file or directory)
   ```
 ### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)- Not working
-![Screenshot from 2020-01-06 18-46-32](https://user-images.githubusercontent.com/46671016/71821577-7ef01380-30b8-11ea-8ec7-e5de1f5ef4bc.png)
+
 
 ### Setup front-end
-#### Install Pacakages
+
+#### Install Pacakages -Error
 http request sent - 404 error
 Link generated is showwing 404 error
 

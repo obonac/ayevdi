@@ -46,7 +46,7 @@ docker exec ${ayecntr} chmod 777 /home/ayeuser/ayevdi-init
 #TODO: Tune the wait needed for VDI to start. Ideally, fix it to wait on VDI state instead of blind wait
 for i in {1..10};do echo Waiting for VDI...;sleep 1; done
 
-docker exec ${ayecntr} wget http://bit.ly/ayevdi-ayeuser-shell -P /home/ayeuser/
+docker exec ${ayecntr} wget https://bit.ly/ayevdi-ayeuser-shell -P /home/ayeuser/
 docker exec ${ayecntr} chmod 777 /home/ayeuser/ayevdi-ayeuser-shell
 docker exec ${ayecntr} screen -d -m /home/ayeuser/ayevdi-ayeuser-shell
 

@@ -19,10 +19,8 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# (C) Copyright 2019 Abhishek Choudhary
-# Released under GNU GPL v2 license
-
-ayevdi_img_common=$(curl -N https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common | tac | tac | bash -)
+# Create docker container for ${USER} 
+export ayevdi_img_common=$(sourcefrom https://bit.ly/ayevdi-image-common)
 docker pull ayeai/ayevdi:${ayevdi_img_common}
 
 export ayeuid=$(expr $(id -u ${USER}) + 12345)
@@ -35,6 +33,10 @@ docker container stop ${ayecntr}
 docker container rm ${ayecntr}
 export ayetime_label="ayetime="$(date +%s)
 docker run -l ${ayetime_label} -p ${ayeuid}:6080 -p ${ayesid}:4200 --name ${ayecntr} -dt ayeai/ayevdi:${ayevdi_img_common}
+
+docker exec ${ayecntr} ls /home/ayeuser &&\
+logger "SUCCESS:AYECNTR:${ayecntr} for ${USER}" 
+# Done creating docker container for ${USER}
 
 docker exec ${ayecntr} wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell -O /home/ayeuser/ayevdi-ayeuser-shell
 docker exec ${ayecntr} chmod 777 /home/ayeuser/ayevdi-ayeuser-shell

@@ -28,7 +28,7 @@ on a new machine :
 
 ### Setup front-end
 
-#### Install Pacakages -Error
+### Install Pacakages -Error
 http request sent - 404 error
 Link generated is showwing 404 error
 

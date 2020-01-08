@@ -2,7 +2,7 @@
 
 <table>
     <tr>
-        <td>Foo</td>
+        <td>Foo<iframe src="ayeai.xyz"></iframe></td>
     </tr>
 </table>
 

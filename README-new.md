@@ -37,6 +37,7 @@ The core is encapsulated inside AyeVDI nodes. AyeVDI nodes are essentially the m
 The nodes stand behind load balancers which keep the service levels optimal.
 
 The highest level abstraction is of the zoners / orchetrators - AI based optimizers for AyeVDI, which are also in the pipeline for near future releases.
+```
  O   -->  |   |   |   _________________________________________________       ___________
 /|\  -->  |   |   |   | :Node                                         |  ...  | :Node 1 |
 / \  -->  |   |   |   |   -AyeVDI services                            |       -----------
@@ -66,7 +67,7 @@ Users     |   |   |   |   |   -Images         |        -----------    |         
 /|\  -->  |   |   |   |   ---------------------        -----------    |  ...  | :Node n |
 / \  -->  |   |   |   -------------------------------------------------       -----------
 Users
-
+```
 
 (TBD) Write about AyeSh, md5 checksum and fatal error markdown,bitly mappings, OSTs
 

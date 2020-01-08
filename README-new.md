@@ -122,6 +122,7 @@ TBD: This should be replaced with field data gathering utility (including confid
 rm ${HOME}/.ayevdi/ayevdi-error.fatal
 ```
 
+```
 
 
 
@@ -137,8 +138,7 @@ rm ${HOME}/.ayevdi/ayevdi-error.fatal
 
 
 
-
-
+````
 
 ## Setup front-end
 Note: TBD - OST needed for scripted deployment of profiles and scenarios
@@ -175,6 +175,7 @@ export ayeport=4203 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/mast
 ```
 export ayeport=4203 && shellinaboxd --css /etc/shellinabox/options-enabled/00_White\ On\ Black.css -p ${ayeport} -s "/:$(id -u):$(id -g):${PWD}:/bin/bash -c 'wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk -O ${HOME}/.ayevdi/ayevdi-sched-rr.awk >/dev/null 2>&1 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-${ayeport} 2>/dev/null | uudecode | uudecode | gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null | bash - ) 2>/dev/null -d | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} -f ${HOME}/.ayevdi/ayevdi-sched-rr.awk'" --disable-ssl
 ```
+```
 
 
 
@@ -182,11 +183,13 @@ export ayeport=4203 && shellinaboxd --css /etc/shellinabox/options-enabled/00_Wh
 
 
 
+
+```
 
 ## AyeVDI in container
 Note: Does not run nested
 ```
-curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker | bash -
+sourcefrom https://bit.ly/ayevdi-docker
 ```
 
 ## AyeVDI in container with ephemeral user

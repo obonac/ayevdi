@@ -26,7 +26,7 @@ on a new machine :
 ### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)- Not working
 
 
-### Setup front-end
+### Setup front-end :
 
 ### Install Pacakages -Error
 http request sent - 404 error

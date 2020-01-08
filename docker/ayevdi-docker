@@ -27,20 +27,20 @@ then
   
   # Install docker.io and enable docker service
   logger "Installing docker.io"
-  sudo apt update -y &&\
-  sudo apt install -y docker.io &&\
+  sudo apt update -y
+  sudo apt install -y docker.io
   sudo systemctl enable docker &&\
   logger "SUCESS:INSTALL:docker.io"
   # TBD: Abstract installation and validation
 
   # Enable user to execute docker commands
   logger "Enabling docker privileges"
-  sudo groupadd docker &&\
-  sudo usermod -aG docker ${USER} &&\
-  mkdir -p /home/"${USER}"/.docker &&\
-  sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R &&\
-  sudo chmod g+rwx "/home/"${USER}"/.docker" -R &&\
-  newgrp docker &&\
+  sudo groupadd docker
+  sudo usermod -aG docker ${USER}
+  mkdir -p /home/"${USER}"/.docker
+  sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R
+  sudo chmod g+rwx "/home/"${USER}"/.docker" -R
+  newgrp docker
   docker ps &&\
   date +%s >${HOME}/.ayevdi/ayevdi-docker.done &&\
   logger "SUCCESS:CONFIG:docker privileges"

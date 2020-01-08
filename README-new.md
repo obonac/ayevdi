@@ -28,15 +28,45 @@ of copyrights.
 Note: These instructions are based on Ubuntu 18.04 LTS which is supported by Canonical until April 2023 (Ref: https://bit.ly/canonical-ubuntu https://bit.ly/ubuntu-release-cycle). Support of other distros, including future Ubuntu releases, is pertinent to resource availability.
 
 ## Simple introduction !!
-While we wait for more descriptive articles to be written, here's some quick information on how to get started. AyeVDI is a virtuaized desktop IaaS. The core objective of AyeVDI is to deliver seamless application, desktop and service virtualization including HyperScale, Scientific and Cognitive Computing. We aspire to offer optimal and hardened convergence of VDI and HPC with utmost fluidity in user experience, with focussed support for Machine Learning, Deep Learning, Internet of Things, Robotics, Medical Devices and Healthcare Applications (fundamental building blocks for #ai4all).
+While we wait for more descriptive articles to be written, here's some quick information on how to get started. AyeVDI is a virtuaized desktop IaaS. The core objective of AyeVDI is to deliver seamless application, desktop and service virtualization including HyperScale, Scientific and Cognitive Computing. We aspire to offer optimal and hardened convergence of VDI and HPC with utmost fluidity in user experience, with focussed support for Machine Learning, Deep Learning, Internet of Things, Robotics, Medical Devices and Healthcare Applications (fundamental building blocks for #ai4all and #ai4socialgood).
 
-The core of AyeVDI consists of containers running domain targeted and role / scenario specific images. These are currently run on docker but the abstraction design allows for other containerization platforms to be used as well, such as Singularity,and our upcoming AyeCons platform. With OCI standards in vogue, compliant container platforms from any vendor / project suffice for the core functionality. As one implementation of our abstraction layer, the AyeVDI core functionality will be offered as Kubernetes pods as well - but thats for one of the next upcoming releases subject to project constraints. All our images for the containers are hosted on dockerhub and other public image registeries.
+The core of AyeVDI consists of containers running domain targeted and role / scenario specific images. These are currently run on docker but the abstraction layers in the design allows for other containerization platforms to be used as well, such as Singularity, and our upcoming AyeCons platform. With OCI standards in vogue, compliant container platforms from any vendor / project suffice for the core functionality. As one implementation of our abstraction layer, the AyeVDI core functionality will be offered as Kubernetes pods as well - but thats for one of the next upcoming releases subject to project constraints. All our images for the containers are hosted on dockerhub and other public image registeries.
 
-The core is encapsulated into AyeVDI nodes. AyeVDI nodes are essentially the minimal concrete units of compute, storage and I/O. As of the current release we are treating server nodes as the only nodes, but the configuration granularity is being refined incrementally.  
+The core is encapsulated inside AyeVDI nodes. AyeVDI nodes are essentially the minimal concrete units of compute, storage and I/O. As of the current release we are treating server nodes as the only nodes, but the configuration granularity is being refined incrementally and may include independent memory or IO nodes as well, apart from acceleration and other bespoke nodes.  
 
 The nodes stand behind load balancers which keep the service levels optimal.
 
 The highest level abstraction is of the zoners / orchetrators - AI based optimizers for AyeVDI, which are also in the pipeline for near future releases.
+ O   -->  |   |   |   _________________________________________________       ___________
+/|\  -->  |   |   |   | :Node                                         |  ...  | :Node 1 |
+/ \  -->  |   |   |   |   -AyeVDI services                            |       -----------
+Users     |   |   |   |     +Ephemeral sessions                       |       ___________
+          |   |   |   |     +Shell terminal                           |  ...  | :Node 2 |
+ O   -->  |   |   |   |     +GUI terminal                             |       -----------
+/|\  -->  |   |   |   |     +Garbage collector                        |            .
+/ \  -->  |   |   |   |     +Policy services                          |            .
+Users     |   | L |   |                                               |            .
+          |   | O |   |   -AyeSec tools                               |            .
+ O   -->  |   | A |   |     +Secure web scripts                       |            .
+/|\  -->  |   | D |   |     +Logging & forensics                      |
+/ \  -->  | Z |   |   |     +OSTs for ssl automation                  |
+Users     | O | B |   |     +OSTs for vpn automation                  |
+          | N | A |   |                                               |
+ O   -->  | E | L |   |   -AyeLearn tools                             |
+/|\  -->  | R | A |   |     +VOIP automation                          |
+/ \  -->  | S | N |   |     +Conferencing                             |
+Users     |   | C |   |     +Screen sharing                           |
+          |   | E |   |     +Multicasting                             |
+ O   -->  |   | R |   |     +ValidCV Automation                       |            .
+/|\  -->  |   | S |   |   _____________________        ___________    |            .
+/ \  -->  |   |   |   |   | :Core             |  ...   | :Core 1 |    |            .
+Users     |   |   |   |   |   -Images         |        -----------    |            .
+          |   |   |   |   |   -Containers     |        ___________    |            .
+ O   -->  |   |   |   |   |   -AyeVDI drivers |  ...   | :Core n |    |       ___________
+/|\  -->  |   |   |   |   ---------------------        -----------    |  ...  | :Node n |
+/ \  -->  |   |   |   -------------------------------------------------       -----------
+Users
+
 
 (TBD) Write about AyeSh, md5 checksum and fatal error markdown,bitly mappings, OSTs
 

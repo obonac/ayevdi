@@ -98,8 +98,7 @@ Really? Yes. That's it. Do drop us a kind word if you liked it. Of course, donat
 One more thing could be useful - getting some persistent storage in emphemeral sessions. While most storage cloud vendors will tell you how to configure their services on a system, we are creating OSTs to 
 
 #### Activating persistent disk services
-Note: AyeAI does not guarantee success of these integrations. Check original instructions from the provider.
-Any access must be in absolute compliance of the laws and of the license agreements with the provider and AyeAI. 
+Note: AyeAI does not guarantee success of these integrations and does not control other vendors services. Check original instructions from the provider. Any access must be in absolute compliance of the laws and of the license agreements with the provider. The usage of services from other vendors does not impact terms of license from AyeAI and AyeAI does not represent the third party vendors in any manner.
 
 Example: Yandex Disk
 ```

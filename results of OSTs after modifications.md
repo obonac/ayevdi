@@ -1,6 +1,6 @@
 on a new machine : 
 
-### Enabling web OSTs - working
+### Enabling web OSTs - Working
 
 ### Activating persistent disk services- Working
 
@@ -32,7 +32,7 @@ on a new machine :
 http request sent - 404 error
 Link generated is showwing 404 error
 
-### Generate keys - working 
+### Generate keys - Working 
 
 Working but I did not generate key by giving identify info name and email id (not sure the duration of key and its applications 
 ```

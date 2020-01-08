@@ -1,6 +1,5 @@
-<?
 <iframe src="ayeai.xyz"></iframe>
->
+
 # AyeVDI - Virtualized Deployment IaaS 
 (Infrastructure as a Service for Scientific and Cognitive Computing - IaaS2C2 -> IaaS2aC2 -> IaSaC)
 

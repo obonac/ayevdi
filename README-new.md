@@ -69,38 +69,48 @@ Users     |   |   |   |   |   -Images         |        -----------    |         
 Users
 ```
 
-## Getting started
-
 ## Quick start guide
 
-### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
-Copy the following command and execute on a Ubuntu 18.04 LTS system. It can be on cloud or an on-premise (private) system. AyeVDI scales across all scenarios. (We will show you soon how AyeVPN allows you to create a hybrid cloud based deployment easily- though that's another "coming soon" feature). (Note: For defence and other non internet use cases we are rolling out DVD and BlueRay releases, subject to legal compliance)
+Caution: Please backup your data including server / system configuartion prior to executing any of the software / tools given on this page. There are no warranties  and no libility whatsoever and you are using these software / tools at your own risk, subject to latest AyeAI SPL license and applicable copyright notices.
 
-So get going - just copy the following command onto an internet connected system 
-```
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup | bash -
-```
+### 2 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
+So get going - just copy the one liner commands from the steps below onto any internet connected system.
+At present we support only Ubuntu 18.04 LTS, but check back soon for other distributions!
 
-Caution: Please backup your data including server / system configuartion prior to executing any of the software / tools given on this page. There are no warranties whatsoever and you are using these software / tools at your own risk, subject to GNU GPL v2 license and applicable copyright notices.
+You can use virtual machines on public cloud or on-premise (private) systems. AyeVDI scales across all scenarios. We will soon show you how AyeVPN allows you to create a hybrid-cloud based deployment easily. That's another "coming soon" feature! 
 
-Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
+Note: For non-internet deployments we are rolling out DVD and BlueRay releases, subject to legal compliance.
 
-## Setup front-end
-Note: TBD - OST needed for scripted deployment of profiles and scenarios
-
-### Enabling web OSTs
-TBD: Improve security at this stage with AyeQu
+#### First step : Enable AyeSec secure web scripts
+Note: The security at this stage is being improved AyeQu (Quantum Computing utilities by AyeAI)
 ```
 ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
 ```
 
-### Activating persistent disk services
-Note: AyeAI does not guarantee success of these integrations
+#### Second step : Setting up the node services
+```
+sourcefrom http://bit.ly/ayevdi-node-setup
+```
+Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
+
+Really? Yes. That's it. Do drop us a kind word if you liked it. Of course, donations and crowd funding offers are welcome. Please see https://ayeai.xyz for details
+
+One more thing could be useful - getting some persistent storage in emphemeral sessions. While most storage cloud vendors will tell you how to configure their services on a system, we are creating OSTs to 
+
+#### Activating persistent disk services
+Note: AyeAI does not guarantee success of these integrations. Check original instructions from the provider.
+Any access must be in absolute compliance of the laws and of the license agreements with the provider and AyeAI. 
 
 Example: Yandex Disk
 ```
 export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedisk-proact
 ```
+
+## Advanced setup
+Now let us look at some advanced features and fine grained configuration.
+
+## Setup front-end
+Note: TBD - OST needed for scripted deployment of profiles and scenarios
 
 ## Utils
 

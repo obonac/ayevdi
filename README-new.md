@@ -1,5 +1,5 @@
 <div>
-<img src="https:///ayeai.xyz/site/wp-content/uploads/2019/08/ayeai-vision.jpg?w=640&ssl=1"></img>
+<img src="https://ayeai.xyz/site/wp-content/uploads/2019/08/ayeai-vision.jpg"></img>
 </div>
 
 # AyeVDI - Virtualized Deployment IaaS 

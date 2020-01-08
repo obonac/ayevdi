@@ -1,10 +1,3 @@
-<div>
-<img src="https://ayeai.xyz/site/wp-content/uploads/2019/08/ayeai-vision.jpg" style="display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;"></img>
-</div>
-
 # AyeVDI - Virtualized Deployment IaaS 
 (Infrastructure as a Service for Scientific and Cognitive Computing - IaaS2C2 -> IaaS2aC2 -> IaSaC)
 
@@ -262,4 +255,9 @@ export ayescript=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ay
 See the link https://zwischenzugs.com/2016/08/29/bash-to-python-converter/ and convert the sripts here
 
 ### Convert to Perl, Javascript / Node.js
+
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 

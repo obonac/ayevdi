@@ -1,7 +1,7 @@
 # AyeVDI - Virtualized Deployment IaaS 
 (Infrastructure as a Service for Scientific and Cognitive Computing - IaaS2C2 -> IaaS2aC2 -> IaSaC)
 
-### AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
+#### AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
 
 Copyright (C) 2019-2020 Abhishek Choudhary<br>
 AyeVDI is claimed as a trademark and a businessmark by
@@ -89,13 +89,13 @@ ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${
 
 #### Second step : Setting up the node services
 ```
-sourcefrom http://bit.ly/ayevdi-node-setup
+sourcefrom https://bit.ly/ayevdi-node-setup
 ```
 Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
 
 Really? Yes. That's it. Do drop us a kind word if you liked it. Of course, donations and crowd funding offers are welcome. Please see https://ayeai.xyz for details
 
-One more thing could be useful - getting some persistent storage in emphemeral sessions. While most storage cloud vendors will tell you how to configure their services on a system, we are creating OSTs to 
+One more thing could be useful - getting some persistent storage in emphemeral sessions. While most storage cloud vendors will tell you how to configure their services on a system, we are creating OSTs to make your experience seamless.
 
 #### Activating persistent disk services
 Note: AyeAI does not guarantee success of these integrations and does not control other vendors services. Check original instructions from the provider. Any access must be in absolute compliance of the laws and of the license agreements with the provider. The usage of services from other vendors does not impact terms of license from AyeAI and AyeAI does not represent the third party vendors in any manner.
@@ -105,28 +105,47 @@ Example: Yandex Disk
 export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedisk-proact
 ```
 
-## Advanced setup
+## Advanced setup and configurations
 Now let us look at some advanced features and fine grained configuration.
 
-## Setup front-end
-Note: TBD - OST needed for scripted deployment of profiles and scenarios
+### Utils
+Some quick utilities for both AyeVDI users and developers 
 
-## Utils
-
-### Get lines and md5sum
+#### Get lines and md5sum
 ```
 (cat | tee >(echo LINES=$(wc -l)) >(echo CSUM=$(md5sum)) >/dev/null) && echo ""
 ```
 
-### Release fatal error lockdown
+#### Release fatal error lockdown
 TBD: This should be replaced with field data gathering utility (including confidentialilty review)
 ```
 rm ${HOME}/.ayevdi/ayevdi-error.fatal
 ```
 
-bit.ly mappings
-https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Setup front-end
+Note: TBD - OST needed for scripted deployment of profiles and scenarios
+
+### bit.ly mappings
+https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+TBD: Complete list
 
 ## The immediate next sections are being captured into OSTs (one step tricks). Please skip ahead to launching the server
 
@@ -156,6 +175,13 @@ export ayeport=4203 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/mast
 ```
 export ayeport=4203 && shellinaboxd --css /etc/shellinabox/options-enabled/00_White\ On\ Black.css -p ${ayeport} -s "/:$(id -u):$(id -g):${PWD}:/bin/bash -c 'wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk -O ${HOME}/.ayevdi/ayevdi-sched-rr.awk >/dev/null 2>&1 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-${ayeport} 2>/dev/null | uudecode | uudecode | gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null | bash - ) 2>/dev/null -d | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} -f ${HOME}/.ayevdi/ayevdi-sched-rr.awk'" --disable-ssl
 ```
+
+
+
+
+
+
+
 
 ## AyeVDI in container
 Note: Does not run nested

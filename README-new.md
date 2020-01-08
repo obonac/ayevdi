@@ -69,9 +69,24 @@ Users     |   |   |   |   |   -Images         |        -----------    |         
 Users
 ```
 
-(TBD) Write about AyeSh, md5 checksum and fatal error markdown,bitly mappings, OSTs
-
 ## Getting started
+
+## Quick start guide
+
+### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
+Copy the following command and execute on a Ubuntu 18.04 LTS system. It can be on cloud or an on-premise (private) system. AyeVDI scales across all scenarios. (We will show you soon how AyeVPN allows you to create a hybrid cloud based deployment easily- though that's another "coming soon" feature). (Note: For defence and other non internet use cases we are rolling out DVD and BlueRay releases, subject to legal compliance)
+
+So get going - just copy the following command onto an internet connected system 
+```
+curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup | bash -
+```
+
+Caution: Please backup your data including server / system configuartion prior to executing any of the software / tools given on this page. There are no warranties whatsoever and you are using these software / tools at your own risk, subject to GNU GPL v2 license and applicable copyright notices.
+
+Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
+
+## Setup front-end
+Note: TBD - OST needed for scripted deployment of profiles and scenarios
 
 ### Enabling web OSTs
 TBD: Improve security at this stage with AyeQu
@@ -103,23 +118,6 @@ rm ${HOME}/.ayevdi/ayevdi-error.fatal
 bit.ly mappings
 https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
 
-
-## Quick start guide
-
-### 1 step setup - takes less than 5 mins (unless you are accessing internet from a Mars settlement!)
-Copy the following command and execute on a Ubuntu 18.04 LTS system. It can be on cloud or an on-premise (private) system. AyeVDI scales across all scenarios. (We will show you soon how AyeVPN allows you to create a hybrid cloud based deployment easily- though that's another "coming soon" feature). (Note: For defence and other non internet use cases we are rolling out DVD and BlueRay releases, subject to legal compliance)
-
-So get going - just copy the following command onto an internet connected system 
-```
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup | bash -
-```
-
-Caution: Please backup your data including server / system configuartion prior to executing any of the software / tools given on this page. There are no warranties whatsoever and you are using these software / tools at your own risk, subject to GNU GPL v2 license and applicable copyright notices.
-
-Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
-
-## Setup front-end
-Note: TBD - OST needed for scripted deployment of profiles and scenarios
 
 ## The immediate next sections are being captured into OSTs (one step tricks). Please skip ahead to launching the server
 

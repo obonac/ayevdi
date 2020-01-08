@@ -29,4 +29,6 @@ mkdir -p /home/"${USER}"/.docker
 sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R
 sudo chmod g+rwx "/home/"$USER}"/.docker" -R
 
+echo Running ayevdi-docker-stub
 sourcefrom https://bit.ly/ayevdi-docker-stub
+echo Done ayevdi-docker-stub

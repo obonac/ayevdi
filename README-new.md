@@ -2,15 +2,9 @@
 
 >
 
-<iframe
+<iframe src="ayeai.xyz"></iframe>
 
-src="ayeai.xyz"><
-
-/iframe>
-
-<
-
-/div>
+</div>
 
 <table>
     <tr>

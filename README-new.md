@@ -1,17 +1,6 @@
 <div>
-```
-<iframe src="https://ayeai.xyz/site"></iframe>
-```
-<img src="https://i0.wp.com/ayeai.xyz/site/wp-content/uploads/2019/08/ayeai-vision.jpg?w=640&ssl=1"></img>
-
+<img src="https:///ayeai.xyz/site/wp-content/uploads/2019/08/ayeai-vision.jpg?w=640&ssl=1"></img>
 </div>
-
-<table>
-    <tr>
-        <td>Foo<iframe src="ayeai.xyz"></iframe></td>
-    </tr>
-</table>
-
 
 # AyeVDI - Virtualized Deployment IaaS 
 (Infrastructure as a Service for Scientific and Cognitive Computing - IaaS2C2 -> IaaS2aC2 -> IaSaC)

@@ -3,9 +3,9 @@
 
 ### AyeVDI - Virtualized Deployment IaaS (VDI) by AyeAI
 
-Copyright (C) 2019-2020 Abhishek Choudhary
+Copyright (C) 2019-2020 Abhishek Choudhary<br>
 AyeVDI is claimed as a trademark and a businessmark by
-the author in Inida and other geographies.
+the author in Inida and other geographies.<br>
 
 NOTICE:
 To all WHO IT MAY CONCERN,
@@ -36,9 +36,9 @@ The core is encapsulated into AyeVDI nodes. AyeVDI nodes are essentially the min
 
 The nodes stand behind load balancers which keep the service levels optimal.
 
-The highest level abstraction is of the zoners - AI based optimizers for AyeVDI, which are also in the pipeline for near future releases.
+The highest level abstraction is of the zoners / orchetrators - AI based optimizers for AyeVDI, which are also in the pipeline for near future releases.
 
-(TBD) write necessary information about Ayesh,checksum and fatal error markdown,bitly mappings OSTs
+(TBD) Write about AyeSh, md5 checksum and fatal error markdown,bitly mappings, OSTs
 
 ## Getting started
 

@@ -84,10 +84,10 @@ Note: For non-internet deployments we are rolling out DVD and BlueRay releases, 
 #### First step : Enable AyeSec secure web scripts
 Note: The security at this stage is being improved AyeQu (Quantum Computing utilities by AyeAI)
 ```
-ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
+wget -q -O- bit.ly/ayevdi-s1 | . /dev/stdin
 ```
 
-#### Second step : Setting up the node services
+#### Second step : Setting up the node services - need to do this only once per node
 ```
 sourcefrom https://bit.ly/ayevdi-node-setup
 ```

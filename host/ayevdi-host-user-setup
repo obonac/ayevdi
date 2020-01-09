@@ -20,9 +20,9 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# TBD: Check dependencies on sudoer's privilige
-# sudo usermod -aG sudo ${uuid}
-# newgrp sudo
+# NOTE: Earlier versions of this script gave sudo privs
+# WARNING: Do NOT give sudo access to users from AyeVDI scripts
+# TODO: Write a filter to test whether any AyeVDI script give sudo privs
 
 # These commands should not be run at every instance - only the first time
 if [ ! -e ${HOME}/.ayevdi/ayevdi-host-user-setup.done ]

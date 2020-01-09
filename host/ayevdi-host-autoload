@@ -23,4 +23,4 @@ if [ 1 -gt $(cat ${HOME}/.bashrc | grep ayevdi-sfrom-init | wc -l) ]
 then
   echo 'if [ -x ${HOME}/.ayevdi ]; then ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}; fi' >>${HOME}/.bashrc
 fi
-echo "AyeVDI is set to autoload" | lolcat
+echo "AyeVDI is set to autoload" | lolcat -F 0.7 -S 2020 -p 20

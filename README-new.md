@@ -114,6 +114,14 @@ export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedis
 ## Advanced setup and configurations
 Now let us look at some advanced features and fine grained configuration.
 
+### Host level setup - useful for debug and test
+
+#### Setup a bare minimal AyeVDI system for remote shell and desktop from the host
+WARNING: This is only for R&D and is not a recommended production setup
+```
+sourcefrom https://bit.ly/ayevdi-setup-basic
+```
+
 ### Utils
 Some quick utilities for both AyeVDI users and developers 
 

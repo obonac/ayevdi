@@ -19,7 +19,7 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-if [ "${1}" == "" ]
+if [ "${2}" == "" ]
 then
 
   echo Usage: ayevdi-pool-create port repo-url
@@ -34,17 +34,17 @@ else
     mv ${HOME}/.ayevdi/repo/ayevdi ${HOME}/.ayevdi/repo/ayevdi_$(date +%s)
   fi
 
-  if [ "${2}" == "" ]
+  if [ "${3}" == "" ]
   then
     export ayevdi-repo=https://github.com/ayevdi/ayevdi
   else
-    export ayevdi-repo=${2}
+    export ayevdi-repo=${3}
   fi
   git clone ${ayevdi-repo} ${HOME}/.ayevdi/repo/ayevdi
   
   pushd ${HOME}/.ayevdi/repo/ayevdi
 
-  if [ -e pool/ayevdi-pool-${1} ]
+  if [ -e pool/ayevdi-pool-${2} ]
   then
 
     echo Warning: Pool exists - to remove pool use git rm
@@ -52,12 +52,12 @@ else
   else
 
     export pooltemp=$(tempfile) &&\
-    touch pool/ayevdi-pool-${1} &&\
+    touch pool/ayevdi-pool-${2} &&\
     vi $pooltemp && cat ${pooltemp} |\
     gpg --batch --passphrase $(sourcefrom https://bit.ly/ayevdi-passkey) -c - |\
     uuencode - |\
     uuencode - >pool/ayevdi-pool-${1} &&\
-    git add pool/ayevdi-pool-${1} &&\
+    git add pool/ayevdi-pool-${2} &&\
     git commit -m "Updated pool $ayepool" &&\
     git push &&\
     export pooltemp=$(date +%s)

@@ -127,6 +127,16 @@ sourcefrom https://bit.ly/ayevdi-setup-basic
 sourcefrom https://bit.ly/ayevdi-init
 ```
 
+### Working with AyeVDI pools
+Note: Pools are defined per exposed port / service. A single node may offer multiple ports.
+Replace the repo with the url to your clone
+
+
+#### Create a pool for dummy port 9999
+```
+sourcefrom http://bit.ly/ayevdi-pool-create 9999 https://github.com/ayevdi/ayevdi
+```
+
 ### Utils
 Some quick utilities for both AyeVDI users and developers 
 

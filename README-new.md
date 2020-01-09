@@ -118,8 +118,13 @@ Now let us look at some advanced features and fine grained configuration.
 
 #### Setup a bare minimal AyeVDI system for remote shell and desktop from the host
 WARNING: This is only for R&D and is not a recommended production setup
+NOTE: This OST can take quite a long time on a slow system, or on a low bandwidth network
 ```
 sourcefrom https://bit.ly/ayevdi-setup-basic
+```
+#### Launch a host based VNC session
+```
+sourcefrom https://bit.ly/ayevdi-init
 ```
 
 ### Utils

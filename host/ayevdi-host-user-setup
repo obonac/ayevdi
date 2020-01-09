@@ -41,12 +41,11 @@ then
   # Enable user to execute docker commands
   logger "Enabling docker privileges"
   sudo groupadd docker
-  sudo usermod -aG docker ${USER}
   mkdir -p /home/"${USER}"/.docker
   sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R
   sudo chmod g+rwx "/home/"${USER}"/.docker" -R
+  date +%s >${HOME}/.ayevdi/ayevdi-host-user-setup.done
+  sudo usermod -aG docker ${USER} &&\
+  logger "SUCCESS:CONFIG:docker privileges" &&\
   newgrp docker
-  docker ps &&\
-  date +%s >${HOME}/.ayevdi/ayevdi-host-user-setup.done &&\
-  logger "SUCCESS:CONFIG:docker privileges"
 fi

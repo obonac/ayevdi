@@ -19,6 +19,12 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
+if [ ! -e ${HOME}/.ayevdi/ayevdi-passkey.done ]
+then
+  sudo apt install sharutils
+  date +%s >${HOME}/.ayevdi/ayevdi-passkey.done
+fi
+
 mkdir -p ${HOME}/.ayevdi &&\
 touch ${HOME}/.ayevdi/ayepasskey &&\
 mv ${HOME}/.ayevdi/ayepasskey ${HOME}/.ayevdi/ayepasskey_$(date +%s) &&\

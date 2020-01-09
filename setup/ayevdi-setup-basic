@@ -1,3 +1,4 @@
+#!/bin/bash
 # AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
@@ -19,20 +20,26 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-#!/bin/bash
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt autoremove -y
-#sudo apt install edubuntu-desktop -y -q
-sudo apt install ubuntu-mate-desktop -y -q
-sudo apt install shellinabox novnc apache2 -y -q
-sudo apt install tigervnc-common tigervnc-xorg-extension tigervnc-standalone-server -y -q
-sudo apt install curl git wget expect -y -q
-mkdir -p ~/.vnc
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample > ~/.vnc/xstartup
+# Well this needs to be run only once
+if [ ! -e ${HOME}/.ayevdi/ayevdi-setup-basic.done ]
+then
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo apt autoremove -y
+  # To install the edubuntu desktop uncomment the next line
+  #sudo apt install edubuntu-desktop -y -q
+  sudo apt install ubuntu-mate-desktop -y -q
+  sudo apt install shellinabox novnc apache2 -y -q
+  sudo apt install tigervnc-common tigervnc-xorg-extension tigervnc-standalone-server -y -q
+  sudo apt install curl git wget expect -y -q
+  mkdir -p ${HOME}/.vnc
+  curl https://bit.ly/2uvks4J >${HOME}/.vnc/xstartup
 
-sudo adduser --disabled-password --gecos "" ayeuser && (echo ayeuser:ayeaye | sudo chpasswd)
+  sudo adduser --disabled-password --gecos "" ayeuser && (echo ayeuser:ayeaye | sudo chpasswd)
+  date +%s >${HOME}/.ayevdi/ayevdi-setup-basic.done
+fi
 
+# TODO: Offer ramdomization on these
 prog=/usr/bin/vncpasswd
 export mypass="q1w2e3"
 export vpass="123456"

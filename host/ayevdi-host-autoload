@@ -21,6 +21,6 @@ fi
 
 if [ 1 -gt $(cat ${HOME}/.bashrc | grep ayevdi-s1 | wc -l) ]
 then
-  echo 'if [ -x ${HOME}/.ayevdi ]; then wget -q -O- https://bit.ly/ayevdi-s1 | . /dev/stdin; fi' >>${HOME}/.bashrc
+  echo 'if [ -x ${HOME}/.ayevdi ]; then ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}; fi' >>${HOME}/.bashrc
 fi
 echo "AyeVDI is set to autoload" | lolcat

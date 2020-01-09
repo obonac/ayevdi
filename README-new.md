@@ -84,7 +84,7 @@ Note: For non-internet deployments we are rolling out DVD and BlueRay releases, 
 #### First step : Enable AyeSec secure web scripts
 Note: The security at this stage is being improved AyeQu (Quantum Computing utilities by AyeAI)
 ```
-wget -q -O- bit.ly/ayevdi-s1 | . /dev/stdin
+wget -q -O- https://bit.ly/ayevdi-s1 | . /dev/stdin
 ```
 
 #### Second step : Setting up the node services - need to do this only once per node

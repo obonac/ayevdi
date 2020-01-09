@@ -1,3 +1,4 @@
+#!/bin/bash
 # AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]

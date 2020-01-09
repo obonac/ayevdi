@@ -21,23 +21,37 @@ fi
 
 if [ "${1}" == "" ]
 then
-    echo Usage: ayevdi-pool-edit port
 
-elif [ -e ayevdi-pool-${1} ]
-then
-    echo Warning: Pool exists - to remove pool use git rm
+  echo Usage: ayevdi-pool-create port
+
 else
 
-export pooltemp=$(tempfile) &&\
-touch ayevdi-pool-${1} &&\
-vi $pooltemp && cat ${pooltemp} |\
-gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null |\
-bash - ) -c - |\
-uuencode - |\
-uuencode - > ayevdi-pool-${1} &&\
-git add ayevdi-pool-${1} &&\
-git commit -m "Updated pool $ayepool" &&\
-git push &&\
-export pooltemp=$RANDOM
+  mkdir -p ${HOME}/.ayevdi/repo
+
+  #Lets ensure we've got a fresh clone of the repo
+  if [ -e ${HOME}/.ayevdi/repo/ayevdi ]
+  then
+    mv ${HOME}/.ayevdi/repo/ayevdi ${HOME}/.ayevdi/repo/ayevdi_$(date +%s)
+  fi
+
+  git clone https://github.com/ayevdi/ayevdi ${HOME}/.ayevdi/repo/ayevdi
+
+  if [ -e ayevdi-pool-${1} ]
+  then
+
+    echo Warning: Pool exists - to remove pool use git rm
+
+  else
+
+    export pooltemp=$(tempfile) &&\
+    touch ayevdi-pool-${1} &&\
+    vi $pooltemp && cat ${pooltemp} |\
+    gpg --batch --passphrase $(sourcefrom https://bit.ly/ayevdi-passkey) -c - |\
+    uuencode - |\
+    uuencode - >ayevdi-pool-${1} &&\
+    git add ayevdi-pool-${1} &&\
+    git commit -m "Updated pool $ayepool" &&\
+    git push &&\
+    export pooltemp=$RANDOM
 
 fi

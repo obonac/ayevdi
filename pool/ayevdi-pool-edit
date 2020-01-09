@@ -60,8 +60,6 @@ else
   git push &&\
   export pooltemp=$(date +%s)
 
-  fi
-
   if [ "$(dirs)" != "~" ]
   then
     popd

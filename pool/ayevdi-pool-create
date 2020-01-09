@@ -64,7 +64,7 @@ else
 
   fi
 
-  if [ ! $(dirs) == "~" ]
+  if [ "$(dirs)" != "~" ]
   then
     popd
   fi

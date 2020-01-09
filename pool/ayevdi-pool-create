@@ -60,6 +60,8 @@ else
     git push &&\
     export pooltemp=$(date +%s)
 
+  fi
+
 fi
 
 popd

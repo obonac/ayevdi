@@ -28,4 +28,6 @@ fi
 
 timestamp=$(date +%s)
 timedelta=$(date +"%z")
-echo AYEVDI:LOG:${timestamp}:${timedelta}:$(ps ax | grep $$ | grep bash | cut -d' ' -f3):$@ >> ${HOME}/.ayevdi/ayevdi-log
+logip=$(last -a | head -1 | rev | cut -d' ' -f1 | rev)
+logtty=$(ps ax | grep $$ | grep bash | cut -d' ' -f3)
+echo AYEVDI:LOG:${timestamp}:${timedelta}:${logip}:${logtty}:$@ >> ${HOME}/.ayevdi/ayevdi-log

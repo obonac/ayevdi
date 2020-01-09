@@ -33,7 +33,7 @@ then
   sudo apt install tigervnc-common tigervnc-xorg-extension tigervnc-standalone-server -y -q
   sudo apt install curl git wget expect -y -q
   mkdir -p ${HOME}/.vnc
-  curl https://bit.ly/2uvks4J >${HOME}/.vnc/xstartup
+  wget -O- -q https://bit.ly/xstartup-sample >${HOME}/.vnc/xstartup
 
   sudo adduser --disabled-password --gecos "" ayeuser && (echo ayeuser:ayeaye | sudo chpasswd)
   date +%s >${HOME}/.ayevdi/ayevdi-setup-basic.done

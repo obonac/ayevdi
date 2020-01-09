@@ -30,5 +30,5 @@ fi
 timestamp=$(date +%s)
 timedelta=$(date +"%z")
 logip=$(last -a | head -1 | rev | cut -d' ' -f1 | rev)
-logtty=$(last | cut -d' ' -f2)
+logtty=$(last | head -1 | cut -d' ' -f2)
 echo AYEVDI:LOG:${timestamp}:${timedelta}:${logip}:${logtty}:$@ >> ${HOME}/.ayevdi/ayevdi-log

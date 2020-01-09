@@ -132,10 +132,19 @@ Note: Pools are defined per exposed port / service. A single node may offer mult
 Replace the repo with the url to your clone
 
 
-#### Create a pool for dummy port 9999
+#### Create a pool for port 9999
 ```
-sourcefrom http://bit.ly/ayevdi-pool-create 9999 https://github.com/ayevdi/ayevdi
+sourcefrom https://bit.ly/ayevdi-pool-create 9999 https://github.com/ayevdi/ayevdi
 ```
+#### Edit the pool for port 9999
+```
+sourcefrom https://bit.ly/ayevdi-pool-edit 9999 https://github.com/ayevdi/ayevdi
+```
+#### Copy a pool from port 9999 to port 9998
+```
+sourcefrom https://bit.ly/ayevdi-pool-copy 9999 9998 https://github.com/ayevdi/ayevdi
+```
+
 
 ### Utils
 Some quick utilities for both AyeVDI users and developers 

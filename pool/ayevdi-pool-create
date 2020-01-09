@@ -56,7 +56,7 @@ else
     vi $pooltemp && cat ${pooltemp} |\
     gpg --batch --passphrase $(sourcefrom https://bit.ly/ayevdi-passkey) -c - |\
     uuencode - |\
-    uuencode - >pool/ayevdi-pool-${1} &&\
+    uuencode - >pool/ayevdi-pool-${2} &&\
     git add pool/ayevdi-pool-${2} &&\
     git commit -m "Updated pool $ayepool" &&\
     git push &&\
@@ -64,7 +64,7 @@ else
 
   fi
 
-  if [ $(dirs) != "~" ]
+  if [ ! $(dirs) == "~" ]
   then
     popd
   fi

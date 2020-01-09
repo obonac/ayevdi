@@ -47,6 +47,6 @@ then
   sudo chmod g+rwx "/home/"${USER}"/.docker" -R
   newgrp docker
   docker ps &&\
-  date +%s >${HOME}/.ayevdi/ayevdi-docker.done &&\
+  date +%s >${HOME}/.ayevdi/ayevdi-host-user-setup.done &&\
   logger "SUCCESS:CONFIG:docker privileges"
 fi

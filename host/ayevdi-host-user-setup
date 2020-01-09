@@ -19,11 +19,17 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-export uuid=${USER}
-sudo usermod -aG sudo ${uuid}
-newgrp sudo
-sudo usermod  -aG docker ${uuid}
+# TBD: Check dependencies on sudoer's privilige
+# sudo usermod -aG sudo ${uuid}
+# newgrp sudo
+
+logger "Enabling docker privileges"
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+mkdir -p /home/"${USER}"/.docker
+sudo chown "${USER}":"${USER}" /home/"$USER"/.docker -R
+sudo chmod g+rwx "/home/"${USER}"/.docker" -R
 newgrp docker
-sudo mkdir -p /home/"${uuid}"/.docker
-sudo chown "${uuid}":"${uuid}" /home/"${uuid}"/.docker -R
-sudo chmod g+rwx /home/"${uuid}"/.docker -R
+docker ps &&\
+date +%s >${HOME}/.ayevdi/ayevdi-docker.done &&\
+logger "SUCCESS:CONFIG:docker privileges"

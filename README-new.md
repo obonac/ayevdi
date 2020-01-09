@@ -315,12 +315,6 @@ curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-run
 while [ 1 ]; do clear; sudo docker ps --format "{{.ID}} {{.Labels}}"; sleep 1; done
 ```
 
-## User Utilities
-
-### Use Yandex-Disk for persistent storage
-```
-export ayescript=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/disk/ayevdi-disk-yandex -O ${ayescript} && source ${ayescript} && export ayescript=$(date +%s)
-```
 
 ## Internship projects
 

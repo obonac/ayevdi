@@ -84,7 +84,7 @@ Note: For non-internet deployments we are rolling out DVD and BlueRay releases, 
 #### First step : Enable AyeSec secure web scripts
 Note: The security at this stage is being improved AyeQu (Quantum Computing utilities by AyeAI)
 ```
-wget -q -O- https://bit.ly/ayevdi-s1 | . /dev/stdin
+ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
 ```
 
 #### Second step : Setting up the node services - need to do this only once per node
@@ -92,6 +92,12 @@ wget -q -O- https://bit.ly/ayevdi-s1 | . /dev/stdin
 sourcefrom https://bit.ly/ayevdi-node-setup
 ```
 Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
+
+#### Do you want to autoload AyeVDI - well the following OST can take care of it
+Notice: This will ayesh init to your .bashrc
+```
+sourcefrom https://bit.ly/ayevdi-host-autoload
+```
 
 Really? Yes. That's it. Do drop us a kind word if you liked it. Of course, donations and crowd funding offers are welcome. Please see https://ayeai.xyz for details
 

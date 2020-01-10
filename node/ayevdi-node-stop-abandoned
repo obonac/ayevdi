@@ -45,7 +45,7 @@ do
   # TBD: Install lsof or kill container if lsof not found?
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
   export lsofstat=$(docker exec -it ${n} bash -lci 'which lsof')
-  echo "${lsofstat}" "/usr/bin/lsof"
+  echo "where lsof on " ${n} "${lsofstat}"
   if [ "${lsofstat}" == "/usr/bin/lsof" ]
   then
     echo Found lsof on ${n}... Compliant image!

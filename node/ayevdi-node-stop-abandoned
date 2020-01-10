@@ -31,9 +31,10 @@ do
   # Prevent infant mortality (allow time for containers to start-up and connect)
   # TODO: This should be tuned to a fair interval
   # TODO: Tuning here and elsewhere should be AI driven - apply GAs
-  export docktime=$(cat ${tempstats} | grep $n | cut -d',' -f2)
-  export ayetime=$(cat ${tempstats} | grep $n | cut -d',' -f3)
-
+  export docktime=$(cat ${tempstats} | grep ${cntr} | cut -d',' -f2)
+  export ayetime=$(cat ${tempstats} | grep ${cntr} | cut -d',' -f3)
+  echo ${cntr},${docktime},${ayetime}
+  
   # Under high usage it 'can' take a few minutes to provide VDI
   # We are setting a nominal value of 3 mins = 180 secs
   # TODO: Tune this parameter
@@ -41,6 +42,8 @@ do
   then
     if [ ${docktime} -lt 60 ]
     then
+      logger "POLICY:ABANDON:INFANT:${cntr} docktime=${docktime} ayetime=${ayetime}"
+      echo "Skipping ${cntr} docktime=${docktime} ayetime=${ayetime}"
       continue
     fi
   fi
@@ -61,6 +64,7 @@ do
   
   export tcpstat=$(tempfile)
   docker exec -it ${cntr} lsof -ai tcp >${tcpstat}
+  echo ${cntr} lsof returned $(cat ${tcpstat} | wc -l) lines
   export est=$(cat ${tcpstat} | grep vnc | grep ESTABLISHED | wc -l)
   export vnc=$(cat ${tcpstat} | grep vnc | wc -l)
   export usr=$(docker exec -it ${cntr} users | wc -l)

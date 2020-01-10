@@ -46,7 +46,7 @@ docker exec -itd ayevdi apt auto-remove -y
 docker exec -itd ayevdi apt install -y expect sudo curl wget git
 docker exec -itd ayevdi 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
 
-export cntr_id=$(docker ps -a | grep ^ayevdi$ | cut -d' ' -f1)
+export cntr_id=$(docker ps -a | grep ayevdi$ | cut -d' ' -f1)
 export cntr_tag=$(date +%s)
 docker commit -m "Created ayevdi" -a "Team AyeAI" $cntr_id ayeai/ayevdi:$cntr_tag
 

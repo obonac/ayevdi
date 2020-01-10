@@ -54,6 +54,7 @@ do
   echo "where? lsof on " ${cntr} "${tmplsofstat}"
   # TBD: Why is the following form not working?
   #     if [ "${tmplsofstat}" = "/usr/bin/lsof" ]; then
+  # TODO: RCA the above issue
   if [ $(echo ${tmplsofstat} | grep lsof | wc -l) -gt 0 ]
   then
     echo Found lsof on ${cntr}... Compliant image!

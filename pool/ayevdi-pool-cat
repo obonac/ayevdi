@@ -43,7 +43,7 @@ else
   fi
   git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi
   
-  pushd ${HOME}/.ayevdi/repo/ayevdi
+  pushd ${HOME}/.ayevdi/repo/ayevdi >/dev/null
 
   cat pool/ayevdi-pool-${2} |\
   uudecode |\
@@ -52,7 +52,7 @@ else
 
   if [ "$(dirs)" != "~" ]
   then
-    popd
+    popd >/dev/null
   fi
   
 fi

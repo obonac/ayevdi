@@ -61,5 +61,6 @@ export cntr_tag=$(date +%s)
 docker commit -m "Created ayevdi" -a "Team AyeAI" $cntr_id ayeai/ayevdi:$cntr_tag
 
 docker images | grep $cntr_tag
-docker login
+docker login &&\
 docker push ayeai/ayevdi:$cntr_tag
+

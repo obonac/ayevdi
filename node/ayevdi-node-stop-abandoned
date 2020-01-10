@@ -37,7 +37,15 @@ do
     fi
   fi
 
-  docker exec -it ${n} apt install -y lsof
+  # TBD: Install lsof or kill container if lsof not found?
+  # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
+  if [ ! -e /usr/bin/lsof ]
+  then
+    echo Installing lsof on ${n}... Rouge image?
+    docker exec -it ${n} apt install -y lsof   
+    logger "POLICY:ABANDON:LSOF:${n} Installing lsof... Rouge image?"
+  fi
+  
   export est=$(docker exec -it ${n} lsof -ai tcp | grep vnc | grep ESTABLISHED | wc -l)
   export vnc=$(docker exec -it ${n} lsof -ai tcp | grep vnc | wc -l)
   export usr=$(docker exec -it ${n} users | wc -l)

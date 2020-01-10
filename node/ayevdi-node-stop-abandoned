@@ -1,3 +1,4 @@
+#!/bin/bash
 # AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 # AYESEC:STATUTORY_HEADER
 if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
@@ -29,6 +30,7 @@ do
   # TODO: Tuning here and elsewhere should be AI driven - apply GAs
   export docktime=$(cat ${tempstats} | grep $n | cut -d',' -f2)
   export ayetime=$(cat ${tempstats} | grep $n | cut -d',' -f3)
+
   # Under high usage it 'can' take a few minutes to provide VDI
   # We are setting a nominal value of 3 mins = 180 secs
   # TODO: Tune this parameter
@@ -54,8 +56,10 @@ do
     logger "POLICY:ABANDON:LSOF:${n} Installing lsof... Rouge image?"
   fi
   
-  export est=$(docker exec -it ${n} lsof -ai tcp | grep vnc | grep ESTABLISHED | wc -l)
-  export vnc=$(docker exec -it ${n} lsof -ai tcp | grep vnc | wc -l)
+  export tcpstat=$(tempfile)
+  docker exec -it ${n} lsof -ai tcp >${tcpstat}
+  export est=$(cat ${tcpstat} | grep vnc | grep ESTABLISHED | wc -l)
+  export vnc=$(cat ${tcpstat} | grep vnc | wc -l)
   export usr=$(docker exec -it ${n} users | wc -l)
   echo ${n} vnc=${vnc} est=${est} usr=${usr}
   if [ ${vnc} -gt 0 ]

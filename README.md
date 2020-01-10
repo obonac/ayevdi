@@ -154,7 +154,7 @@ sourcefrom https://bit.ly/ayevdi-pool-rm
 ```
 #### Mark all pools for deletion
 ```
-for n in $(sourcefrom https://bit.ly/ayevdi-pool-ls); do sourcefrom https://bit.ly/ayevdi-pool-rm $n; done
+sourcefrom https://bit.ly/ayevdi-pool-rm-all
 ```
 ### Utils
 Some quick utilities for both AyeVDI users and developers 

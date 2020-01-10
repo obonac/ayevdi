@@ -52,14 +52,14 @@ do
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
   export tmplsofstat=$(docker exec -it ${cntr} which lsof)
   echo "where? lsof on " ${cntr} "${tmplsofstat}"
-  if [ "${tmplsofstat}" != "/usr/bin/lsof" ]
+  if [[ "${tmplsofstat}" == "/usr/bin/lsof" ]]
   then
+    echo Found lsof on ${cntr}... Compliant image!
+    logger "POLICY:ABANDON:LSOF:${cntr} Found lsof on ${cntr}... Compliant image!"
+  else
     echo Installing lsof on ${cntr}... Rouge image?
     docker exec -it ${cntr} apt install -y lsof   
     logger "POLICY:ABANDON:LSOF:${cntr} Installing lsof... Rouge image?"
-  else
-    echo Found lsof on ${cntr}... Compliant image!
-    logger "POLICY:ABANDON:LSOF:${cntr} Found lsof on ${cntr}... Compliant image!"
   fi
   
   export tcpstat=$(tempfile)

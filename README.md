@@ -174,6 +174,14 @@ TBD: This should be replaced with field data gathering utility (including confid
 rm ${HOME}/.ayevdi/ayevdi-error.fatal
 ```
 
+### Testing
+
+#### Test rr scheduler algo and integration
+NOTE: This requires a pool for port 9999 to have been created. It can be a dummy pool
+```
+export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)"
+```
+
 ```
 
 

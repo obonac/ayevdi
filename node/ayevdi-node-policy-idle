@@ -22,8 +22,10 @@ fi
 # NOTE: This uses the triggering of the screen saver to find idle status
 # TODO: Add in appropriate activity trackers that allow non GUI instances to be monitored
 
+echo Looking for idle containers
 for n in $(docker ps -q)
 do
+  echo "Trying " ${n}
   export tmpres=$(tempfile)
   docker exec -it ${n} bash -lci 'export DISPLAY=:1 && mate-screensaver-command -q' >${tmpres}
   export tmpstat=$(tempfile)

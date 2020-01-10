@@ -44,10 +44,10 @@ else
   
   pushd ${HOME}/.ayevdi/repo/ayevdi
 
-  if [ -e pool/ayevdi-pool-${2} ]
+  if [ ! -e pool/ayevdi-pool-${2} ]
   then
 
-    echo Warning: Pool exists - to remove pool use git rm
+    echo Warning: Pool does not exist
 
   else
 

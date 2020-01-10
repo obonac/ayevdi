@@ -52,7 +52,7 @@ do
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
   export lsofstat=$(docker exec -it ${cntr} which lsof)
   echo "where? lsof on " ${cntr} "${lsofstat}"
-  if [ "${lsofstat}" == "/usr/bin/lsof" ]
+  if [ "${lsofstat}"=="/usr/bin/lsof" ]
   then
     echo Found lsof on ${cntr}... Compliant image!
     logger "POLICY:ABANDON:LSOF:${cntr} Found lsof on ${cntr}... Compliant image!"

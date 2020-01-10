@@ -29,22 +29,24 @@ else
 
   mkdir -p ${HOME}/.ayevdi/repo
 
-  #Lets ensure we've got a fresh clone of the repo
-  if [ -e ${HOME}/.ayevdi/repo/ayevdi ]
-  then
-    mv ${HOME}/.ayevdi/repo/ayevdi ${HOME}/.ayevdi/repo/ayevdi_$(date +%s)
-  fi
-
+  #We don't need a fresh clone unless none exist
   if [ "${3}" == "" ]
   then
     export ayevdi_repo=https://github.com/ayevdi/ayevdi
   else
     export ayevdi_repo=${3}
   fi
-  git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi >/dev/null
+  
+  if [ ! -e ${HOME}/.ayevdi/repo/ayevdi ]
+  then
+    git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi >/dev/null
+  fi
   
   pushd ${HOME}/.ayevdi/repo/ayevdi >/dev/null
-
+  
+  # We need the latest copy of the file from upstream
+  git checkout pool/ayevdi-pool-${2} >/dev/null
+  
   cat pool/ayevdi-pool-${2} |\
   uudecode |\
   uudecode |\

@@ -29,7 +29,7 @@ then
   # hence, it is best to execute helper scripts and restore original $ayescript
   export ayetemp=${ayescript}
   
-  validator ${ayescript} >${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) 
+  validator ${ayescript} >${HOME}/.ayevdi/validator/ayevdi-validator.$(basename ${ayetemp}) 
   export ayescript=${ayetemp}
   cat ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayetemp}) | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];
   then
@@ -42,7 +42,7 @@ then
     logger "Aborting on AYESEC:ERROR"
     export ayescript=${ayetemp}
     echo "Aborting on AYESEC:ERROR"
-    cp ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.fatal
+    cp ${HOME}/.ayevdi/validator/ayevdi-validator.$(basename ${ayescript}) ${HOME}/.ayevdi/ayevdi-error.fatal
   else
     logger "Sourcing ${1} as ${ayetemp} with options $@"
     export ayescript=${ayetemp}

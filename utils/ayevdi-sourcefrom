@@ -28,7 +28,7 @@ then
   # namespace collision - bash does not support detection of such conflicts
   # hence, it is best to execute helper scripts and restore original $ayescript
   export ayetemp=${ayescript}
-  
+  mkdir -p ${HOME}/.ayevdi/validator
   validator ${ayescript} >${HOME}/.ayevdi/validator/ayevdi-validator.$(basename ${ayetemp}) 
   export ayescript=${ayetemp}
   cat ${HOME}/.ayevdi/validator/ayevdi-validator.$(basename ${ayetemp}) | (if [ 0 -lt $(grep AYESEC:ERROR | wc -l) ];

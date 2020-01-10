@@ -41,7 +41,7 @@ else
   else
     export ayevdi_repo=${3}
   fi
-  git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi
+  git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi >/dev/null
   
   pushd ${HOME}/.ayevdi/repo/ayevdi >/dev/null
 

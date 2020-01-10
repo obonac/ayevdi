@@ -19,7 +19,7 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-ayevdi_img_common=$(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common | bash -)
+ayevdi_img_common=$(sourcefrom http://bit.ly/ayevdi-image-common)
 docker pull ayeai/ayevdi:${ayevdi_img_common}
 
 export ayeuid=$(expr $(id -u ${USER}) + 12345)

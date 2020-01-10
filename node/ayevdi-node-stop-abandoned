@@ -20,7 +20,7 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-export tempstats=$(tempfile)
+export tempstats=`tempfile`
 sourcefrom https://bit.ly/ayevdi-node-runstats >${tempstats}
 
 for cntr in `docker ps -q`

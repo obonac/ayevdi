@@ -23,7 +23,7 @@ fi
 if [ "${2}" == "" ]
 then
 
-  echo Usage: ayevdi-pool-cat port repo-url
+  echo Usage: ayevdi-pool-ls port repo-url
 
 else
 

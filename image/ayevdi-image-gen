@@ -51,7 +51,7 @@ docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-mascot'
 # docker exec -it ayevdi /bin/bash
 
 # The ayevdi basic setup can take a while
-# docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-setup-basic' 
+docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-setup-basic' 
 
 # Clean up
 docker exec -it ayevdi bash -lci ' history -c'

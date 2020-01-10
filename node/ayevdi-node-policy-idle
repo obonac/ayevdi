@@ -19,13 +19,23 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# (C) Copyright 2019 Abhishek Choudhary
-# Released under GNU GPL v2 license only
+# NOTE: This uses the triggering of the screen saver to find idle status
+# TODO: Add in appropriate activity trackers that allow non GUI instances to be monitored
 
 for n in $(docker ps -q)
 do
-  if [ 0 -lt $(docker exec -it ${n} bash -c 'export DISPLAY=:1 && mate-screensaver-command -q' | tee >(grep 'is active') >(grep 'is being inhibited') >/dev/null | wc -l) ]
+  export tmpres=$(tempfile)
+  docker exec -it ${n} bash -lci 'export DISPLAY=:1 && mate-screensaver-command -q' >${tmpres}
+  export tmpstat=$(tempfile)
+  cat ${tempres} | grep 'is active' >${tmpstat}
+  cat ${tempres} | grep 'is being inhibited' >>${tmpstat}
+  if [ 0 -lt $(cat ${tmpstat} | wc -l) ]
   then
-    docker stop $n
+    docker stop ${n}
+    logger "POLICY:IDLE:Stopping ${n}"
+    echo "POLICY:IDLE:Stopping ${n}"
+  else
+    logger "POLICY:IDLE:Skipping ${n}"
+    echo "POLICY:IDLE:Skipping ${n}"
   fi
 done

@@ -40,12 +40,15 @@ docker exec -itd ayevdi apt upgrade -y
 docker exec -itd ayevdi apt auto-remove -y
 
 # Manual shell : TBD: Why?
-# echo Execute "\"apt install expect sudo curl wget git -y && (curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic | bash -) && exit\"" in the container 
+# echo Execute "\" && (sourcefrom https://bit.ly/ayevdi-setup-basic) && exit\"" in the container 
 # docker exec -it ayevdi /bin/bash
 
-export cntr_id=$(docker ps -a | grep ayevdi | cut -d' ' -f1)
+docker exec -itd ayevdi apt install -y expect sudo curl wget git
+docker exec -itd ayevdi 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+
+export cntr_id=$(docker ps -a | grep ^ayevdi$ | cut -d' ' -f1)
 export cntr_tag=$(date +%s)
-docker commit -m "Updated ayevdi" -a "Team AyeAI" $cntr_id ayeai/ayevdi:$cntr_tag
+docker commit -m "Created ayevdi" -a "Team AyeAI" $cntr_id ayeai/ayevdi:$cntr_tag
 
 docker images | grep $cntr_tag
 docker login

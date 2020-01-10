@@ -19,28 +19,29 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
+sourcefrom http://bit.ly/ayevdi-host-user-setup
+
+# Setup the system inside the container
+
 #TODO: Use docker-compose
-sudo apt install docker.io
-sudo systemctl enable docker
-
-sudo usermod  -aG docker $USER
-newgrp docker
-mkdir -p /home/"$USER"/.docker
-sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-sudo chmod g+rwx "$HOME/.docker" -R
-
 docker pull ubuntu
-echo Setup the system inside the container
-docker container stop $(docker container ls -aq)
-docker container rm ayevdi
-docker run --name ayevdi -dt ubuntu:latest
-docker exec ayevdi apt update -y
-docker exec ayevdi apt upgrade -y
-docker exec ayevdi apt auto-remove -y
 
-#Manual
-echo Execute "\"apt install expect sudo curl wget git -y && (curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic | bash -) && exit\"" in the container 
-docker exec -it ayevdi /bin/bash
+# Stop all running caintainers TBD: Why?
+#docker container stop $(docker container ls -aq)
+
+# Purge the container named ayevdi
+docker container stop ayevdi
+docker container rm ayevdi
+
+# Start a conatiner with latest Ubuntu - TBD: We needed 18.04 specifically?
+docker run --name ayevdi -dt ubuntu:latest
+docker exec -itd ayevdi apt update -y
+docker exec -itd ayevdi apt upgrade -y
+docker exec -itd ayevdi apt auto-remove -y
+
+# Manual shell : TBD: Why?
+# echo Execute "\"apt install expect sudo curl wget git -y && (curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic | bash -) && exit\"" in the container 
+# docker exec -it ayevdi /bin/bash
 
 export cntr_id=$(docker ps -a | grep ayevdi | cut -d' ' -f1)
 export cntr_tag=$(date +%s)

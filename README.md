@@ -114,22 +114,35 @@ export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedis
 ## Advanced setup and configurations
 Now let us look at some advanced features and fine grained configuration.
 
-### Host level setup - useful for debug and test
+### AyeVDI host based setup - useful for debug and test
 
 #### Setup a bare minimal AyeVDI system for remote shell and desktop from the host
 WARNING: This is only for R&D and is not a recommended production setup
 NOTE: This OST can take quite a long time on a slow system, or on a low bandwidth network
+Note: This is the original native ayevdi. Please see the updated docker based version.
+CAUTION: Do NOT execute this on a production server
 ```
 sourcefrom https://bit.ly/ayevdi-setup-basic
 ```
 #### Launch a host based GUI session
+Note: This will provide a GUI from the host on port 6080
 ```
 sourcefrom https://bit.ly/ayevdi-init
 ```
-#### Launch a host based shell session
+#### Launch a host based shell session on port 4203
 ```
-sourcefrom https://bit.ly/ayevdi-ayeuser-shell
+sourcefrom https://bit.ly/ayevdi-ayeuser-shell 4203
 ```
+
+### AyeVDI Images
+
+#### Create base image for AyeVDI
+Execute the following command to generate AyeVDI image.
+Note: This script requires user interaction. Push will only work with account auth
+```
+sourcefrom https://bit.ly/ayevdi-gen-image
+```
+
 
 ### Working with AyeVDI pools
 Note: Pools are defined per exposed port / service. A single node may offer multiple ports.
@@ -154,7 +167,7 @@ sourcefrom https://bit.ly/ayevdi-pool-ls
 ```
 #### Mark for deletion the pool for port 9999
 ```
-sourcefrom https://bit.ly/ayevdi-pool-rm
+sourcefrom https://bit.ly/ayevdi-pool-rm 9999
 ```
 #### Mark all pools for deletion
 ```
@@ -174,6 +187,17 @@ TBD: This should be replaced with field data gathering utility (including confid
 rm ${HOME}/.ayevdi/ayevdi-error.fatal
 ```
 
+### Building modules
+
+#### Shellinabox compilation
+```
+sourcefrom https://bit.ly/ayevdi-build-siab
+```
+#### Shellinabox installation
+```
+sudo dpkg -r shellinabox && sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
+```
+
 ### Testing
 
 #### Test rr scheduler algo and integration
@@ -181,6 +205,15 @@ NOTE: This requires a pool for port 9999 to have been created. It can be a dummy
 ```
 export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)"
 ```
+
+### bit.ly mappings
+https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+
+TODO: Complete the list
+TODO: Need OSTs for migrating to different servers, repo-hosts, url shorteners, across cloud providers etc.
+TODO: Enable local hosting / OSTs to build infra from scratch
+
+
 
 ```
 
@@ -203,34 +236,8 @@ export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | aw
 ## Setup front-end
 Note: TBD - OST needed for scripted deployment of profiles and scenarios
 
-### bit.ly mappings
-https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
-TBD: Complete list
-
 ## The immediate next sections are being captured into OSTs (one step tricks). Please skip ahead to launching the server
 
-### Install packages
-```
-sudo apt install sharutils gpg && wget https://github.com/ayevdi/ayevdi/releases/download/v0.1-alpha/shellinabox_2.21_amd64.deb && sudo dpkg -r shellinabox && sudo dpkg -i ./shellinabox_2.21_amd64.deb
-```
-### Generate keys
-```
-gpg --generate-key
-```
-### Generate passphrase
-```
-export passfile=$(tempfile) && curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen > ${passfile} && source ${passfile} && export passfile=$(date +%s)
-```
-### Configure pool nodes
-Note:Needed for each deployment
-```
-git clone https://github.com/ayevdi/ayevdi && cd ayevdi && ls && echo Use the ayevdi-pool-create/copy/edit tools to configure
-```
-### Test RR scheduler
-Note:Replace port number in example below
-```
-export ayeport=4203 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-${ayeport} 2>/dev/null | uudecode | uudecode | gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null | bash - ) 2>/dev/null -d | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} "$(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk 2>/dev/null)"
-```
 ### Test RR load balancer
 ```
 export ayeport=4203 && shellinaboxd --css /etc/shellinabox/options-enabled/00_White\ On\ Black.css -p ${ayeport} -s "/:$(id -u):$(id -g):${PWD}:/bin/bash -c 'wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk -O ${HOME}/.ayevdi/ayevdi-sched-rr.awk >/dev/null 2>&1 && curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-${ayeport} 2>/dev/null | uudecode | uudecode | gpg --batch --passphrase $(curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey 2>/dev/null | bash - ) 2>/dev/null -d | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} -f ${HOME}/.ayevdi/ayevdi-sched-rr.awk'" --disable-ssl
@@ -246,39 +253,19 @@ export ayeport=4203 && shellinaboxd --css /etc/shellinabox/options-enabled/00_Wh
 
 ```
 
-## AyeVDI in container
-Note: Does not run nested
+### AyeVDI in container
+Note: Run on host only - Does not run nested in AyeVDI sessions as of now!
+
+#### AyeVDI in container with current / persistent user
 ```
 sourcefrom https://bit.ly/ayevdi-docker
 ```
 
-## AyeVDI in container with ephemeral user
+#### AyeVDI in container with ephemeral user
 ```
 curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral | bash -
 ```
 
-
-## AyeVDI on host
-
-1. To setup execute
-Note: This is the original native ayevdi. Please see the updated docker based version.
-CAUTION: Do NOT execute this on a production server
-```
-curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic | bash -
-```
-
-2. To start VDI execute - this will provide a GUI from the host on port 6080
-```
-curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init | bash -
-```
-
-## Create base image for AyeVDI
- 
-1. Execute the following command to generate AyeVDI image.
-Note: This script requires user interaction. Push will only work with account auth
-```
-curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/gen/ayevdi-gen-image | bash -
-```
 ## Load testing AyeVDI ephemeral mode with 200 simultaneous GUI users
 ```
 (for n in {1..10}; do sudo apt update -y && curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral | bash -; done) 2>/dev/null | grep vnc_auto > terms.txt
@@ -286,18 +273,7 @@ cat terms.txt
 (for n in {1..190}; do sudo apt update -y && curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/ephemeral/ayevdi-ephemeral | bash -; done) 2>/dev/null | grep vnc_auto > terms.txt
 ```
 
-## Building
-
-### Shellinabox compilation
-```
-curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab | bash -
-```
-### Shellinabox installation
-```
-sudo dpkg -r shellinabox && sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
-```
-
-## Testing
+## Integration Testing
 
 ### Build, deploy, test SIAB combo on host with Shell
 ```

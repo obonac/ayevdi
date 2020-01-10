@@ -205,6 +205,10 @@ NOTE: This requires a pool for port 9999 to have been created. It can be a dummy
 ```
 export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)"
 ```
+#### Test node policy to stop abandoned containers
+```
+sourcefrom https://bit.ly/ayevdi-node-stop-abandoned-test
+```
 
 ### bit.ly mappings
 https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init

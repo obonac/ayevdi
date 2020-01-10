@@ -21,9 +21,9 @@ fi
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
 export tempstats=$(tempfile)
-sourcefrom http://bit.ly/ayevdi-node-runstats >${tempstats}
+sourcefrom https://bit.ly/ayevdi-node-runstats >${tempstats}
 
-for n in $(docker ps -q)
+for cntr in $(docker ps -q)
 do
   # Prevent infant mortality (allow time for containers to start-up and connect)
   # TODO: This should be tuned to a fair interval
@@ -44,42 +44,42 @@ do
 
   # TBD: Install lsof or kill container if lsof not found?
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
-  export lsofstat=$(docker exec -it ${n} bash -lci 'which lsof')
-  echo "where lsof on " ${n} "${lsofstat}"
+  export lsofstat=$(docker exec -it ${cntr} bash -lci 'which lsof')
+  echo "where lsof on " ${cntr} "${lsofstat}"
   if [ "${lsofstat}" == "/usr/bin/lsof" ]
   then
-    echo Found lsof on ${n}... Compliant image!
-    logger "POLICY:ABANDON:LSOF:${n} Found lsof on ${n}... Compliant image!"
+    echo Found lsof on ${cntr}... Compliant image!
+    logger "POLICY:ABANDON:LSOF:${cntr} Found lsof on ${cntr}... Compliant image!"
   else
-    echo Installing lsof on ${n}... Rouge image?
-    docker exec -it ${n} apt install -y lsof   
-    logger "POLICY:ABANDON:LSOF:${n} Installing lsof... Rouge image?"
+    echo Installing lsof on ${cntr}... Rouge image?
+    docker exec -it ${cntr} apt install -y lsof   
+    logger "POLICY:ABANDON:LSOF:${cntr} Installing lsof... Rouge image?"
   fi
   
   export tcpstat=$(tempfile)
-  docker exec -it ${n} lsof -ai tcp >${tcpstat}
+  docker exec -it ${cntr} lsof -ai tcp >${tcpstat}
   export est=$(cat ${tcpstat} | grep vnc | grep ESTABLISHED | wc -l)
   export vnc=$(cat ${tcpstat} | grep vnc | wc -l)
-  export usr=$(docker exec -it ${n} users | wc -l)
-  echo ${n} vnc=${vnc} est=${est} usr=${usr}
+  export usr=$(docker exec -it ${cntr} users | wc -l)
+  echo ${cntr} vnc=${vnc} est=${est} usr=${usr}
   if [ ${vnc} -gt 0 ]
   then
     if [ ${est} -lt 1 ]
     then
-      docker stop ${n}
-      echo Stopping abandoned container ${n}
-      logger "POLICY:ABANDON:STOP:${n} vnc=${vnc} est=${est} usr=${usr}"
+      docker stop ${cntr}
+      echo Stopping abandoned container ${cntr}
+      logger "POLICY:ABANDON:STOP:${cntr} vnc=${vnc} est=${est} usr=${usr}"
     else
-      logger "POLICY:ABANDON:SKIP:${n} vnc=${vnc} est=${est} usr=${usr}"
+      logger "POLICY:ABANDON:SKIP:${cntr} vnc=${vnc} est=${est} usr=${usr}"
     fi
   else
     if [ ${usr} -lt 1 ]
     then
-      docker stop ${n}
-      echo Stopping abandoned container ${n}
-      logger "POLICY:ABANDON:STOP:${n} vnc=${vnc} est=${est} usr=${usr}"
+      docker stop ${cntr}
+      echo Stopping abandoned container ${cntr}
+      logger "POLICY:ABANDON:STOP:${cntr} vnc=${vnc} est=${est} usr=${usr}"
     else
-      logger "POLICY:ABANDON:SKIP:${n} vnc=${vnc} est=${est} usr=${usr}"
+      logger "POLICY:ABANDON:SKIP:${cntr} vnc=${vnc} est=${est} usr=${usr}"
     fi
   fi
 done

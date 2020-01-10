@@ -52,7 +52,9 @@ do
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
   export tmplsofstat=$(docker exec -it ${cntr} which lsof)
   echo "where? lsof on " ${cntr} "${tmplsofstat}"
-  if [ "${tmplsofstat}" = "/usr/bin/lsof" ];
+  # TBD: Why is the following form not working?
+  #     if [ "${tmplsofstat}" = "/usr/bin/lsof" ]; then
+  if [ $(${tmplsofstat} | grep lsof | wc -l) -gt 0 ]
   then
     echo Found lsof on ${cntr}... Compliant image!
     logger "POLICY:ABANDON:LSOF:${cntr} Found lsof on ${cntr}... Compliant image!"

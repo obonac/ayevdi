@@ -122,9 +122,13 @@ NOTE: This OST can take quite a long time on a slow system, or on a low bandwidt
 ```
 sourcefrom https://bit.ly/ayevdi-setup-basic
 ```
-#### Launch a host based VNC session
+#### Launch a host based GUI session
 ```
 sourcefrom https://bit.ly/ayevdi-init
+```
+#### Launch a host based shell session
+```
+sourcefrom https://bit.ly/ayevdi-ayeuser-shell
 ```
 
 ### Working with AyeVDI pools

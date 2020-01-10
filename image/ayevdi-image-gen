@@ -42,8 +42,7 @@ docker exec -it ayevdi apt auto-remove -y
 docker exec -it ayevdi bash -lci 'apt install -y expect sudo curl wget git lolcat sharutils gpg'
 docker exec -it ayevdi ln -sf /usr/games/lolcat /usr/bin
 docker exec -it ayevdi ln -sf /root/.ayevdi/ayevdi-sourcefrom /usr/bin/sourcefrom
-docker exec -it ayevdi bash -lci 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh} && sourcefrom https://bit.ly/ayevdi-host-autoload'
-docker exec -it ayevdi chmod 777 /root/.ayevdi/ayevdi-sourcefrom
+docker exec -it ayevdi bash -lci 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh} && chmod 777 /root/.ayevdi/ayevdi-sourcefrom && sourcefrom https://bit.ly/ayevdi-host-autoload'
 docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-mascot'
 
 # Manual shell

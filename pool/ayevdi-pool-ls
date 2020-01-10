@@ -20,38 +20,29 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
+mkdir -p ${HOME}/.ayevdi/repo
+
+#We don't need a fresh clone unless none exist
 if [ "${2}" == "" ]
 then
-
-  echo Usage: ayevdi-pool-ls port repo-url
-
+  export ayevdi_repo=https://github.com/ayevdi/ayevdi
 else
+  export ayevdi_repo=${2}
+fi
+  
+if [ ! -e ${HOME}/.ayevdi/repo/ayevdi ]
+then
+  git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi >/dev/null
+fi
+  
+pushd ${HOME}/.ayevdi/repo/ayevdi >/dev/null
+  
+# We updated repo files
+git pull >/dev/null
+  
+ls pool | grep '[0-9]$' | cut -d'-' -f3
 
-  mkdir -p ${HOME}/.ayevdi/repo
-
-  #We don't need a fresh clone unless none exist
-  if [ "${3}" == "" ]
-  then
-    export ayevdi_repo=https://github.com/ayevdi/ayevdi
-  else
-    export ayevdi_repo=${3}
-  fi
-  
-  if [ ! -e ${HOME}/.ayevdi/repo/ayevdi ]
-  then
-    git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi >/dev/null
-  fi
-  
-  pushd ${HOME}/.ayevdi/repo/ayevdi >/dev/null
-  
-  # We updated repo files
-  git pull >/dev/null
-  
-  ls pool | grep '[0-9]$' | cut -d'-' -f3
-
-  if [ "$(dirs)" != "~" ]
-  then
-    popd >/dev/null
-  fi
-  
+if [ "$(dirs)" != "~" ]
+then
+  popd >/dev/null
 fi

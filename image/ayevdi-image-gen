@@ -35,16 +35,25 @@ docker container rm ayevdi
 
 # Start a conatiner with latest Ubuntu - TBD: We needed 18.04 specifically?
 docker run --name ayevdi -dt ubuntu:latest
-docker exec -itd ayevdi apt update -y
-docker exec -itd ayevdi apt upgrade -y
-docker exec -itd ayevdi apt auto-remove -y
+docker exec -it ayevdi apt update -y
+docker exec -it ayevdi apt upgrade -y
+docker exec -it ayevdi apt auto-remove -y
 
-# Manual shell : TBD: Why?
-# echo Execute "\" && (sourcefrom https://bit.ly/ayevdi-setup-basic) && exit\"" in the container 
+docker exec -it ayevdi apt install -y expect sudo curl wget git lolcat sharutils gpg
+docker exec -it ayevdi ln -sf /usr/games/lolcat /usr/bin
+docker exec -it ayevdi bash -lci 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-host-autoload'
+
+# Manual shell
+# TBD: Do we need a manual shell for basic clean image?
+# Uncomment the line below to enable dropping into manual shell
 # docker exec -it ayevdi /bin/bash
 
-docker exec -itd ayevdi apt install -y expect sudo curl wget git
-docker exec -itd ayevdi 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+# The ayevdi basic setup can take a while
+# docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-setup-basic' 
+
+# Clean up
+docker exec -it ayevdi bash -lci ' history -c'
 
 export cntr_id=$(docker ps -a | grep ayevdi$ | cut -d' ' -f1)
 export cntr_tag=$(date +%s)

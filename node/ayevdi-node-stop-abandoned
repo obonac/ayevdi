@@ -39,7 +39,8 @@ do
 
   # TBD: Install lsof or kill container if lsof not found?
   # NOTE: This may be an attempt at bypassing policies, but there may be some valid cases
-  if [ "/usr/bin/lsof" != $(docker exec -it ${n} which lsof) ] && [ "$?" == "0" ]
+  templsofstat=$(docker exec -it ${n} which lsof)
+  if [ "/usr/bin/lsof" != "${templsofstat}" ]
   then
     echo Installing lsof on ${n}... Rouge image?
     docker exec -it ${n} apt install -y lsof   

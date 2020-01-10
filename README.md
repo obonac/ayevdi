@@ -144,8 +144,18 @@ sourcefrom https://bit.ly/ayevdi-pool-edit 9999 https://github.com/ayevdi/ayevdi
 ```
 sourcefrom https://bit.ly/ayevdi-pool-copy 9999 9998 https://github.com/ayevdi/ayevdi
 ```
-
-
+#### See the pools list
+```
+sourcefrom https://bit.ly/ayevdi-pool-ls
+```
+#### Mark for deletion the pool for port 9999
+```
+sourcefrom https://bit.ly/ayevdi-pool-rm
+```
+#### Mark all pools for deletion
+```
+for n in $(sourcefrom https://bit.ly/ayevdi-pool-ls); do sourcefrom https://bit.ly/ayevdi-pool-rm $n; done
+```
 ### Utils
 Some quick utilities for both AyeVDI users and developers 
 

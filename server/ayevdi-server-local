@@ -47,9 +47,11 @@ pushd ${HOME}/.ayevdi/repo/ayevdi
     echo http://127.0.0.1:${ayevdilocalport}/$(echo ${n} | cut -d'/' -f4,5)
     wget -q ${n} -P ${HOME}/.ayevdi/local
   done >${tmpurls}
+
+  # TODO: The local webroot files should link to the local repo - that will allow may dev use cases
+  pushd ${HOME}/.ayevdi/local
   find . -type f | grep -v .git | xargs -n1 -I{} sed -i "$(cat ${tmpurls} | sed 's/\//\\\//g' |\
     awk -vp1=s/ -vp2=/ -vp3=/g\;\  -F',' '{printf p1 $1 p2 $2 p3}')" {}
-  pushd ${HOME}/.ayevdi/local
     screen -S "ayevdi-service-local" -d -m python -m SimpleHTTPServer
   popd
 

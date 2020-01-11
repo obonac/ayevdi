@@ -25,7 +25,7 @@ rm -f ${HOME}/.ayevdi/ayestrobe_test;
 ( for n in {1..6} 
 do
   wget -O- -q https://bit.ly/ayevdi-pool-9999-sample |\
-  awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_test "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)";
+  awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_test "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)"
 done ) >${tmpres}
 
 export testres=$(cat ${tmpres} | grep 'on strobe' | cut -d'.' -f4 | awk '{print $1 - $4}' | grep 10$ | wc -l)

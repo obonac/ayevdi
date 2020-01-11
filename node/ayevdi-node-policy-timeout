@@ -22,13 +22,13 @@ fi
 # Prevent non-starter in wrongly configured or sandbox setups
 if [ "${timelimit}" == "" ]
 then
-  export timelimit=300
+  export timelimit=10
 fi
 
-# It is meaningless giving less than 5 mins timelimit
-if [ ${timelimit} -lt 300 ]
+# It is meaningless giving less than 10 seconds timelimit
+if [ ${timelimit} -lt 10 ]
 then
-  export timelimit=300
+  export timelimit=10
 fi
 
 # Prevent thrashing in wrongly configured environments
@@ -37,7 +37,7 @@ echo Waiting for 10s to prevent thrashing...
 sleep 10
 
 sourcefrom https://bit.ly/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
-  if ($3 != 0) age=$3; else age=$2;
+  if ($3 != 0) age=$3; else age=$2; print "ageof(" $1 ")=" age;
   if (age > timelimit) {
     system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session timelimit has been exhausted. Session is being disconnected. Please refresh page to launch a new session.");
     system("docker stop " $1);

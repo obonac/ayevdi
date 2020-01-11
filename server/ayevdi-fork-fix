@@ -49,4 +49,7 @@ pushd ${HOME}/.ayevdi/repo/ayevdi
   sed -i "s/${fromrepo}/${torepo}/g" ${tmpurls} 
   find . -type f | grep -v .git | xargs -n1 -I{} sed -i "$(cat ${tmpurls} | sed 's/\//\\\//g' | awk -vp1=s/ -vp2=/ -vp3=/g\;\  -F',' '{printf p1 $1 p2 $2 p3}')" {}
 
+  find . -type f | grep -v .git | xargs -n1 git add
+  git commit -m "$(echo 'Shifted links from ' ${fromrepo} ' ' ${torepo} | sed 's/\\//g')"
+  git push
 popd

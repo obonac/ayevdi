@@ -216,10 +216,41 @@ sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
 
 ### bit.ly mappings
 ```
-https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+https://bit.ly/ayevdi-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init
+https://bit.ly/ayevdi-log,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log
+https://bit.ly/ayevdi-mascot,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot
+https://bit.ly/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
+https://bit.ly/ayevdi-node-policy-timeout-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout-test
+https://bit.ly/ayevdi-node-runstats,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats
+https://bit.ly/ayevdi-node-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup
+https://bit.ly/ayevdi-node-stop-abandoned,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned
+https://bit.ly/ayevdi-node-stop-abandoned-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned-test
+https://bit.ly/ayevdi-passkey,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey
+https://bit.ly/ayevdi-passkey-new,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen
+https://bit.ly/ayevdi-pool-9999-sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-9999.sample
+https://bit.ly/ayevdi-pool-copy,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-copy
+https://bit.ly/ayevdi-pool-create,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-create
+https://bit.ly/ayevdi-pool-edit,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-edit
+https://bit.ly/ayevdi-pool-ls,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-ls
+https://bit.ly/ayevdi-pool-rm,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-rm
+https://bit.ly/ayevdi-pool-rm-all,https://github.com/ayevdi/ayevdi/blob/master/pool/ayevdi-pool-rm-all
+https://bit.ly/ayevdi-proxy-setsalt-awk,https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk
+https://bit.ly/ayevdi-sched-rr,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk
+https://bit.ly/ayevdi-sched-rr-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr-test
+https://bit.ly/ayevdi-setup-basic,https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic
+https://bit.ly/ayevdi-sfrom,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom
+https://bit.ly/ayevdi-sfrom-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+https://bit.ly/ayevdi-validator,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-validator
+https://bit.ly/canonical-ubuntu,https://web.archive.org/web/20200102083315/https://ubuntu.com/community/canonical
+https://bit.ly/ubuntu-release-cycle,https://web.archive.org/web/20200104055852/https://ubuntu.com/about/release-cycle
+https://bit.ly/xstartup-sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample
+https://bit.ly/ydprof,https://raw.githubusercontent.com/ayevdi/profiles/master/Yandesk.Disk
 ```
 
-TODO: Complete the list
+The above list have been generated using the following command
+```
+git clone https://github.com/ayevdi/ayevdi; cd ayevdi; for n in $(find . -type f | grep -v .git | xargs cat | tr "()' =;" '\n\n\n\n\n\n' | grep bit.ly | grep http | sort -u); do printf "%s," ${n}; curl ${n} 2>/dev/null | grep href | cut -d'"' -f2 | grep http; done | wc -l
+```
 TODO: Need OSTs for migrating to different servers, repo-hosts, url shorteners, across cloud providers etc.
 TODO: Enable local hosting / OSTs to build infra from scratch
 

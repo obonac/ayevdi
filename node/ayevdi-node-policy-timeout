@@ -33,7 +33,7 @@ fi
 
 # Prevent thrashing in wrongly configured environments
 # External delay can be reduced by the delay specified below
-echo Waiting for sanity...
+echo Waiting for 10s to prevent thrashing...
 sleep 10
 
 sourcefrom https://bit.ly/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{

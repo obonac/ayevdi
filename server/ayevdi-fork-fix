@@ -39,7 +39,7 @@ git clone ${ayevdi_repo} ${HOME}/.ayevdi/repo/ayevdi
 pushd ${HOME}/.ayevdi/repo/ayevdi
 
   export tmpurls=$(tempfile)
-  for n in $(find . -type f | grep -v .git | xargs cat | tr "()' =;," '\n\n\n\n\n\n\n' | grep bit.ly | grep http | sort -u)
+  for n in $(find . -type f | grep -v .git | xargs cat | tr "()' =;," '\n\n\n\n\n\n\n' | grep bit.ly | grep http | sort -ur)
   do
     printf "%s," ${n}
     curl ${n} 2>/dev/null | grep href | cut -d'"' -f2 | grep http

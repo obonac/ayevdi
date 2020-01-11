@@ -209,6 +209,10 @@ export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | aw
 ```
 sourcefrom https://bit.ly/ayevdi-node-stop-abandoned-test
 ```
+#### Test node policy to limit runtime of containers
+```
+sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
+```
 
 ### bit.ly mappings
 https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init

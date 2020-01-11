@@ -41,7 +41,7 @@ pushd ${HOME}/.ayevdi/repo/ayevdi
   export tmpurls=$(tempfile)
   export ayevdilocalport=8000
   mkdir -p ${HOME}/.ayevdi/local
-  for n in $(find . -type f | grep -v .git | xargs cat | tr "()' =;," '\n\n\n\n\n\n\n' | grep bit.ly | grep http | sort -u)
+  for n in $(find . -type f | grep -v .git | xargs cat | tr "()' =;," '\n\n\n\n\n\n\n' | grep bit.ly | grep http | sort -ur)
   do
     printf "%s," ${n}
     echo http://127.0.0.1:${ayevdilocalport}/$(echo ${n} | cut -d'/' -f4,5)

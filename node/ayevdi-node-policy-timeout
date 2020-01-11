@@ -19,9 +19,6 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-# (C) Copyright 2019 Abhishek Choudhary
-# Released under GNU GPL v2 license
-
 # Prevent non-starter in wrongly configured or sandbox setups
 if [ "${timelimit}" == "" ]
 then
@@ -36,21 +33,22 @@ fi
 
 # Prevent thrashing in wrongly configured environments
 # External delay can be reduced by the delay specified below
-sleep 30
+echo Waiting for sanity...
+sleep 10
 
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats | bash - | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
+sourcefrom https://bit.ly/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
   if ($3 > timelimit) {
-    system("sudo docker exec -itd " $1 " wall -n AyeVDI warning: Your current session timelimit has been exhausted. Session is being disconnected. Please refresh page to launch a new session.");
-    system("sudo docker stop " $1);
+    system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session timelimit has been exhausted. Session is being disconnected. Please refresh page to launch a new session.");
+    system("docker stop " $1);
     print $1 ",stop attempted"
   }
   else {
     if ( 60 >= (timelimit - $3) ) {
-      system("sudo docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 1 minute remaining. Please save your work.")
+      system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 1 minute remaining. Please save your work.")
     }
     else {
       if ( 120 >= (timelimit - $3)) {
-        system("sudo docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 2 minutes remaining. Please save your work.")
+        system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 2 minutes remaining. Please save your work.")
       }
       else {
         print $1 "," (timelimit-$3) " remaining"

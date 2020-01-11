@@ -21,16 +21,11 @@ fi
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
 # Prevent non-starter in wrongly configured or sandbox setups
-if [ "${timelimit}" == "" ]
-then
-  export timelimit=10
-  echo Using default timelimit=10s. To modify set timelimit=t
-fi
-
 # It is meaningless giving less than 10 seconds timelimit
 if [ ${timelimit} -lt 10 ]
 then
   export timelimit=10
+  echo Using default timelimit=10s. To modify set timelimit=t
 fi
 
 # Prevent thrashing in wrongly configured environments

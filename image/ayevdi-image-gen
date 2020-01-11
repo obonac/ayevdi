@@ -12,14 +12,14 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-sourcefrom http://bit.ly/ayevdi-host-user-setup
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
 
 # Setup the system inside the container
 
@@ -42,8 +42,8 @@ docker exec -it ayevdi apt auto-remove -y
 docker exec -it ayevdi apt install -y expect sudo curl wget git lolcat sharutils gpg
 docker exec -it ayevdi ln -sf /usr/games/lolcat /usr/bin
 docker exec -it ayevdi ln -sf /root/.ayevdi/ayevdi-sourcefrom /usr/bin/sourcefrom
-docker exec -it ayevdi bash -lci 'ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh} && chmod 777 /root/.ayevdi/ayevdi-sourcefrom && sourcefrom https://bit.ly/ayevdi-host-autoload'
-docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-mascot'
+docker exec -it ayevdi bash -lci 'ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh} && chmod 777 /root/.ayevdi/ayevdi-sourcefrom && sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload'
+docker exec -it ayevdi bash -lci 'sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot'
 
 # Manual shell
 # TBD: Do we need a manual shell for basic clean image?
@@ -51,7 +51,7 @@ docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-mascot'
 # docker exec -it ayevdi /bin/bash
 
 # The ayevdi basic setup can take a while
-docker exec -it ayevdi bash -lci 'sourcefrom https://bit.ly/ayevdi-setup-basic' 
+docker exec -it ayevdi bash -lci 'sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic' 
 
 # Clean up
 docker exec -it ayevdi bash -lci ' history -c'

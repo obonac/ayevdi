@@ -12,7 +12,7 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
@@ -21,7 +21,7 @@ fi
 
 if [ ! -e ${HOME}/.ayevdi/ayevdi-passkey.done ]
 then
-  sourcefrom https://bit.ly/ayevdi-passkey-new
+  sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen
 fi
 
 cat ~/.ayevdi/ayepasskey |\

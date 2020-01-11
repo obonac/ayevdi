@@ -12,14 +12,14 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-ayevdi_img_common=$(sourcefrom https://bit.ly/ayevdi-image-common)
+ayevdi_img_common=$(sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common)
 docker pull ayeai/ayevdi:${ayevdi_img_common}
 
 export ayeuid=$(expr $(id -u ${USER}) + 12345)

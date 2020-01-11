@@ -13,7 +13,7 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
@@ -50,9 +50,9 @@ else
   cat pool/ayevdi-pool-${2} |\
   uudecode |\
   uudecode |\
-  gpg --batch --passphrase $(sourcefrom https://bit.ly/ayevdi-passkey) >${pooltemp} &&\
+  gpg --batch --passphrase $(sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey) >${pooltemp} &&\
   vi $pooltemp && cat ${pooltemp} |\
-  gpg --batch --passphrase $(sourcefrom https://bit.ly/ayevdi-passkey) -c - |\
+  gpg --batch --passphrase $(sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey) -c - |\
   uuencode - |\
   uuencode - >pool/ayevdi-pool-${2} &&\
   git add pool/ayevdi-pool-${2} &&\

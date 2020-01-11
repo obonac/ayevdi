@@ -37,10 +37,10 @@
 # is not expected to have been initialized till this file is
 # called. Hereafter, use the follwing sample in each script
 # header. For other types of artifacts, please see URL below
-# https://bit.ly/ayevdi-headers
+# https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-header-samples
 # Sample bash statutory header:
 #   To use see output of the command below (without #)
-#   wget https://bit.ly/ayevdi-sfrom-init -O- -q | cut -c 2- | head -55 | tail -18
+#   wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O- -q | cut -c 2- | head -55 | tail -18
 ## AYESEC:POST_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 ## AYESEC:STATUTORY_HEADER
 #if [ "${ayevdi_sourcefrom}" != "${HOME}/.ayevdi/ayevdi-sourcefrom" ]
@@ -55,7 +55,7 @@
 #  echo ""
 #  echo "AyeVDI not activated. Please use the following command to"
 #  echo "activate AyeVDI"
-#  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+#  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
 #  echo ""
 #  exit
 #fi
@@ -65,7 +65,7 @@
 if [ ! -f ${HOME}/.ayevdi/ayevdi-sourcefrom ]
 then
   mkdir -p ${HOME}/.ayevdi/
-  wget https://bit.ly/ayevdi-sfrom -O- -q > ${HOME}/.ayevdi/ayevdi-sourcefrom
+  wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom -O- -q > ${HOME}/.ayevdi/ayevdi-sourcefrom
 fi
 
 export ayevdi_sourcefrom=${HOME}/.ayevdi/ayevdi-sourcefrom
@@ -87,7 +87,7 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
@@ -141,10 +141,10 @@ alias sourcefrom='ayevdi-sourcefrom'
 
 alias ayevdi-bsf='ayevdi-sourcefrom bsf'
 
-alias ayevdi-validator='ayevdi-bsf https://bit.ly/ayevdi-validator'
+alias ayevdi-validator='ayevdi-bsf https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-validator'
 alias validator='ayevdi-validator'
 
-alias ayevdi-logger='ayevdi-bsf https://bit.ly/ayevdi-log'
+alias ayevdi-logger='ayevdi-bsf https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log'
 alias logger='ayevdi-logger'
 
 logger "AyeVDI sourcefrom activated... using ${ayesh}"
@@ -163,7 +163,7 @@ cat ${HOME}/.ayevdi/ayevdi-validator.$(basename ${ayesh}) | (if [ 0 -lt $(grep A
   else
     logger "The Lion has roared!"
     echo ""
-    sourcefrom https://bit.ly/ayevdi-mascot
+    sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot
   fi) && echo ""
   
 if [ -e ${HOME}/.ayevdi/ayevdi-error.fatal ]

@@ -25,7 +25,7 @@ must STRICTLY be IN ACCORDANCE, and this notice must be
 reproduced in derivatives along with the original assertions
 of copyrights.
 
-Note: These instructions are based on Ubuntu 18.04 LTS which is supported by Canonical until April 2023 (Ref: https://bit.ly/canonical-ubuntu https://bit.ly/ubuntu-release-cycle). Support of other distros, including future Ubuntu releases, is pertinent to resource availability.
+Note: These instructions are based on Ubuntu 18.04 LTS which is supported by Canonical until April 2023 (Ref: https://web.archive.org/web/20200102083315/https://ubuntu.com/community/canonical https://web.archive.org/web/20200104055852/https://ubuntu.com/about/release-cycle). Support of other distros, including future Ubuntu releases, is pertinent to resource availability.
 
 ## Simple introduction !!
 While we wait for more descriptive articles to be written, here's some quick information on how to get started. AyeVDI is a virtuaized desktop IaaS. The core objective of AyeVDI is to deliver seamless application, desktop and service virtualization including HyperScale, Scientific and Cognitive Computing. We aspire to offer optimal and hardened convergence of VDI and HPC with utmost fluidity in user experience, with focussed support for Machine Learning, Deep Learning, Internet of Things, Robotics, Medical Devices and Healthcare Applications (fundamental building blocks for #ai4all and #ai4socialgood).
@@ -84,19 +84,19 @@ Note: For non-internet deployments we are rolling out DVD and BlueRay releases, 
 #### First step : Enable AyeSec secure web scripts
 Note: The security at this stage is being improved AyeQu (Quantum Computing utilities by AyeAI)
 ```
-ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
+ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}
 ```
 
 #### Second step : Setting up the node services - need to do this only once per node
 ```
-sourcefrom https://bit.ly/ayevdi-node-setup
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup
 ```
 Great! Congratulations. You have AyeVDI working on your system now. Just point your browser to your server and start using AyeVDI.
 
 #### Do you want to autoload AyeVDI - well the following OST can take care of it
 Notice: This will ayesh init to your .bashrc
 ```
-sourcefrom https://bit.ly/ayevdi-host-autoload
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload
 ```
 
 Really? Yes. That's it. Do drop us a kind word if you liked it. Of course, donations and crowd funding offers are welcome. Please see https://ayeai.xyz for details
@@ -108,7 +108,7 @@ Note: AyeAI does not guarantee success of these integrations and does not contro
 
 Example: Yandex Disk
 ```
-export AYEDISK_PROFILE=https://bit.ly/ydprof && sourcefrom https://bit.ly/ayedisk-proact
+export AYEDISK_PROFILE=https://raw.githubusercontent.com/obonac/ayevdi/master/Yandesk.Disk && sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/container/ayedisk-profile-activate
 ```
 
 ## Advanced setup and configurations
@@ -122,16 +122,16 @@ NOTE: This OST can take quite a long time on a slow system, or on a low bandwidt
 Note: This is the original native ayevdi. Please see the updated docker based version.
 CAUTION: Do NOT execute this on a production server
 ```
-sourcefrom https://bit.ly/ayevdi-setup-basic
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic
 ```
 #### Launch a host based GUI session
 Note: This will provide a GUI from the host on port 6080
 ```
-sourcefrom https://bit.ly/ayevdi-init
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init
 ```
 #### Launch a host based shell session on port 4203
 ```
-sourcefrom https://bit.ly/ayevdi-ayeuser-shell 4203
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell 4203
 ```
 
 ### AyeVDI Images
@@ -140,7 +140,7 @@ sourcefrom https://bit.ly/ayevdi-ayeuser-shell 4203
 Execute the following command to generate AyeVDI image.
 Note: This script requires user interaction. Push will only work with account auth
 ```
-sourcefrom https://bit.ly/ayevdi-image-gen
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-gen
 ```
 
 
@@ -151,27 +151,27 @@ Replace the repo with the url to your clone
 
 #### Create a pool for port 9999
 ```
-sourcefrom https://bit.ly/ayevdi-pool-create 9999 https://github.com/ayevdi/ayevdi
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-create 9999 https://github.com/ayevdi/ayevdi
 ```
 #### Edit the pool for port 9999
 ```
-sourcefrom https://bit.ly/ayevdi-pool-edit 9999 https://github.com/ayevdi/ayevdi
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-edit 9999 https://github.com/ayevdi/ayevdi
 ```
 #### Copy a pool from port 9999 to port 9998
 ```
-sourcefrom https://bit.ly/ayevdi-pool-copy 9999 9998 https://github.com/ayevdi/ayevdi
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-copy 9999 9998 https://github.com/ayevdi/ayevdi
 ```
 #### See the pools list
 ```
-sourcefrom https://bit.ly/ayevdi-pool-ls
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-ls
 ```
 #### Mark for deletion the pool for port 9999
 ```
-sourcefrom https://bit.ly/ayevdi-pool-rm 9999
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-rm 9999
 ```
 #### Mark all pools for deletion
 ```
-sourcefrom https://bit.ly/ayevdi-pool-rm-all
+sourcefrom https://github.com/ayevdi/ayevdi/blob/master/pool/ayevdi-pool-rm-all
 ```
 ### Utils
 Some quick utilities for both AyeVDI users and developers 
@@ -191,7 +191,7 @@ rm ${HOME}/.ayevdi/ayevdi-error.fatal
 
 #### Shellinabox compilation
 ```
-sourcefrom https://bit.ly/ayevdi-build-siab
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab
 ```
 #### Shellinabox installation
 ```
@@ -203,22 +203,22 @@ sudo dpkg -r shellinabox && sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
 #### Test rr scheduler algo and integration
 NOTE: This requires a pool for port 9999 to have been created. It can be a dummy pool
 ```
-sourcefrom https://bit.ly/ayevdi-sched-rr-test
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr-test
 ```
 #### Test node policy to stop abandoned containers
 ```
-sourcefrom https://bit.ly/ayevdi-node-stop-abandoned-test
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned-test
 ```
 #### Test node policy to limit runtime of containers
 ```
-sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout-test
 ```
 
 ### Administration and management
 
 #### Find runtime statistics of containers
 ```
-sourcefrom https://bit.ly/ayevdi-node-runstats
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats
 ```
 
 #### See active containers with labels
@@ -236,50 +236,50 @@ See the link https://zwischenzugs.com/2016/08/29/bash-to-python-converter/ and c
 
 ### bit.ly mappings
 ```
-http://bit.ly/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
-http://bit.ly/ayevdi-fx,https://raw.githubusercontent.com/ayevdi/ayevdi/master/lib/ayevdi-functions
-http://bit.ly/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
-http://bit.ly/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
-http://bit.ly/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
-https://bit.ly/ayedisk-proact,https://raw.githubusercontent.com/ayevdi/ayevdi/master/container/ayedisk-profile-activate
-https://bit.ly/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
-https://bit.ly/ayevdi-build-siab,https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab
-https://bit.ly/ayevdi-docker,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker
-https://bit.ly/ayevdi-docker-stub,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-stub
-https://bit.ly/ayevdi-headers,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-header-samples
-https://bit.ly/ayevdi-host-autoload,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload
-https://bit.ly/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
-https://bit.ly/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
-https://bit.ly/ayevdi-image-gen,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-gen
-https://bit.ly/ayevdi-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init
-https://bit.ly/ayevdi-log,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log
-https://bit.ly/ayevdi-mascot,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot
-https://bit.ly/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
-https://bit.ly/ayevdi-node-policy-timeout-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout-test
-https://bit.ly/ayevdi-node-runstats,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats
-https://bit.ly/ayevdi-node-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup
-https://bit.ly/ayevdi-node-stop-abandoned,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned
-https://bit.ly/ayevdi-node-stop-abandoned-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned-test
-https://bit.ly/ayevdi-passkey,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey
-https://bit.ly/ayevdi-passkey-new,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen
-https://bit.ly/ayevdi-pool-9999-sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-9999.sample
-https://bit.ly/ayevdi-pool-copy,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-copy
-https://bit.ly/ayevdi-pool-create,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-create
-https://bit.ly/ayevdi-pool-edit,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-edit
-https://bit.ly/ayevdi-pool-ls,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-ls
-https://bit.ly/ayevdi-pool-rm,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-rm
-https://bit.ly/ayevdi-pool-rm-all,https://github.com/ayevdi/ayevdi/blob/master/pool/ayevdi-pool-rm-all
-https://bit.ly/ayevdi-proxy-setsalt-awk,https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk
-https://bit.ly/ayevdi-sched-rr,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk
-https://bit.ly/ayevdi-sched-rr-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr-test
-https://bit.ly/ayevdi-setup-basic,https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic
-https://bit.ly/ayevdi-sfrom,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom
-https://bit.ly/ayevdi-sfrom-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
-https://bit.ly/ayevdi-validator,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-validator
-https://bit.ly/canonical-ubuntu,https://web.archive.org/web/20200102083315/https://ubuntu.com/community/canonical
-https://bit.ly/ubuntu-release-cycle,https://web.archive.org/web/20200104055852/https://ubuntu.com/about/release-cycle
-https://bit.ly/xstartup-sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample
-https://bit.ly/ydprof,https://raw.githubusercontent.com/ayevdi/profiles/master/Yandesk.Disk
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/lib/ayevdi-functions,https://raw.githubusercontent.com/ayevdi/ayevdi/master/lib/ayevdi-functions
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/container/ayedisk-profile-activate,https://raw.githubusercontent.com/ayevdi/ayevdi/master/container/ayedisk-profile-activate
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab,https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-stub,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-stub
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-header-samples,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-header-samples
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-gen,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-gen
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout-test
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-setup
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned-test
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen,https://raw.githubusercontent.com/ayevdi/ayevdi/master/passkey/ayevdi-passkey-gen
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-9999.sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-9999.sample
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-copy,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-copy
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-create,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-create
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-edit,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-edit
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-ls,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-ls
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-rm,https://raw.githubusercontent.com/ayevdi/ayevdi/master/pool/ayevdi-pool-rm
+https://github.com/ayevdi/ayevdi/blob/master/pool/ayevdi-pool-rm-all,https://github.com/ayevdi/ayevdi/blob/master/pool/ayevdi-pool-rm-all
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk,https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr.awk
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr-test,https://raw.githubusercontent.com/ayevdi/ayevdi/master/sched/ayevdi-sched-rr-test
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic,https://raw.githubusercontent.com/ayevdi/ayevdi/master/setup/ayevdi-setup-basic
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-sourcefrom
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-validator,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-validator
+https://web.archive.org/web/20200102083315/https://ubuntu.com/community/canonical,https://web.archive.org/web/20200102083315/https://ubuntu.com/community/canonical
+https://web.archive.org/web/20200104055852/https://ubuntu.com/about/release-cycle,https://web.archive.org/web/20200104055852/https://ubuntu.com/about/release-cycle
+https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/xstartup.sample
+https://raw.githubusercontent.com/obonac/ayevdi/master/Yandesk.Disk,https://raw.githubusercontent.com/ayevdi/profiles/master/Yandesk.Disk
 ```
 
 The above list have been generated using the following command
@@ -334,7 +334,7 @@ Note: Run on host only - Does not run nested in AyeVDI sessions as of now!
 
 #### AyeVDI in container with current / persistent user
 ```
-sourcefrom https://bit.ly/ayevdi-docker
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker
 ```
 
 #### AyeVDI in container with ephemeral user

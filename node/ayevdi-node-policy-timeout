@@ -13,7 +13,7 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
@@ -33,7 +33,7 @@ fi
 echo Waiting for 10s to prevent thrashing...
 sleep 10
 
-sourcefrom https://bit.ly/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
   if ($3 != 0) age=$3; else age=$2; print "age of " $1 " = " age;
   if (age > timelimit) {
     system("docker exec -i " $1 " wall -n AyeVDI warning: Your current session timelimit has been exhausted. Session is being disconnected. Please refresh page to launch a new session.");

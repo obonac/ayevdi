@@ -12,7 +12,7 @@ then
   echo ""
   echo "AyeVDI not activated. Please use the following command to"
   echo "activate AyeVDI"
-  echo '  ayesh=$(tempfile) && wget https://bit.ly/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
+  echo '  ayesh=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init -O${ayesh} -q && . ${ayesh}'
   echo ""
   exit
 fi
@@ -35,7 +35,7 @@ sudo ln -sf /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-ena
 #setup proxypass entries with port masking for security
 export tmpscript=$(tempfile)
 export tmpconf=$(tempfile)
-wget -O-${tmpscript} -q https://bit.ly/ayevdi-proxy-setsalt-awk
+wget -O-${tmpscript} -q https://raw.githubusercontent.com/ayevdi/ayevdi/master/proxy/ayevdi-proxy-setsalt.awk
 cat /etc/apache2/sites-enabled/default-ssl.conf | awk -f ${tmpscript} >${tmpconf}
 sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.$(date +%s)
 sudo cp -f ${tmpconf} /etc/apache2/sites-available/default-ssl.conf
@@ -48,10 +48,10 @@ sudo systemctl enable apache2
 
 #prepare current user for aministering ayevdi
 #TODO: No sudo access should be needed beyond this point unless upgrading
-sourcefrom https://bit.ly/ayevdi-host-user-setup
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
 
 #build and install node server
-sourcefrom https://bit.ly/ayevdi-build-siab
+sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab
 sudo dpkg -r shellinabox
 sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
 
@@ -63,10 +63,10 @@ sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
 #      - paused (frozen) containers can be run (thawed and warmed) JIT at request
 
 #Daemonize garbage collector (abandoned container stopper)
-#screen -S "ayevdi-service-garbageCollector" -d -m bash -c 'while [ 1 ]; do sleep 10; sourcefrom https://bit.ly/ayevdi-node-stop-abandoned; done'
+#screen -S "ayevdi-service-garbageCollector" -d -m bash -c 'while [ 1 ]; do sleep 10; sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-stop-abandoned; done'
 
 #Daemonize timer policy
-#screen -S "ayevdi-service-timePolicy" -d -m bash -c 'while [ 1 ]; do sleep 10; export timelimit=1899; sourcefrom http://bit.ly/ayevdi-node-policy-timeout; done'
+#screen -S "ayevdi-service-timePolicy" -d -m bash -c 'while [ 1 ]; do sleep 10; export timelimit=1899; sourcefrom https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout; done'
 
 #Daemonize idle policy
 

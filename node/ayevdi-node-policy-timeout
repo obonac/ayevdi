@@ -24,6 +24,7 @@ fi
 if [ "${timelimit}" == "" ]
 then
   export timelimit=10
+  echo Using default timelimit=10s. To modify set timelimit=t
 fi
 
 # It is meaningless giving less than 10 seconds timelimit

@@ -37,21 +37,22 @@ echo Waiting for 10s to prevent thrashing...
 sleep 10
 
 sourcefrom https://bit.ly/ayevdi-node-runstats | tail -n +2 | awk -F',' -v timelimit=${timelimit} '{
-  if ($3 > timelimit) {
+  if ($3 != 0) age=$3; else age=$2;
+  if (age > timelimit) {
     system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session timelimit has been exhausted. Session is being disconnected. Please refresh page to launch a new session.");
     system("docker stop " $1);
     print $1 ",stop attempted"
   }
   else {
-    if ( 60 >= (timelimit - $3) ) {
+    if ( 60 >= (timelimit - age) ) {
       system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 1 minute remaining. Please save your work.")
     }
     else {
-      if ( 120 >= (timelimit - $3)) {
+      if ( 120 >= (timelimit - age)) {
         system("docker exec -itd " $1 " wall -n AyeVDI warning: Your current session has less than 2 minutes remaining. Please save your work.")
       }
       else {
-        print $1 "," (timelimit-$3) " remaining"
+        print $1 "," (timelimit - age) " remaining"
       }
     }
   }

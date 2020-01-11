@@ -214,6 +214,26 @@ sourcefrom https://bit.ly/ayevdi-node-stop-abandoned-test
 sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
 ```
 
+### Administration and management
+
+#### Find runtime statistics of containers
+```
+sourcefrom https://bit.ly/ayevdi-node-runstats
+```
+
+#### See active containers with labels
+```
+while [ 1 ]; do clear; sudo docker ps --format "{{.ID}} {{.Labels}}"; sleep 1; done
+```
+
+
+### Internship projects
+
+#### Convert bash scripts in AyeVDI to Python
+See the link https://zwischenzugs.com/2016/08/29/bash-to-python-converter/ and convert the sripts here
+
+#### Convert to Perl, Javascript / Node.js
+
 ### bit.ly mappings
 ```
 http://bit.ly/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
@@ -388,29 +408,4 @@ screen -S "ayevdi-service-timePolicy" -d -m bash -c 'while [ 1 ]; do sleep 10; e
 ```
 screen -S "ayevdi-service-idlePolicy" -d -m bash -c 'while [ 1 ]; do sleep 10; export tmpscript=$(tempfile) && wget https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-idle -O ${tmpscript} && sudo bash -c "source ${tmpscript}" && export tmpscript=$(date +%s); done'
 ```
-
-## Administration and management
-
-### Find runtime statistics of containers
-```
-curl https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-runstats | bash -
-```
-
-### See active containers with labels
-```
-while [ 1 ]; do clear; sudo docker ps --format "{{.ID}} {{.Labels}}"; sleep 1; done
-```
-
-
-## Internship projects
-
-### Convert bash scripts in AyeVDI to Python
-See the link https://zwischenzugs.com/2016/08/29/bash-to-python-converter/ and convert the sripts here
-
-### Convert to Perl, Javascript / Node.js
-
-display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
 

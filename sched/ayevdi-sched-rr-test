@@ -19,12 +19,16 @@ fi
 # AYESEC:STATUTORY_HEADER_COMPLETED
 # AYESEC:PREV_MD5('18 lines')=9e65a33c9f13130a71e5588e1211b9d2
 
-export testres=$( rm -f ${HOME}/.ayevdi/ayestrobe_test; 
-for n in {1..6}; 
+export tmpres=$(tempfile)
+
+rm -f ${HOME}/.ayevdi/ayestrobe_test; 
+( for n in {1..6} 
 do
-  wget -O- -q https://bit.ly/ayevdi-pool-9999-sample | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_test 
-    "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)";
-done | grep 'on strobe' | cut -d'.' -f4 | awk '{print $1 - $4}' | grep 10$ | wc -l);
+  wget -O- -q https://bit.ly/ayevdi-pool-9999-sample |\
+  awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_test "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)";
+done ) >${tmpres}
+
+export testres=$(cat ${tmpres} | grep 'on strobe' | cut -d'.' -f4 | awk '{print $1 - $4}' | grep 10$ | wc -l)
 
 if [ ${testres} -eq 6 ]
 then 

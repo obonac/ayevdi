@@ -216,6 +216,21 @@ sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
 
 ### bit.ly mappings
 ```
+http://bit.ly/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
+http://bit.ly/ayevdi-fx,https://raw.githubusercontent.com/ayevdi/ayevdi/master/lib/ayevdi-functions
+http://bit.ly/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
+http://bit.ly/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
+http://bit.ly/ayevdi-node-policy-timeout,https://raw.githubusercontent.com/ayevdi/ayevdi/master/node/ayevdi-node-policy-timeout
+https://bit.ly/ayedisk-proact,https://raw.githubusercontent.com/ayevdi/ayevdi/master/container/ayedisk-profile-activate
+https://bit.ly/ayevdi-ayeuser-shell,https://raw.githubusercontent.com/ayevdi/ayevdi/master/ayeuser/ayevdi-ayeuser-shell
+https://bit.ly/ayevdi-build-siab,https://raw.githubusercontent.com/ayevdi/ayevdi/master/build/ayevdi-build-siab
+https://bit.ly/ayevdi-docker,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker
+https://bit.ly/ayevdi-docker-stub,https://raw.githubusercontent.com/ayevdi/ayevdi/master/docker/ayevdi-docker-stub
+https://bit.ly/ayevdi-headers,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-header-samples
+https://bit.ly/ayevdi-host-autoload,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-autoload
+https://bit.ly/ayevdi-host-user-setup,https://raw.githubusercontent.com/ayevdi/ayevdi/master/host/ayevdi-host-user-setup
+https://bit.ly/ayevdi-image-common,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-common
+https://bit.ly/ayevdi-image-gen,https://raw.githubusercontent.com/ayevdi/ayevdi/master/image/ayevdi-image-gen
 https://bit.ly/ayevdi-init,https://raw.githubusercontent.com/ayevdi/ayevdi/master/init/ayevdi-init
 https://bit.ly/ayevdi-log,https://raw.githubusercontent.com/ayevdi/ayevdi/master/utils/ayevdi-log
 https://bit.ly/ayevdi-mascot,https://raw.githubusercontent.com/ayevdi/ayevdi/master/doc/ayevdi-mascot

@@ -140,7 +140,7 @@ sourcefrom https://bit.ly/ayevdi-ayeuser-shell 4203
 Execute the following command to generate AyeVDI image.
 Note: This script requires user interaction. Push will only work with account auth
 ```
-sourcefrom https://bit.ly/ayevdi-gen-image
+sourcefrom https://bit.ly/ayevdi-image-gen
 ```
 
 
@@ -203,7 +203,7 @@ sudo dpkg -r shellinabox && sudo dpkg -i ayebuild/shellinabox_2.21_amd64.deb
 #### Test rr scheduler algo and integration
 NOTE: This requires a pool for port 9999 to have been created. It can be a dummy pool
 ```
-export ayeport=9999 && sourcefrom https://bit.ly/ayevdi-pool-cat ${ayeport} | awk -vstrobefile=${HOME}/.ayevdi/ayestrobe_${ayeport} "$(wget -O- -q https://bit.ly/ayevdi-sched-rr)"
+sourcefrom https://bit.ly/ayevdi-sched-rr-test
 ```
 #### Test node policy to stop abandoned containers
 ```
@@ -215,7 +215,9 @@ sourcefrom https://bit.ly/ayevdi-node-policy-timeout-test
 ```
 
 ### bit.ly mappings
+```
 https://bit.ly/ayevdi-sfrom-init https://raw.githubusercontent.com/ayevdi/ayevdi/master/ost/ayevdi-sfrom-init
+```
 
 TODO: Complete the list
 TODO: Need OSTs for migrating to different servers, repo-hosts, url shorteners, across cloud providers etc.
